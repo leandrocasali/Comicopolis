@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Comicópolis - Mobile Comics Reader</title>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            comicDark: '#120024',
+            comicPurple: '#210043',
+            comicCyan: '#00d0e6',
+            comicPink: '#ff2d78',
+            comicYellow: '#fed422',
+            comicGreen: '#00e84b',
+            comicLime: '#9dff2e',
+          },
+          fontFamily: {
+            comic: ['"Arial Black"', 'Impact', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Style - Custom Halftone & Comic Shadows -->
+<style data-purpose="comic-effects">
+    /* Comic book drop shadows & hard borders */
+    .comic-border {
+      border: 3px solid #000;
+    }
+    .comic-border-thick {
+      border: 4px solid #000;
+    }
+    .comic-shadow-sm {
+      box-shadow: 2px 2px 0px #000;
+    }
+    .comic-shadow {
+      box-shadow: 3px 3px 0px #000;
+    }
+    .comic-shadow-lg {
+      box-shadow: 5px 5px 0px #000;
+    }
+    .comic-shadow-green {
+      box-shadow: 0px 4px 0px #009933;
+    }
+    /* Halftone pop art background pattern for Recomendado del mes */
+    .halftone-bg {
+      background-color: #e52521;
+      background-image: radial-gradient(#ff6f3c 20%, transparent 20%), radial-gradient(#ff6f3c 20%, transparent 20%);
+      background-size: 16px 16px;
+      background-position: 0 0, 8px 8px;
+    }
+    /* Hide scrollbars for slick mobile carousels */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<!-- END: Style - Custom Halftone & Comic Shadows -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" class=""></head>
+<body class="text-white font-sans antialiased select-none overflow-x-hidden pb-28" style="background-color: rgb(48, 0, 85); font-family: &quot;Space Grotesk&quot;, sans-serif;">
+<!-- BEGIN: TopHeader -->
+<header class="relative w-full z-20 overflow-hidden pt-2 pb-2 bg-[#300055] pointer-events-auto"><div class="relative flex items-center justify-between px-4 py-1 w-full"><div class="w-20 flex items-center"></div><div class="flex-1 flex justify-center items-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR1h8CgFgrjq5rfSDUjzQnTa3TRMcnXu7MtuCKttpJpwmUu5zZZ496hR_2DeJofEWQirPxQ2IF7OAbidBr9_jFgt0ppa_wJpFqjaRHajN_sZX6t9ERnFZCxz184IgFKEuuLhsLwE_GFbQU48FNm-yoZwFISnARWlg3e-4vJGCsC3D3GBC5WmGu2l9sUlshJMch4PpXohoVvdtlpMiQWT-_Ji1BFFjB2iJJWXAkLL9T0WFEcbLcgS-VUy9zQMUh2rO7lA" alt="Comicópolis" class="w-auto object-contain select-none drop-shadow-[2px_2px_0px_#000] h-20"></div><div class="w-20 flex items-center justify-end gap-2"><a href="catalogo.html" aria-label="Buscar" class="w-9 h-9 bg-comicCyan text-black flex items-center justify-center rounded-lg comic-border comic-shadow-sm active:translate-y-0.5 hover:scale-105 transition"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></a><button aria-label="Menú" class="w-9 h-9 bg-comicYellow text-black flex items-center justify-center rounded-lg comic-border comic-shadow-sm active:translate-y-0.5 hover:scale-105 transition"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg></button></div></div></header>
+<!-- END: TopHeader -->
+<!-- BEGIN: HeroSection -->
+<section class="relative w-full pb-4 flex flex-col items-center overflow-visible pt-4" data-purpose="hero-comic-featured"><div class="w-full flex overflow-x-auto no-scrollbar snap-x snap-mandatory gap-4 pt-2"><div class="w-full flex-shrink-0 snap-center flex flex-col items-center mx-auto px-4"><div class="relative w-full max-w-[320px] aspect-[2/3] flex items-center justify-center mt-2 overflow-visible"><div class="relative w-full h-full rounded-2xl overflow-hidden comic-border-thick comic-shadow-lg bg-black flex items-center justify-center"><img alt="Avatar: The High Ground" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTnz3QpVtDKzRDOw51XPD2yhZ4EzS6qFuyPJeaPamv_ZXjTRxGqtv-7E9jMF8jly8oDChxjdy0_rvDJ5vU2-3dsnj2q2T5lrpR78xHPpVUACJj8T04K2QazHKk94k8cKx3odzdZ2IdTodpEZufexdEDhrjnVE1W5uMFGBf5rp75sSJtymCggwvHJ5BybUTKivoOZulmm95BfK4Rx-IyhSEYShLDBRHhq56YwbPIVcKMlYF260cdkEWSSHVB7ixUMK0vAEat9d1mWwdgg"></div><div class="absolute bg-comicGreen text-black font-black text-xs uppercase px-4 py-1.5 transform -rotate-6 comic-border comic-shadow-sm font-comic z-20 -top-3 left-2">¡NUEVO!</div><div class="absolute bottom-2.5 right-2.5 flex items-center gap-2 z-20"><button aria-label="Guardar" class="w-10 h-10 bg-comicPink text-white flex items-center justify-center rounded-lg comic-border comic-shadow-sm active:translate-y-0.5 hover:scale-105 transition"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M5 3v18l7-4.5 7 4.5V3z"></path></svg></button><button aria-label="Compartir" class="w-10 h-10 bg-comicCyan text-white flex items-center justify-center rounded-lg comic-border comic-shadow-sm active:translate-y-0.5 hover:scale-105 transition"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"></path></svg></button></div></div><div class="w-full max-w-[340px] mt-4 px-1"><h1 class="text-white text-2xl font-black uppercase tracking-tight leading-none font-comic drop-shadow-[2px_2px_0px_#000]">Avatar: The High Ground</h1><p class="text-comicPink font-bold text-xs tracking-wider uppercase mt-1">COLECCIÓN • 5 FASCÍCULOS</p><div class="flex items-center justify-between mt-2.5"><div class="flex flex-col gap-2"><span class="inline-flex items-center gap-1.5 bg-comicYellow text-black font-extrabold text-xs px-3 py-1 rounded-full comic-border comic-shadow-sm w-fit font-comic uppercase"><span class="flex items-center justify-center leading-none text-xs">⚡</span><span class="leading-none">ACCIÓN</span></span><div class="flex items-center gap-1.5 pl-0.5"><span class="w-6 h-2 rounded-full bg-comicCyan comic-shadow-sm"></span><span class="w-2 h-2 rounded-full bg-comicPink"></span><span class="w-2 h-2 rounded-full bg-comicPink"></span><span class="w-2 h-2 rounded-full bg-comicPink"></span></div></div><a href="comic-detalle.html" class="bg-comicGreen text-black font-black text-sm uppercase px-5 py-2.5 rounded-full comic-border comic-shadow hover:scale-105 active:scale-95 transition-transform font-comic tracking-wide inline-block text-center">¡LEER AHORA!</a></div></div></div><div class="w-full flex-shrink-0 snap-center flex flex-col items-center mx-auto px-4"><div class="relative w-full max-w-[320px] aspect-[2/3] flex items-center justify-center mt-2 overflow-visible"><div class="relative w-full h-full rounded-2xl overflow-hidden comic-border-thick comic-shadow-lg bg-black flex items-center justify-center"><img alt="Batman Detective Comics" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-bw8kjJ2_NyEE579-LIUl_c9J989QogCGcTMF10CXLCmRjVndbHxT_vIcMn6JLw1EsiHUxEwuPhcW3KzFUud9Q8SyT-9BnmgbjKPPNARaglu1xBT22TQec_P4g6AI77sm9YxycupGL-DRGGBAMO7zcCMUkGbakgFGx4dgy-R1gm7fMTPtlgHdHcwi5rqJhGAL_U9zw-q7wSeIDobMTrh5iJj3aaJtYSFutHm9KYUKmraWO_pltzso21ZLRSznopwxoAVpkQu0NlJUKQ"></div><div class="absolute bg-comicGreen text-black font-black text-xs uppercase px-4 py-1.5 transform -rotate-6 comic-border comic-shadow-sm font-comic z-20 -top-3 left-2">¡DESTACADO!</div><div class="absolute bottom-2.5 right-2.5 flex items-center gap-2 z-20"><button aria-label="Guardar" class="w-10 h-10 bg-comicPink text-white flex items-center justify-center rounded-lg comic-border comic-shadow-sm active:translate-y-0.5 hover:scale-105 transition"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M5 3v18l7-4.5 7 4.5V3z"></path></svg></button><button aria-label="Compartir" class="w-10 h-10 bg-comicCyan text-white flex items-center justify-center rounded-lg comic-border comic-shadow-sm active:translate-y-0.5 hover:scale-105 transition"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"></path></svg></button></div></div><div class="w-full max-w-[340px] mt-4 px-1"><h2 class="text-white text-2xl font-black uppercase tracking-tight leading-none font-comic drop-shadow-[2px_2px_0px_#000]">Dungeons &amp; dragons: the fallbacks</h2><p class="text-comicPink font-bold text-xs tracking-wider uppercase mt-1">COLECCIÓN • 5 FASCÍCULOS</p><div class="flex items-center justify-between mt-2.5"><div class="flex flex-col gap-2"><span class="inline-flex items-center gap-1.5 bg-comicYellow text-black font-extrabold text-xs px-3 py-1 rounded-full comic-border comic-shadow-sm w-fit font-comic uppercase"><span class="flex items-center justify-center leading-none text-xs">⚡</span><span class="leading-none">ACCIÓN</span></span><div class="flex items-center gap-1.5 pl-0.5"><span class="w-2 h-2 rounded-full bg-comicPink"></span><span class="w-6 h-2 rounded-full bg-comicCyan comic-shadow-sm"></span><span class="w-2 h-2 rounded-full bg-comicPink"></span><span class="w-2 h-2 rounded-full bg-comicPink"></span></div></div><a href="comic-detalle.html" class="bg-comicGreen text-black font-black text-sm uppercase px-5 py-2.5 rounded-full comic-border comic-shadow hover:scale-105 active:scale-95 transition-transform font-comic tracking-wide inline-block text-center">¡LEER AHORA!</a></div></div></div><div class="w-full flex-shrink-0 snap-center flex flex-col items-center mx-auto px-4"><div class="relative w-full max-w-[320px] aspect-[2/3] flex items-center justify-center mt-2 overflow-visible"><div class="relative w-full h-full rounded-2xl overflow-hidden comic-border-thick comic-shadow-lg bg-black flex items-center justify-center"><img alt="Star Wars Tales from the Nightlands" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB99MzM-4H7g2C5neHzaFsbotE_UUGi5YtLQFmhka9gXX-nQS5VW8LUnXhsXa81z9JR6oZkt91pqhmooljtRpkO-Rpwi-6h35pXRbqaOuVzdE1sBd2liPeTEIIx32KJqqybTESLgZpI35c2p2jWOJv-tIpEfRxcUU7Fu5arNCHyD7yHl6taPyg66zX2lLXoqbdQiT0jQ2MupTPLXmw4IwW1M-V-Gs7HkstPtpPE9GYzPgx48HvsmyWCyLwrTUR1jFLquxsRB0BIQTAjgg"></div><div class="absolute bg-comicGreen text-black font-black text-xs uppercase px-4 py-1.5 transform -rotate-6 comic-border comic-shadow-sm font-comic z-20 -top-3 left-2">¡IMPERDIBLE!</div><div class="absolute bottom-2.5 right-2.5 flex items-center gap-2 z-20"><button aria-label="Guardar" class="w-10 h-10 bg-comicPink text-white flex items-center justify-center rounded-lg comic-border comic-shadow-sm active:translate-y-0.5 hover:scale-105 transition"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M5 3v18l7-4.5 7 4.5V3z"></path></svg></button><button aria-label="Compartir" class="w-10 h-10 bg-comicCyan text-white flex items-center justify-center rounded-lg comic-border comic-shadow-sm active:translate-y-0.5 hover:scale-105 transition"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"></path></svg></button></div></div><div class="w-full max-w-[340px] mt-4 px-1"><h2 class="text-white text-2xl font-black uppercase tracking-tight leading-none font-comic drop-shadow-[2px_2px_0px_#000]">STAR WARS TALES FROM THE NIGHTLANDS</h2><p class="text-comicPink font-bold text-xs tracking-wider uppercase mt-1">SERIE COMPLETA • 3 CAPÍTULOS</p><div class="flex items-center justify-between mt-2.5"><div class="flex flex-col gap-2"><span class="inline-flex items-center gap-1.5 bg-comicPink text-white font-extrabold text-xs px-3 py-1 rounded-full comic-border comic-shadow-sm w-fit font-comic uppercase">✨ FANTASÍA</span><div class="flex items-center gap-1.5 pl-0.5"><span class="w-2 h-2 rounded-full bg-comicPink"></span><span class="w-2 h-2 rounded-full bg-comicPink"></span><span class="w-6 h-2 rounded-full bg-comicCyan comic-shadow-sm"></span><span class="w-2 h-2 rounded-full bg-comicPink"></span></div></div><button class="bg-comicGreen text-black font-black text-sm uppercase px-5 py-2.5 rounded-full comic-border comic-shadow hover:scale-105 active:scale-95 transition-transform font-comic tracking-wide">¡LEER AHORA!</button></div></div></div><div class="w-full flex-shrink-0 snap-center flex flex-col items-center mx-auto px-4"><div class="relative w-full max-w-[320px] aspect-[2/3] flex items-center justify-center mt-2 overflow-visible"><div class="relative w-full h-full rounded-2xl overflow-hidden comic-border-thick comic-shadow-lg bg-black flex items-center justify-center"><img alt="Superman: Apokolips War" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmN9TjUADiFkKaGBL0Qp5iJnKWzaFK1KRIxSNeaovU0pv0Op5MF6CrT3CgyuTDNvmKbJ31xlyjh71SEGN9fu-Lg1zpjBzdf-tuYIxX50nF5O04EoglOYVAX0Q0IGa07fIo7EOfdhfcV8Gqfuz5UwUpjm1JyYh4kBNsdcXhicajMHFAQTK1g-e1OugaOEcz7Trs5GDF3EtgQmmmxE3BLI7jgaA0O3Qq1szXgeR10uTLC3mFWTmNzfG-mZOLjgzu6mQV0h6iDa_vDus35Q"></div><div class="absolute bg-comicGreen text-black font-black text-xs uppercase px-4 py-1.5 transform -rotate-6 comic-border comic-shadow-sm font-comic z-20 -top-3 left-2">¡POPULAR!</div><div class="absolute bottom-2.5 right-2.5 flex items-center gap-2 z-20"><button aria-label="Guardar" class="w-10 h-10 bg-comicPink text-white flex items-center justify-center rounded-lg comic-border comic-shadow-sm active:translate-y-0.5 hover:scale-105 transition"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M5 3v18l7-4.5 7 4.5V3z"></path></svg></button><button aria-label="Compartir" class="w-10 h-10 bg-comicCyan text-white flex items-center justify-center rounded-lg comic-border comic-shadow-sm active:translate-y-0.5 hover:scale-105 transition"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"></path></svg></button></div></div><div class="w-full max-w-[340px] mt-4 px-1"><h2 class="text-white text-2xl font-black uppercase tracking-tight leading-none font-comic drop-shadow-[2px_2px_0px_#000]">AMber blake: Operation dragon</h2><p class="text-comicPink font-bold text-xs tracking-wider uppercase mt-1">EDICIÓN ESPECIAL • 4 CAPÍTULOS</p><div class="flex items-center justify-between mt-2.5"><div class="flex flex-col gap-2"><span class="inline-flex items-center gap-1.5 bg-comicYellow text-black font-extrabold text-xs px-3 py-1 rounded-full comic-border comic-shadow-sm w-fit font-comic uppercase"><span class="flex items-center justify-center leading-none text-xs">⚡</span><span class="leading-none">ACCIÓN</span></span><div class="flex items-center gap-1.5 pl-0.5"><span class="w-2 h-2 rounded-full bg-comicPink"></span><span class="w-2 h-2 rounded-full bg-comicPink"></span><span class="w-2 h-2 rounded-full bg-comicPink"></span><span class="w-6 h-2 rounded-full bg-comicCyan comic-shadow-sm"></span></div></div><button class="bg-comicGreen text-black font-black text-sm uppercase px-5 py-2.5 rounded-full comic-border comic-shadow hover:scale-105 active:scale-95 transition-transform font-comic tracking-wide">¡LEER AHORA!</button></div></div></div></div></section>
+<!-- END: HeroSection -->
+<!-- BEGIN: CategoriesSection -->
+<section class="w-full px-4 py-3" data-purpose="categories-bar">
+<div class="flex items-center justify-between mb-3">
+<h2 class="text-[10px] font-black uppercase tracking-wider text-comicYellow" style="font-family: &quot;Space Grotesk&quot;, sans-serif;">
+        DESCUBRE CÓMICS DESTACADOS POR CATEGORÍA
+      </h2>
+<a class="bg-comicCyan text-black text-[10px] font-black uppercase px-2.5 py-1 rounded-md comic-border comic-shadow-sm font-comic" href="catalogo.html">
+        VER TODOS
+      </a>
+</div>
+<!-- Category horizontal scroll cards -->
+<div class="flex gap-3 overflow-x-auto no-scrollbar pb-2 pt-1"><div class="flex-shrink-0 w-24 h-24 bg-comicCyan rounded-xl comic-border comic-shadow flex flex-col items-center justify-center p-1 text-black cursor-pointer active:scale-95 transition"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGSkGxNQUsdikkxaEnEylW_9MENNCzobTfrzLNSOp-GdsXMazaPsCKiSuPD5Q37jrylkUzyK6SHg1j8YnUaWPIt9UVnKY82fTukHys64_sRFXh1Sdiix5UyElOCb0xcY-MWOqm27CCQpBdT_uddHNXiYgj_jairy-BzckS3MyQ7BaQl4SlBq6HfvzIViGJ3qP77OHaIEwF5Rtz9Ih8_TAb3W61StxXR-UPqEEPHBWnD_5uV3nKIqfj-vOyS87l_Dllw7aPHo9aQT-Cig" alt="Acción" class="w-7 h-7 object-contain mb-1"><span class="font-black text-xs uppercase font-comic text-black">ACCIÓN</span></div><div class="flex-shrink-0 w-24 h-24 bg-comicPink rounded-xl comic-border comic-shadow flex flex-col items-center justify-center p-1 text-black cursor-pointer active:scale-95 transition"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuARLFBtpPUHwnpFxTa9wnC0nhN9K17wGZD1VOyTUjt1w19lhbF4FoDyuAEmFx-wRgdi09IgNkVu4tMfgKNW-eExgEQRiTxPmb5j8hFJU-ROJFDxZxGiXkXEK0Xxwk26pCzOSTFTJFZ55curOQEFiUXBVU32cvDpj5QDZXw-2jNbm3s7UemeSUDgEGyRUFZSE9xXXYcxV3SoHe3yNFkfdMd9uI_lzkXC24Y0o9i5BlpMCLffpd12mpXanoYVdaXHR8l2VFLw5enz2fN3_A" alt="Fantasía" class="w-7 h-7 object-contain mb-1"><span class="font-black text-xs uppercase font-comic text-black">FANTASÍA</span></div><div class="flex-shrink-0 w-24 h-24 bg-comicYellow rounded-xl comic-border comic-shadow flex flex-col items-center justify-center p-1 text-black cursor-pointer active:scale-95 transition"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHpATxuLHeZaKWhH9Wsx24RbpuHBgu6ZI5BzipNkZMlI9D0sRsSXj2tTi5e52WeNpx8L-gvyqdQViQlJK5_4BPVLhEXKgxLDLIrHZfgPk3lY0MzAvr8y7fKbNSOMemkElrW5O_3rKfJN5zolnt4522CPWhWDFQSCNfJglFzJScnXc9CEfuKw0Azjq3W3-fqFDVw6t8rG3BvqyDjVjQ8EE51GAd7opeuLeaB56W61xqwyopOv4d3VH0WWxz-CSp53_xacEEdR3yBwy8Eg" alt="Romance" class="w-7 h-7 object-contain mb-1"><span class="font-black text-xs uppercase font-comic text-black">ROMANCE</span></div><div class="flex-shrink-0 w-24 h-24 bg-[#ff2d78] rounded-xl comic-border comic-shadow flex flex-col items-center justify-center p-1 text-black cursor-pointer active:scale-95 transition"><svg class="w-7 h-7 fill-black mb-1" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg><span class="font-black text-xs uppercase font-comic text-black">THRILLER</span></div><div class="flex-shrink-0 w-24 h-24 bg-[#bd1e77] rounded-xl comic-border comic-shadow flex flex-col items-center justify-center p-1 text-black cursor-pointer active:scale-95 transition"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcya5PmNpLLemzpr66YnD3DUtqwfwchS6V4y7DCvnsgRE_YrOO_q2uc4gj0-eGArsEl6mj2q0M0qvZEJHmOSeQW4fPsk1Y8RDX3VRau9Cg113qzV65Sx_gpTfK1r8p0xu09oVM_aE-CbcuANOgRn_bATVMimFWIwnhcmIEpSBD4qjKFuiSJ37lX1o_t8icJX__EtL3wvdPWefSgxN_XQnplcZsjIT3hxBx3X3C42egNPwXYHT8ks_k7-asRuiL-d6GN6hFZsyr1_3d5w" alt="Suspenso" class="w-7 h-7 object-contain mb-1"><span class="font-black text-xs uppercase font-comic text-black">SUSPENSO</span></div><div class="flex-shrink-0 w-24 h-24 bg-comicYellow rounded-xl comic-border comic-shadow flex flex-col items-center justify-center p-1 text-black cursor-pointer active:scale-95 transition"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhxldRQ12Zn8JkqbPCgos8eOG06C7hZJAipwD3geFU9gMtdQy7cvxTV-Pt2cafhXWbG2FsYvrzJjtqoHPK8oU9_xIrsD7xejQFhhBOF4w0rdVI7knhSwW7snk_26SPq6FrzlKOWGh3r21SfrxJBP3Tbkg51HvtNKfkM9y-OwPasl9G2tflJenn9qRBaSWtAgI8Ega6opgOkHMNEJVFjgO3wBLSNIkb1pvqoHc11XXm4YqSmGVb4UqI9P4NcQ_0tPHCi9FMKnGKJ-fuzQ" alt="Comedia" class="w-7 h-7 object-contain mb-1"><span class="font-black text-xs uppercase font-comic text-black">COMEDIA</span></div><div class="flex-shrink-0 w-24 h-24 bg-comicCyan rounded-xl comic-border comic-shadow flex flex-col items-center justify-center p-1 text-black cursor-pointer active:scale-95 transition"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4fJRSbJaSdANFoBZzZQ-jO2vatxNibqtvmb6MRR-R9WvKNwEN0azOBC-fT-LW3wgGf4_VA6_XYE8j6coW44p3Ni7evMnMzPEroB3qq_X2VYXf15LFZvfsAjtFS06svZKSufGfxohq8LARp4au3kvvffoXq6ABg33Caw6ruHvWX9NTH81R-IBu6072Ic_WgUqAhl8Yb9js7j1tIpZClSCqJcFRy71V1zVbtFMGlEYbO_N8gYcnocKGPldd57voSK2IB01774nU_8v_GQ" alt="Drama" class="w-7 h-7 object-contain mb-1"><span class="font-black text-xs uppercase font-comic text-black">DRAMA</span></div><div class="flex-shrink-0 w-24 h-24 bg-comicLime rounded-xl comic-border comic-shadow flex flex-col items-center justify-center p-1 text-black cursor-pointer active:scale-95 transition"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqujKM88lemGFlbKFDVx_92KFBL6VjvUvt2N3antpty_lq0rTSUSSgWrKl20s34AinPtUQrWrYlD9xPeHgefopFYKCJTmZ7jxbvJeVJQ7FeyJnw4cWB8_A_d8TeiVY6KEYUW1Zl5021vN4UCMNjeSts3wybOjGs3LEEIFWtgFzxIlw-FCdh6khp7H-hP22DBMHrWeEvtrdups2EvOqofEwbTVbbufMCzIlh7SjEBAXIb_8r5D-TkgNaEeDmCfGNn4gxZQ5prk7EmLirQ" alt="Sci-Fi" class="w-7 h-7 object-contain mb-1"><span class="font-black text-xs uppercase font-comic text-black">SCI-FI</span></div></div>
+</section>
+<!-- END: CategoriesSection -->
+<!-- BEGIN: UltimosComicsSection -->
+<section class="w-full px-4 py-4" data-purpose="latest-comics-carousel">
+<h2 class="text-xs font-black uppercase tracking-wider text-white/90 mb-3 font-comic" style="font-family: &quot;Space Grotesk&quot;, sans-serif;">
+      ÚLTIMOS COMICS AGREGADOS
+    </h2>
+<div class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+<!-- Comic 1 -->
+<div class="flex-shrink-0 w-36">
+<div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900">
+<img alt="Superman Apokolis War" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmN9TjUADiFkKaGBL0Qp5iJnKWzaFK1KRIxSNeaovU0pv0Op5MF6CrT3CgyuTDNvmKbJ31xlyjh71SEGN9fu-Lg1zpjBzdf-tuYIxX50nF5O04EoglOYVAX0Q0IGa07fIo7EOfdhfcV8Gqfuz5UwUpjm1JyYh4kBNsdcXhicajMHFAQTK1g-e1OugaOEcz7Trs5GDF3EtgQmmmxE3BLI7jgaA0O3Qq1szXgeR10uTLC3mFWTmNzfG-mZOLjgzu6mQV0h6iDa_vDus35Q">
+<button class="absolute bottom-2 left-2 w-7 h-7 bg-comicPink text-white rounded comic-border comic-shadow-sm flex items-center justify-center">
+<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M5 3v18l7-4.5 7 4.5V3z"></path></svg>
+</button>
+</div>
+<p class="mt-1.5 text-[11px] font-black uppercase leading-tight font-comic line-clamp-2">
+          Amber bLake: Operation dragon</p>
+</div>
+<!-- Comic 2 -->
+<div class="flex-shrink-0 w-36">
+<div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900">
+<img alt="30 Days of Night" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDym9eDhzOR4PwBs6xgaj2dp3hV-99g-gvdYs0sEA7pyQCWgJh5MW_vF2Rt0HX2_htCZxX3B0GhCS0-r6OC9AsBgcHU_Tk5vXlXz2rAOlwcuXswmH1CoxPz_u__rJ4tUKz8NxzEfplibu5HrxPBjgxNn9C7-8Mueq_z022o4pKnr9PBHFJqJftfpA7TkB4B8XMTtST3y8HYUwNiWl5poSymqzC16nPSQqf5M8PAHq0rk4Gwxxn3KKZMDfPXHeN4QFYXNrqUFzmHtu5Aog">
+<button class="absolute bottom-2 left-2 w-7 h-7 bg-comicPink text-white rounded comic-border comic-shadow-sm flex items-center justify-center">
+<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M5 3v18l7-4.5 7 4.5V3z"></path></svg>
+</button>
+</div>
+<p class="mt-1.5 text-[11px] font-black uppercase leading-tight font-comic line-clamp-2">
+          Starkweather</p>
+</div>
+<!-- Comic 3 -->
+<div class="flex-shrink-0 w-36">
+<div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900">
+<img alt="Spiderman Kraven" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgUiGKLvsRwuwepSnzUQu8fCIibssGWWz-EJMrHiHGQpXC_GocAHo4EfDAi3l357dvl1_Pvj05wsGj3qIx2Tl0mXOnHXrh8YOpm45D1S1-zaai-pPNfFZk0DkhxXx8HIWteK1YbXIW406OJUDG_FjhVFGHliTRVtWFadeGDv2s9ZAq2hAgeqlMDCtvPiMHGu7hnmq8YWbVBJI9XchdpBkq12sALHrd0RsQSWfP82t_raMY-T_zgOPOtrdTP21Bv6gv-r_yzaSMIPpTjg">
+<button class="absolute bottom-2 left-2 w-7 h-7 bg-comicPink text-white rounded comic-border comic-shadow-sm flex items-center justify-center">
+<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M5 3v18l7-4.5 7 4.5V3z"></path></svg>
+</button>
+</div>
+<p class="mt-1.5 text-[11px] font-black uppercase leading-tight font-comic line-clamp-2">
+          Avatar: The high ground</p>
+</div>
+</div>
+</section>
+<!-- END: UltimosComicsSection -->
+<!-- BEGIN: Top10Section -->
+<section class="w-full px-4 py-3" data-purpose="top-ten-weekly"><h2 class="text-xs font-black uppercase tracking-wider text-comicYellow mb-3 font-comic">TOP 10 SEMANAL</h2><div class="flex gap-3 overflow-x-auto no-scrollbar pt-3 pb-2 pl-2"><!-- Item 1 --><div class="flex-shrink-0 w-32 relative"><div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900"><img alt="Wolverine" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJlO-QDu-VvRoAZ6hFARRaWvOZe5wZvGQ1F78Nf1SbK_PKxNn2szMo-JQzeGFcXONMeKLvypN-VdrnegQu7YAKlznJ5_BiomXvgTY9iYdwVGrpJ1Er6CPdjllXuk2bNLNyxD_U7p7IEGrW_KQsOxiThMo2tSoe-CoRbg3bBhLH8M8eXU_i6hBsiuzALfH1fCf4ngLpcq-QKl8NwiJD5TCJgxbv_7OfKfXaINbXirfp8RB5fW30RV90CtdwqHVVp9d7kE-a78h1xhcCfQ"></div><div class="absolute -top-2.5 -left-2 w-7 h-7 bg-comicGreen rounded-full comic-border flex items-center justify-center text-black font-black text-sm font-comic comic-shadow-sm z-10">1</div><p class="mt-1 text-[10px] font-black uppercase leading-tight font-comic">WOLVERINE ORIGINS</p></div><!-- Item 2 --><div class="flex-shrink-0 w-32 relative"><div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900"><img alt="Batman Year One" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxkl4FlzlZ8DxX4lyVlli9KRgoHJpEyBFSDHAcp9ZkpAZKqZtDDDk9pbGzrTDdnL8938FHrH6Tt_pfR39qsk2L1QB3sn6ruuGkK-W4WEp0aaxnYjWaOcfChVwf_ehPyaCzqSTP10F48eA486OdNR7NjC7Ia0H-jNmq2rc0LQ4lkZYXivYS4FlVDcl9FBypXLjB0ogHkDMYp-XH3B9ZejP2z59Jf6LOrsq63N4C4rgNw6WQw3BuM8iulSy4J4eNomzmVFl4vIXgySPAcQ"></div><div class="absolute -top-2.5 -left-2 w-7 h-7 bg-comicGreen rounded-full comic-border flex items-center justify-center text-black font-black text-sm font-comic comic-shadow-sm z-10">2</div><p class="mt-1 text-[10px] font-black uppercase leading-tight font-comic">BATMAN YEAR ONE</p></div><!-- Item 3 --><div class="flex-shrink-0 w-32 relative"><div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900"><img alt="Batman Dark Knight" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdhNauRSQDIH-k3cSKszukttB95Eyca8eRiUVG8M-53UNTNbXPT5X4PV-xDSyJFTyGn0nRzAiG_d3ewrAC1WNve7lJ7abPERk_vKsAbAhg0qPE1UjvquRQC0TbkMv0F1lHZ9YlMfcL9T8hMlH_rwKEixooa4P6SmGFWQVhB4WBRT1wf6aDFNiLkWcj1nTVxbIDXa-nOpPQCnmxyNBWEaPBxqXyOBHpWpzTcjq5RUqYE1V8xlQCNXFM-it6hUpn7NTkejLcroUFkAlvUw"></div><div class="absolute -top-2.5 -left-2 w-7 h-7 bg-comicGreen rounded-full comic-border flex items-center justify-center text-black font-black text-sm font-comic comic-shadow-sm z-10">3</div><p class="mt-1 text-[10px] font-black uppercase leading-tight font-comic">BATMAN THE DARK KNIGHT</p></div><!-- Item 4 --><div class="flex-shrink-0 w-32 relative"><div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900"><img alt="Flash Paradox" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuCj9OpUChrzFfksVei9ozBclf72dgRQ5jOpa1RG_Vhr-9k_8A15f2udOcW7GZlUVodKH5r-3eiC9zJdSV2jD-XOHyiXiL2KqfagSVSzSMRPRdaGTCL7Iw95WCv8PGeSjsB5KEShfGCnhT8QNlWSUHawM5SJ_LILkcp4JS7QJnpcmZS1Jl7T6en3cszug6EoSq321BjGm5l_ZQkPBDxlN8arQEzpLAf7qdPvUApISHQR5u4RSaCAe90SHPMj_CXsQDVev0GCKQdldenw"></div><div class="absolute -top-2.5 -left-2 w-7 h-7 bg-comicGreen rounded-full comic-border flex items-center justify-center text-black font-black text-sm font-comic comic-shadow-sm z-10">4</div><p class="mt-1 text-[10px] font-black uppercase leading-tight font-comic">FLASHPOINT PARADOX</p></div><!-- Item 5 --><div class="flex-shrink-0 w-32 relative"><div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900"><img alt="Spiderman" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnlIIoEXBvG9Gycwrx_32VedzEXcV_mqMT1HWQXNSdH2kgmAnKtltOPkQPwuzp8GnrBH9IwigOafLWAxHhE7LBblCP99-zaAT3Txx_--CGoYHggBbD9hR9t0UvaCK37KEMFI05bfrIcUHUHnaVtdgNLu6D9vhcs3aNBYtvlR4YRXZJmyhN2g2_L3KB27MRUh95LJX8bIxc8z-iB3orjs7RGVLsKGz4ywNjvpgXqgVVNAd47mv-vNeshUm20nFTw-npK9NGK5fo_ZAyWA"></div><div class="absolute -top-2.5 -left-2 w-7 h-7 bg-comicGreen rounded-full comic-border flex items-center justify-center text-black font-black text-sm font-comic comic-shadow-sm z-10">5</div><p class="mt-1 text-[10px] font-black uppercase leading-tight font-comic">SPIDER-MAN: KRAVEN</p></div><!-- Item 6 --><div class="flex-shrink-0 w-32 relative"><div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900"><img alt="Superman Apokolis" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT0LshiyKGqIUF5N6cHqPOoJeT_pm8P3jHgDw2lK1dvxZqjuowEzZrWb_GzLJSa9QlTeFryJBx4xvFaWPANU9mLH-K35WPe_pOHPW27SNb0vfFUg29zN7ppL2NmdE6qcVnboeBSI_LcsEdkHh7eSGc1vqHlLpWCOLJjbEIO8_yK0mnipf1qFyyLzQe7-UijsAimOkQhgm8cEC3VFpuKlF5NmPWHgszv_Eu77o4y6ZNFK7pRiuFfPQm2t9_ecuys198smMlxmcd_WR0TA"></div><div class="absolute -top-2.5 -left-2 w-7 h-7 bg-comicGreen rounded-full comic-border flex items-center justify-center text-black font-black text-sm font-comic comic-shadow-sm z-10">6</div><p class="mt-1 text-[10px] font-black uppercase leading-tight font-comic">SUPERMAN: APOKOLIS</p></div><!-- Item 7 --><div class="flex-shrink-0 w-32 relative"><div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900"><img alt="30 Days of Night" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdisKbE9VhAxytsjGxw8V-j7vMyKU9msHwudXRSkQJoCr2u0iqUnkMcCoZXkQauI6LLG3trolE996s5mAeeC3nemZy5InNEbkyalhKkt9-ztBpNZ1dreUQSHrVVvE4egtkz94rdvAuU659o9gsImPES5fyUfKavSN8W8i-MsmTA9pfi9dsAi1wN1oy61qQsI2_2JABXu6QRorFdP1bhintZYpAgictNBOkmXECfhcXe3FUPqtNwN6hKVKRi7FkEYIQOEi5Pm1XZC-BEA"></div><div class="absolute -top-2.5 -left-2 w-7 h-7 bg-comicGreen rounded-full comic-border flex items-center justify-center text-black font-black text-sm font-comic comic-shadow-sm z-10">7</div><p class="mt-1 text-[10px] font-black uppercase leading-tight font-comic">30 DAYS OF NIGHT</p></div><!-- Item 8 --><div class="flex-shrink-0 w-32 relative"><div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900"><img alt="Silver Surfer Black" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW_101enCrbg0CqktuqHvVYJct4lDA3l4azuEymteJ48FSI_YoVHFo_uJd6SIuQHC1oyjOEbzjXx5tfMxkHew7_R7bBHisXtI5hdhfTOuf3B-6_KMYA57K2PGyBlcoZsVQIJcecJezVlnAQmCsuk-HculE7rAf9GSXAYBXrg2D68gG6ceNGLNMrT2_OFNirEJ08BzlHKaOPhzqHBMEPIEYnrCNUpaIMxqtPO-dbHBf64O9zKBQ8JRIvKHoyCpc1KtfEobif8rlDlZuJA"></div><div class="absolute -top-2.5 -left-2 w-7 h-7 bg-comicGreen rounded-full comic-border flex items-center justify-center text-black font-black text-sm font-comic comic-shadow-sm z-10">8</div><p class="mt-1 text-[10px] font-black uppercase leading-tight font-comic">SILVER SURFER</p></div><!-- Item 9 --><div class="flex-shrink-0 w-32 relative"><div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900"><img alt="Darth Vader" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0-s69gqD-VPAbmToIJmw5cvinB9J5vkdBfIwc2ZDb6a2NfsQmp_f1cAWVS4Y1Z93EyFtXQ_L8IooadFWSAJmhUU_PYTDaq7XqBqfRFQtN_Erhpg46fnIkWUkmfRTg-H094eGdmoS2SFfQLsZ79iR3PuKEKhRsBIXgjDYW3c0DPanbpjqvmZxAYCWSZ29mmk7lDMCCFORVpsXA0_QN7thDC_XshHJ36GOCqm-yhnjo_zqJuPc69I5gCJ0LxdW-U9zpJ-GBclT5PCt72A"></div><div class="absolute -top-2.5 -left-2 w-7 h-7 bg-comicGreen rounded-full comic-border flex items-center justify-center text-black font-black text-sm font-comic comic-shadow-sm z-10">9</div><p class="mt-1 text-[10px] font-black uppercase leading-tight font-comic">STAR WARS: VADER</p></div><!-- Item 10 --><div class="flex-shrink-0 w-32 relative"><div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900"><img alt="Action Comics" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE_CTcb8ticOncN2H4puQmc4jDKni4Gsf9cwuv69WhimVOsJLphqruRGkQn8SGhN2v1MkmIf39C5OGIOGNsgnKma6RghbOLXxarsN6YV_tH9iuPN1hd4wkdW0QZ88VhVG8N4LvLHywQ5YdIc9JoxXHgy9R0ekp-0jmZySDVNSLPTMw2fq-EQCUw0OJ00XXlr_fAhpZ3UM_YQsGAh06WQEfB2lbPhUbhtjJOlU5417rz1LWVXfAYgwxvVA9aprGIaMYts6taNcLVkEIGg"></div><div class="absolute -top-2.5 -left-2 w-7 h-7 bg-comicGreen rounded-full comic-border flex items-center justify-center text-black font-black text-sm font-comic comic-shadow-sm z-10">10</div><p class="mt-1 text-[10px] font-black uppercase leading-tight font-comic">ACTION COMICS</p></div></div></section>
+<!-- END: Top10Section -->
+<!-- BEGIN: ComicLabPromo -->
+<section class="w-full px-4 py-5" data-purpose="promo-creator-banner">
+<div class="relative w-full bg-[#bd1e77] rounded-2xl comic-border-thick comic-shadow-lg p-4 overflow-visible">
+<!-- Angled Top Speech Banner -->
+<div class="absolute -top-4 -left-2 bg-comicCyan text-black font-black text-xs tracking-wider uppercase px-4 py-1.5 rounded-lg comic-border comic-shadow transform -rotate-3 font-comic">
+        ¡CREA TU COMIC!
+      </div>
+<div class="flex items-center justify-between gap-3 pt-3">
+<!-- Text & Action Left Side -->
+<div class="w-1/2 flex flex-col justify-between z-10">
+<h3 class="text-comicYellow font-comic text-3xl font-black tracking-wide leading-none drop-shadow-[2px_2px_0px_rgba(0,0,0,1)] flex items-center gap-2"><svg class="w-10 h-10 text-comicYellow drop-shadow-[2px_2px_0px_rgba(0,0,0,1)] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" stroke="black" stroke-width="1.5"><path d="M9 2v3.2a1 1 0 0 1-.2.6L4.2 16.5A3 3 0 0 0 6.8 21h10.4a3 3 0 0 0 2.6-4.5L15.2 5.8a1 1 0 0 1-.2-.6V2H9z"></path><path d="M8 2h8" stroke="black" stroke-width="2" stroke-linecap="round"></path><circle cx="9" cy="15" r="1" fill="black"></circle><circle cx="13" cy="17" r="1" fill="black"></circle><circle cx="14" cy="13" r="1.2" fill="black"></circle></svg><span class="">COMIC LAB</span></h3>
+<p class="text-[9px] font-extrabold text-white leading-tight uppercase mt-1 mb-3">
+            CREA TU PROPIO CÓMIC Y DESCARGARLO PARA COMPARTIRLO CON TUS AMIGOS. PARTICIPA DEL SORTEO EXCLUSIVO PARA PUBLICAR TU CÓMIC EN NUESTRO PORTAL
+          </p>
+<a href="lab.html" class="w-fit bg-comicGreen text-black font-black text-xs uppercase px-4 py-2 rounded-xl comic-border comic-shadow font-comic hover:scale-105 active:scale-95 transition inline-block text-center">¡COMENZAR!</a>
+</div>
+<!-- Right Side Angled Action Comic Book Illustration -->
+<div class="w-1/2 flex justify-center items-center">
+<div class="w-44 aspect-[3/4] rounded-lg overflow-hidden comic-shadow-lg transform rotate-6 scale-110 -translate-y-3 translate-x-2 bg-amber-400">
+<img alt="Action Comic Issue" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5HpnmEkAKy8jkNT9FKgefOMmFg9WdofMUn2ziOHxDrUwOz6RN-I8N6tgE5LEBtx7PEj0J3ru0SpcpU54Quvp0izBVtvlaPxvCrP3smSTgp3OKoTHJ0Ez9fhtKTlZa52tM5LlSqDi2ZTA19bTrMyKRome7_cGnNyc5SfYdHdgIcYsY60a3h3zmq9yG6_MN2BCQVleLpDV_nVBWdRdmethCCfeYEN1Xv0vTUjIPKb1mcxkEFYCB3rZMiU7yrB7ejpgAb8FkjBD8o8sclw">
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ComicLabPromo -->
+<!-- BEGIN: ContinuarLeyendo -->
+<section class="w-full px-4 py-3" data-purpose="continue-reading">
+<h2 class="text-xs font-black uppercase tracking-wider text-comicPink mb-3 font-comic">
+      CONTINUAR LEYENDO
+    </h2>
+<div class="space-y-3">
+<!-- Reading Card 1: Silver Surfer / Thor -->
+<div class="relative flex items-stretch h-24 rounded-xl overflow-hidden comic-border comic-shadow bg-[#1c0130]"><div class="w-20 h-full flex-shrink-0 bg-black border-r-2 border-black"><img alt="Silver Surfer" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwnRgQO_XvBDm5tcq3LFtcIJvQteSv7T7LrTTZZuKp-u5GJUZEL3mVm8F2bOYlplLUblrO2_946jblp15EKtvoHi9D8dqVcmTFDu4GGHqaX-MY4miG0QeK5YBSb8e1O4bH-LkCVAA55rocPPgPMUvvlbat0G2yjZfFOc--mfX66N45CSL7qVedhsZErym5L7r0WqoQ9z-IjdpTT5PcbzRWOMGyuHz6vxjvdPy9CcwrjvNGMwA3ohIRNDtPUzssXR0Km1RM5_I0qDrLrg"></div><div class="flex-1 bg-[#ba2a7e] p-2.5 flex flex-col justify-between h-full"><div class="flex flex-col"><span class="text-white font-black text-xs uppercase font-comic tracking-tight leading-tight line-clamp-1">SILVER SURFER: BLACK</span><span class="text-comicYellow font-bold text-[9px] uppercase tracking-wide mt-0.5">CAPÍTULO 3 • PÁG. 18/24</span></div><div class="flex justify-end pb-0.5"><a href="lector.html" class="bg-comicGreen text-black font-black text-[11px] uppercase px-4 py-1.5 rounded-lg comic-border comic-shadow-sm font-comic hover:scale-105 active:scale-95 transition inline-block text-center">CONTINUAR</a></div></div></div>
+<!-- Reading Card 2: Star Wars / Vader -->
+<div class="relative flex items-stretch h-24 rounded-xl overflow-hidden comic-border comic-shadow bg-[#1c0130]"><div class="w-20 h-full flex-shrink-0 bg-black border-r-2 border-black"><img alt="Darth Vader" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEWGSn2ND3baiEDrdv42hYgRtiwn-wiMLAoiMAnU-LOCaKYas5sHyoTw78a2NzkV7wPfrP5rqIl6uBtcT-Qm8slg0tXQy59-iS7wZBlyUCKU18sPMa4Ng0t7vo8JZlKu4mWPsCjwlVhxuh1PQhTGI6YChFnHvUnoYAvu1EnZyHoqIK5-SxnmlemWnQ-slfFt9HGLbBpJy1aR_oE2mEtOc5vzoFz7TQCk6oBpmyIcX2IDoGRcSTLmYQp3Tz6lgfxz2l5TV6u7CXLPwGfw"></div><div class="flex-1 bg-comicYellow p-2.5 flex flex-col justify-between h-full"><div class="flex flex-col"><span class="text-black font-black text-xs uppercase font-comic tracking-tight leading-tight line-clamp-1">STAR WARS: DARTH VADER</span><span class="text-[#ba2a7e] font-bold text-[9px] uppercase tracking-wide mt-0.5">CAPÍTULO 1 • PÁG. 04/32</span></div><div class="flex justify-end pb-0.5"><a href="lector.html" class="bg-comicGreen text-black font-black text-[11px] uppercase px-4 py-1.5 rounded-lg comic-border comic-shadow-sm font-comic hover:scale-105 active:scale-95 transition inline-block text-center">CONTINUAR</a></div></div></div>
+</div>
+</section>
+<!-- END: ContinuarLeyendo -->
+<!-- BEGIN: RecomendadoDelMes -->
+<section class="w-full px-4 pt-6 pb-12" data-purpose="recommended-comic-month">
+<!-- Outer Pop-Art Halftone Container -->
+<div class="relative w-full rounded-2xl halftone-bg comic-border-thick comic-shadow-lg p-5 flex flex-col items-center overflow-hidden">
+<!-- Angled Green Banner Ribbon -->
+<div class="absolute top-2 -left-2 bg-comicGreen text-black font-comic font-black text-xs tracking-wider uppercase px-5 py-1.5 rounded-lg comic-border comic-shadow transform -rotate-3 z-10">
+        RECOMENDADO DEL MES
+      </div>
+<!-- Huge Comic Poster -->
+<div class="w-full max-w-[280px] aspect-[2/3] mt-7 rounded-xl overflow-hidden comic-border-thick comic-shadow-lg bg-black transform rotate-1">
+<img alt="Superman Apokolis War Highlight" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzubwpEQFGDpyZgnbfa6lZFO7m6C3RoaajR5keWJG-gvWvips6Cj2QEu1KnPkoCdsIfvQGappk7owmCD1l6LLjIQZaZ3eHPYcMSzK14TjfiZ8RndtqSvub6VuuFvSLGIDbgR-HcCTYbMuRBu0XNJ0YrrEss_eKQlSAmfNTmsDaXzll5SL4NcOhYqiq1I5ahvddN4H68GQ90sJyrJ9vnVd2n1JiGpHA38Deiz-xiF9q1VhapEpOhUmnw6VFceZb53sKw5nZZrFIPswn8g">
+</div>
+<!-- Comic Book Title -->
+<div class="mt-4 flex flex-col items-center text-center w-full max-w-[320px] px-2"><h3 class="text-white text-2xl font-black uppercase text-center font-comic tracking-wider drop-shadow-[2px_2px_0px_#000]">GORE SHRIEK</h3><p class="text-white/90 text-xs font-bold leading-relaxed mt-2 text-center uppercase tracking-wide" style="font-family: 'Space Grotesk', sans-serif;">Una antología legendaria de horror visceral y arte perturbador que redefinió el cómic underground de los años 80.</p><a href="comic-detalle.html" class="mt-4 inline-flex items-center justify-center gap-2 bg-comicGreen text-black font-black text-sm uppercase px-6 py-2.5 rounded-full comic-border comic-shadow hover:scale-105 active:scale-95 transition-transform font-comic tracking-wide"><svg class="w-4 h-4 fill-black" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg><span class="">¡LEER AHORA!</span></a></div>
+</div>
+</section><!-- BEGIN: TePuedenInteresarSection -->
+<section class="w-full px-4 py-4" data-purpose="recommended-for-you">
+  <h2 class="text-xs font-black uppercase tracking-wider text-comicPink mb-3 font-comic" style="font-family: 'Space Grotesk', sans-serif;">
+    CÓMICS QUE TE PUEDEN INTERESAR
+  </h2>
+  <div class="grid grid-cols-3 gap-3 mb-8">
+    <!-- Comic Card 1 -->
+    <div class="flex flex-col cursor-pointer active:scale-95 transition-transform">
+      <div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900">
+        <img alt="Star Wars Tales From The Nightlands" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJD0r7m7HuTKeVXnzCCid-WrXxv2Gpq8MkTVHyC-NZYMu728SNHDBDewqvvrN2XTHzOF3JVyvplrKqkhHrLE-r4LPXKz4M9XVGROHwYdxK0fQKQs5-GDGTsw5EhX-YA7B8yVoD9sP5jFd4DE25qzE3GgvdqS3-0rqflLZv1Q1lg9nSI9JW9PXVd5ldJnIyeXmNAI1gLx-omM3gd56pzQftJb5UXhWkGUTAldleXRk3yxZuX8KmEeB2Ni8AADGnKWnC3lDbNl4MwFDguA">
+        <span class="absolute top-1.5 left-1.5 bg-comicYellow text-black font-extrabold text-[9px] px-1.5 py-0.5 rounded comic-border comic-shadow-sm uppercase font-comic">FANTASÍA</span>
+      </div>
+      <p class="mt-1.5 text-[11px] font-black uppercase leading-tight font-comic line-clamp-2 text-white">
+        backways</p>
+    </div>
+    <!-- Comic Card 2 -->
+    <div class="flex flex-col cursor-pointer active:scale-95 transition-transform">
+      <div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900">
+        <img alt="Superman Apokolips War" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNHNtyEIep8uGPikLclH8TSw9O0Wn7uG0FAftLk5M7ZlLTHBFsWGUxbPPBj5osgnHZi94LEdtwq3br0nw0uErwZccbBWeSYcbvHy9TpAHQzFoOX52Cp4nFFZm1AcxtLpj2tBcLmBsAsnHG6CKLYbEYyzhzO-ZMf-CPzGhlsAIPgkbNNOrEbkensd0c_fkf-KxhZqs20RP6Ave9Vt6yOnTLGRXsIW1jo5tUa57xJb0UqiC4r0ruYytsdXeoOXIwz58jEFb-8MQk9g-aPw">
+        <span class="absolute top-1.5 left-1.5 bg-comicCyan text-black font-extrabold text-[9px] px-1.5 py-0.5 rounded comic-border comic-shadow-sm uppercase font-comic">ACCIÓN</span>
+      </div>
+      <p class="mt-1.5 text-[11px] font-black uppercase leading-tight font-comic line-clamp-2 text-white">
+        captain gravity</p>
+    </div>
+    <!-- Comic Card 3 -->
+    <div class="flex flex-col cursor-pointer active:scale-95 transition-transform">
+      <div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900">
+        <img alt="Exquisite Corpses" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJfXKpIxj9nZQk30XrK2lBEnjbmVL9maxtBh1ar5LuYuTksRa4TuJfPaoGyd5TKPq5r62L59vYs5pFgbk-Bc4KjRHPxgeJUqv784dVUY4e5MdLSywbsUjskVL0voI9UEn5EXgOmAj_vX5hKW6oBWhaRu1u439JIRgpuTyydzSMnZ965vO_TTECafkAas-9ale3FxnHhQaWhsIGzpORVX-V62lhAZYLLjejX287O5virEw0G6YjmhG5SfYob1myiBX-V6ujURstK1awmA">
+        <span class="absolute top-1.5 left-1.5 bg-comicPink text-white font-extrabold text-[9px] px-1.5 py-0.5 rounded comic-border comic-shadow-sm uppercase font-comic">INDIE</span>
+      </div>
+      <p class="mt-1.5 text-[11px] font-black uppercase leading-tight font-comic line-clamp-2 text-white">
+        sabrina the teenage witch</p>
+    </div>
+    <!-- Comic Card 4 -->
+    <div class="flex flex-col cursor-pointer active:scale-95 transition-transform">
+      <div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900">
+        <img alt="Masters of the Universe - Andra" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTnz3QpVtDKzRDOw51XPD2yhZ4EzS6qFuyPJeaPamv_ZXjTRxGqtv-7E9jMF8jly8oDChxjdy0_rvDJ5vU2-3dsnj2q2T5lrpR78xHPpVUACJj8T04K2QazHKk94k8cKx3odzdZ2IdTodpEZufexdEDhrjnVE1W5uMFGBf5rp75sSJtymCggwvHJ5BybUTKivoOZulmm95BfK4Rx-IyhSEYShLDBRHhq56YwbPIVcKMlYF260cdkEWSSHVB7ixUMK0vAEat9d1mWwdgg">
+        <span class="absolute top-1.5 left-1.5 bg-comicLime text-black font-extrabold text-[9px] px-1.5 py-0.5 rounded comic-border comic-shadow-sm uppercase font-comic">SCI-FI</span>
+      </div>
+      <p class="mt-1.5 text-[11px] font-black uppercase leading-tight font-comic line-clamp-2 text-white">
+        avatar underground</p>
+    </div>
+    <!-- Comic Card 5 -->
+    <div class="flex flex-col cursor-pointer active:scale-95 transition-transform">
+      <div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900">
+        <img alt="30 Days of Night: Spreading the Disease" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYXgZypzS2Grvp6Odnd8XGk6PpDLKJJA857lwlYbBOrhHEkCN_ZdQDD5kQwLMDY6lQ3f-siGAjwhoMND-CtZ4ODhuO9biG_mJEdWC7AJMna_UuHHsgKlctWRXW-k-u239t5qOk3bezXhatyqOMvT1yLhy_b7uvyDzFafHbVjQpFbJrd-FzXZB-WFRRw4RphGRIfDd5trYVqqJ64Be_sTG1-t1vdpUl6OTsIwR5dGYv3qEE6LPfj-V4HM_30WV3uKPLNukINWaRBegTVw">
+        <span class="absolute top-1.5 left-1.5 bg-[#bd1e77] text-white font-extrabold text-[9px] px-1.5 py-0.5 rounded comic-border comic-shadow-sm uppercase font-comic">TERROR</span>
+      </div>
+      <p class="mt-1.5 text-[11px] font-black uppercase leading-tight font-comic line-clamp-2 text-white">
+        extinctions twilight of species</p>
+    </div>
+    <!-- Comic Card 6 -->
+    <div class="flex flex-col cursor-pointer active:scale-95 transition-transform">
+      <div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden comic-border comic-shadow bg-neutral-900">
+        <img alt="Spider-Man: La Última Cacería de Kraven" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHYipykjVyNjkKKlR-lqxKBHYy30aUU_TWijnoV_W-baq4-JFjpozUFaqLzdHmos8IFs_EUrbghnJ6Y6vsk-Fi4e6VaWhpSuR6e8_7B0_s3A4xxDME_Qn-JM63geqi2XZw3TdVnL0tfNma2PMljYnvxoZYdp8PEigiR9Yd71CARWsW1B7kHzCYPQIiION-5pBHNLasDzTR4Of8GLVyxjiAuGKxTJWCsXeMHTO_UWjhFCrnMPNi2a_q2jxMeVL4CDjJIIw-0-xu8tTxoA">
+        <span class="absolute top-1.5 left-1.5 bg-comicGreen text-black font-extrabold text-[9px] px-1.5 py-0.5 rounded comic-border comic-shadow-sm uppercase font-comic">POPULAR</span>
+      </div>
+      <p class="mt-1.5 text-[11px] font-black uppercase leading-tight font-comic line-clamp-2 text-white">
+        exquisite corpes</p>
+    </div>
+  </div>
+</section>
+<!-- END: TePuedenInteresarSection -->
+<!-- END: RecomendadoDelMes -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="fixed bottom-0 left-0 right-0 bg-[#0c0217]/95 backdrop-blur-md border-t-2 border-black z-50 px-2 py-2 flex justify-around items-center max-w-[430px] mx-auto shadow-[0_-4px_15px_rgba(0,0,0,0.5)]" style="font-family: &quot;Space Grotesk&quot;, sans-serif;"><a href="index.html" class="flex flex-col items-center justify-center text-comicPink transition active:scale-95"><svg class="w-6 h-6 mb-1" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span class="text-[11px] font-bold tracking-tight">Inicio</span></a><a href="catalogo.html" class="flex flex-col items-center justify-center text-purple-300 hover:text-white transition active:scale-95"><svg class="w-6 h-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M7 3v18"></path><path d="M3 7.5h4"></path><path d="M3 12h18"></path></svg><span class="text-[11px] font-bold tracking-tight">Catálogo</span></a><a href="lab.html" class="flex flex-col items-center justify-center text-purple-300 hover:text-white transition active:scale-95"><svg class="w-6 h-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path><path d="M8.5 2h7"></path><path d="M7 16h10"></path></svg><span class="text-[11px] font-bold tracking-tight">Lab</span></a><a href="perfil.html" class="flex flex-col items-center justify-center text-purple-300 hover:text-white transition active:scale-95"><svg class="w-6 h-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"></circle><path d="M20 21a8 8 0 0 0-16 0"></path></svg><span class="text-[11px] font-bold tracking-tight">Perfil</span></a></nav>
+
+
+
+
+
+
+
+
+
+</body></html>

@@ -1,0 +1,830 @@
+<!DOCTYPE html><html class="h-full bg-[#130024]" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Comicópolis - Comic Lab: Creación Paso a Paso</title>
+<!-- Google Fonts: Space Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Space Grotesk"', 'sans-serif'],
+          },
+          colors: {
+            comic: {
+              bg: '#130024',
+              surface: '#1b0133',
+              card: '#220042',
+              border: '#3b0a66',
+              cyan: '#00c0f0',
+              pink: '#ff2d78',
+              magenta: '#e60067',
+              yellow: '#ffdf24',
+              neon: '#00ff66',
+              purple: '#8c52ff',
+              lime: '#7dd400',
+            }
+          },
+          boxShadow: {
+            'comic-sm': '2px 2px 0px #000000',
+            'comic-md': '4px 4px 0px #000000',
+            'comic-lg': '5px 5px 0px #000000',
+            'comic-neon': '4px 4px 0px #000000',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-styling">
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    /* Estilización del range slider estilo pop-art */
+    input[type=range].comic-slider {
+      -webkit-appearance: none;
+      background: #110022;
+      height: 18px;
+      border-radius: 9999px;
+      border: 3px solid #000000;
+      outline: none;
+    }
+    input[type=range].comic-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #ff2d78;
+      border: 3px solid #000000;
+      cursor: pointer;
+      box-shadow: 2px 2px 0px #000000;
+      transition: transform 0.1s ease;
+    }
+    input[type=range].comic-slider::-webkit-slider-thumb:active {
+      transform: scale(1.15);
+      background: #ff5596;
+    }
+    /* Ocultar barra de scroll estándar en mobile para look de App nativa */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-[#130024] text-white flex justify-center items-start min-h-screen antialiased">
+<!-- Mobile App Frame Container (iPhone viewport proportions) -->
+<div class="w-full max-w-[440px] min-h-screen bg-[#130024] flex flex-col relative pb-24 shadow-2xl border-x border-[#2c044f]/40 overflow-x-hidden">
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-50 bg-[#16022e]/95 backdrop-blur-md border-b-4 border-black shadow-[0_4px_0_0_#000] px-4 py-3">
+<div class="max-w-md mx-auto flex items-center justify-between">
+<div class="w-10"></div>
+<a href="index.html" class="flex-1 flex justify-center cursor-pointer"><img alt="Comicópolis" class="h-9 w-auto object-contain drop-shadow-[2px_2px_0px_rgba(0,0,0,1)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFRLp4eGDh97Ux8JDsf3miRFrqfgfij872XqjVn1vfiyZVoodECjCEEleGLMsPWMV16xESdDUKz8SZ6bR8PnryaheyLm8v40mutSg6p1Vv4kl6ZQLEqRdNc2BqJiMHDY8-MrRQ-hLHS0Ddqfv3e3CRSDe0X9tRahYTyQSuDc8R7sN9jmgJPUz4zR96rX5EGErI_HZifzaIN2GS7eLDMLHZsrRwfDShclXoHGXE5_lLXwsGbYQ7F0PmhRc0vScnTLHIvw"></a>
+<div class="flex items-center gap-2">
+<button aria-label="Buscar cómic" class="w-9 h-9 bg-[#00e5ff] rounded-lg border-2 border-black flex items-center justify-center shadow-[2px_2px_0px_#000] text-black active:translate-y-0.5 transition-transform" type="button">
+<svg class="w-5 h-5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 105.65 5.65a7.5 7.5 0 0010.7 10.7z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<button aria-label="Abrir menú" class="w-9 h-9 bg-[#ffe600] rounded-lg border-2 border-black flex items-center justify-center shadow-[2px_2px_0px_#000] text-black active:translate-y-0.5 transition-transform" type="button">
+<svg class="w-5 h-5 stroke-[2.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: ProgressBarSection -->
+<section class="px-5 pt-3 pb-3" data-purpose="progress-tracker">
+<div class="flex items-center justify-between mb-1.5 font-black uppercase text-xs tracking-wider">
+<span class="text-comic-cyan text-sm tracking-widest font-black">PROGRESO</span>
+<span class="bg-comic-yellow text-black font-black px-2 py-0.5 rounded text-xs border border-black shadow-[1.5px_1.5px_0px_#000000]" id="step-badge">1/6</span>
+</div>
+<!-- Barra segmentada con 6 pasos interactivos -->
+<div class="grid grid-cols-6 gap-1.5 h-3" id="progress-bars-container">
+<div class="cursor-pointer h-full rounded-sm bg-comic-magenta transition-colors border border-black/40" data-step-indicator="1" onclick="goToStep(1)"></div>
+<div class="cursor-pointer h-full rounded-sm bg-white transition-colors border border-black/40" data-step-indicator="2" onclick="goToStep(2)"></div>
+<div class="cursor-pointer h-full rounded-sm bg-white transition-colors border border-black/40" data-step-indicator="3" onclick="goToStep(3)"></div>
+<div class="cursor-pointer h-full rounded-sm bg-white transition-colors border border-black/40" data-step-indicator="4" onclick="goToStep(4)"></div>
+<div class="cursor-pointer h-full rounded-sm bg-white transition-colors border border-black/40" data-step-indicator="5" onclick="goToStep(5)"></div>
+<div class="cursor-pointer h-full rounded-sm bg-white transition-colors border border-black/40" data-step-indicator="6" onclick="goToStep(6)"></div>
+</div>
+</section>
+<!-- END: ProgressBarSection -->
+<!-- MAIN INTERACTIVE MULTI-STEP WORKFLOW -->
+<main class="flex-1 px-5 flex flex-col justify-between" id="steps-container">
+<!-- ========================================== -->
+<!-- PASO 1: UNIVERSO Y GÉNERO (Ref: IMAGE_19)   -->
+<!-- ========================================== -->
+<!-- BEGIN: Step1 -->
+<section class="step-content space-y-4" id="step-1">
+<div class="text-center pt-2">
+<h1 class="text-comic-magenta font-black text-xl tracking-tight leading-tight uppercase font-extrabold">
+            Definamos el Universo de tu Comic
+          </h1>
+<p class="text-xs text-white/90 font-bold uppercase tracking-wider mt-1">
+            Selecciona el género de tu comic
+          </p>
+</div>
+<!-- Grilla de Géneros Estilo Comic -->
+<div class="grid grid-cols-3 gap-3.5 pt-1" data-purpose="genre-grid">
+<!-- Acción -->
+<button class="genre-card flex flex-col items-center justify-center p-3 rounded-2xl bg-[#00c0f0] text-black border-2 border-black shadow-comic-md transition-all active:translate-y-0.5 active:shadow-comic-sm ring-4 ring-white scale-105" onclick="selectGenre(this, 'Acción')" type="button"><img src="https://lh3.googleusercontent.com/aida/AEtjO1VlOrwnv8D8ClfyjueJqrJvgNr8vgdHqwDMry4JLkePUPvTRKPUyGeIRmCalZLvbDfdbCEKKZoncNTBJwLxec3waBJfYU6SuXSJMdRcdSkmadAjBjs8YpU2gFlT_UFFw0SJ8Qkvg_QKCzgIFHJdnYg_lzYCWlp_fLR8jQ4NzEGak6Kh6R1gb9o3Jl5jzbJjCFP2VxS0p0r134_FtIfNG4XHns_15YEjO9UTn3TeNm2ipU6aulMLM2XxrF4" alt="Acción" class="w-8 h-8 object-contain mb-1.5">
+<span class="text-xs font-black tracking-wider uppercase">ACCIÓN</span></button>
+<!-- Fantasía -->
+<button class="genre-card flex flex-col items-center justify-center p-3 rounded-2xl bg-[#f04299] text-black border-2 border-black shadow-comic-md transition-all active:translate-y-0.5 active:shadow-comic-sm" onclick="selectGenre(this, 'Fantasía')" type="button"><img src="https://lh3.googleusercontent.com/aida/AEtjO1Vq7E64KOeSQOEPfFLGarmwugQIVvxALktWnm9zbDT2CiZ1PlJabbHre52iFmXmE2o_G2wl_mtkvuPOBSgCB1cGAnkaq3bv3-U7lk6__aB-reaNgxsyz7lZkV4b2IvP2rBF6xVq0z2Mnc00rWlFcB6mk9MvnUPzbXUlv7wgHyN1LeoVJX8zSUXclwmQekmOP7L1wiVMp4XuaqNlqFtMgiBot_PaLnnhETajw-XxQVyTxaG1aCEV29l134E" alt="Fantasía" class="w-8 h-8 object-contain mb-1.5">
+<span class="text-xs font-black tracking-wider uppercase">FANTASÍA</span></button>
+<!-- Romance -->
+<button class="genre-card flex flex-col items-center justify-center p-3 rounded-2xl bg-[#ffdf24] text-black border-2 border-black shadow-comic-md transition-all active:translate-y-0.5 active:shadow-comic-sm" onclick="selectGenre(this, 'Romance')" type="button"><img src="https://lh3.googleusercontent.com/aida/AEtjO1X-IWLMu5rgzNcR0hRuStrxbRCPZDnoAjakHYsbOVcmJ9uiyjAxGj4rIVmSZNIFcVpv5vxWNkNbyk-jlsnCOc9OdkQpEONEychj9TqPD49td_m_IW0Txr6at46Fy5SMi1SZGnWYZ6Yf6RZ_wCtE879YNtZ88nAuY36WjnBzxnFHSptjvo7s73M3WhrKs6ix_Y6XFu_uxb-er-iaiBSHbzZQlYHwY_ccVU3nP-31Td7jg2-dPAX52xQU9iI" alt="Romance" class="w-8 h-8 object-contain mb-1.5">
+<span class="text-xs font-black tracking-wider uppercase">ROMANCE</span></button>
+<!-- Sci-Fi -->
+<button class="genre-card flex flex-col items-center justify-center p-3 rounded-2xl bg-[#7dd400] text-black border-2 border-black shadow-comic-md transition-all active:translate-y-0.5 active:shadow-comic-sm" onclick="selectGenre(this, 'Sci-Fi')" type="button"><img src="https://lh3.googleusercontent.com/aida/AEtjO1WVGA82useEtGKL7uHfmjweuSIRa24MPsUPZFvv7uReDIBNVgGZUs45mX0bVhV-Ly33dqziXYOZ1XbtMeXAtevX0GDa1JAQKyzdi7H6O9YtK-DtJp4IOgRCEY9KqyPz40fKA_B_8bO3z_z7i8TOEVKhZAZBzxaIrmwqUN1B-fA03sW_0Gki9hwdL27okraQL7AUEVyEWA7ye2CV6TE3jHuBLWzgMrtuclNBsxSvjihPrqKMsiUO0xjUubI" alt="Sci-Fi" class="w-8 h-8 object-contain mb-1.5">
+<span class="text-xs font-black tracking-wider uppercase">SCI-FI</span></button>
+<!-- Horror 1 -->
+<button class="genre-card flex flex-col items-center justify-center p-3 rounded-2xl bg-[#8c52ff] text-black border-2 border-black shadow-comic-md transition-all active:translate-y-0.5 active:shadow-comic-sm" onclick="selectGenre(this, 'Horror')" type="button"><img src="https://lh3.googleusercontent.com/aida/AEtjO1X6zL6medVP3yRdrTt7M-aPgPNhoCHn7P2MUi_GpDbRmO5M8vVaEGmkDxBKulxB_5vK0Ggzyvieana8UDARXnEtuqeDaXI0wDyW_W93LwOunCLnpH2eyMTyMIovlyi0tKOYGLkv8pu0bOHzSku-7sqOGwAXPcfqgHWLIkLoJcjaMYZ__hqPvTdn_uqZXt-nGdLA_uk5Hg6ipldh0aW3ky2C9eCvz9PKSblHf8zFRKN2e74N-5SiolguhQ" alt="Horror" class="w-8 h-8 object-contain mb-1.5">
+<span class="text-xs font-black tracking-wider uppercase">HORROR</span></button>
+<!-- Comedia -->
+<button class="genre-card flex flex-col items-center justify-center p-3 rounded-2xl bg-[#ffdf24] text-black border-2 border-black shadow-comic-md transition-all active:translate-y-0.5 active:shadow-comic-sm" onclick="selectGenre(this, 'Comedia')" type="button"><img src="https://lh3.googleusercontent.com/aida/AEtjO1X0fltwEsINWIsJ9cI5_qmBY23LPwgEtpnSh4OHkl0H75eDbxrgAeaEVi13fTWTw8dRqZs4K7KRCQbtGAODo8Ed12j3PjnDf7ALqbXWJ2uJ8d8dNBmNjzzGEYx2qd0zFsEV6Mu1fIn9xSlV1wtOTNFkbCijSBw-DUF1l6THnTl4YjJslk_FJ_yLBvxMmImSrkah0zXufEuUu6Gkw0oYlvl13sh8o0O0b0-uRrJLRmFzt0bzqr9l_YfuZSM" alt="Comedia" class="w-8 h-8 object-contain mb-1.5">
+<span class="text-xs font-black tracking-wider uppercase">COMEDIA</span></button>
+<!-- Drama -->
+<button class="genre-card flex flex-col items-center justify-center p-3 rounded-2xl bg-[#00c0f0] text-black border-2 border-black shadow-comic-md transition-all active:translate-y-0.5 active:shadow-comic-sm" onclick="selectGenre(this, 'Drama')" type="button"><img src="https://lh3.googleusercontent.com/aida/AEtjO1ULUY6j4ZqtuWnU0JdMX_yPqnPyXkG_BvQ4GbINgdXQ8euEhsJljMLlGgvsFkqkDXLZpo94OAD0-SC0MN7gOY91Ipc_F2gVvJLdviaIgai4e3JFcrprAu796pj9nR0BAKB-MCdIhyYPYPMRu6d8kLms5GPbGcUrepBgTr-wKo8DGux_9XWAyVR8qjgOlcQpQCm5TFXS0otOGetpaHzthXqxq89CEALsbpSjF5_W-TdlRsXMPbyfaphTvw" alt="Drama" class="w-8 h-8 object-contain mb-1.5">
+<span class="text-xs font-black tracking-wider uppercase">DRAMA</span></button>
+<!-- Thriller -->
+<button class="genre-card flex flex-col items-center justify-center p-3 rounded-2xl bg-[#f04299] text-black border-2 border-black shadow-comic-md transition-all active:translate-y-0.5 active:shadow-comic-sm" onclick="selectGenre(this, 'Thriller')" type="button"><img src="https://lh3.googleusercontent.com/aida/AEtjO1V6NhxgeZbCvBWPVas8hasYjBkCyZanf2Up2aCWGJVSSC6ITWmFRj0_mz3QULrbZItvSePcar9QmqjcvATp5Bd1jwMHpCsQlWQSTFYIBkZVf2UmMJZgv7gVgAK2q8jWG-DeD1Siq4_ZNY14aaSX9qjkIFYs7mQfdAqlJkGZ5vjaQ2uBdRXcyHOYfsPb1jnyVcOAKdnzo-YG2QGf1QgRSKQihpjveitc5emYGDcD3GuMRWEjugZ1xQZKAZU" alt="Thriller" class="w-8 h-8 object-contain mb-1.5">
+<span class="text-xs font-black tracking-wider uppercase">THRILLER</span></button>
+<!-- Horror 2 -->
+<button class="genre-card flex flex-col items-center justify-center p-3 rounded-2xl bg-[#8c52ff] text-black border-2 border-black shadow-comic-md transition-all active:translate-y-0.5 active:shadow-comic-sm" onclick="selectGenre(this, 'Horror')" type="button"><img src="https://lh3.googleusercontent.com/aida/AEtjO1X6zL6medVP3yRdrTt7M-aPgPNhoCHn7P2MUi_GpDbRmO5M8vVaEGmkDxBKulxB_5vK0Ggzyvieana8UDARXnEtuqeDaXI0wDyW_W93LwOunCLnpH2eyMTyMIovlyi0tKOYGLkv8pu0bOHzSku-7sqOGwAXPcfqgHWLIkLoJcjaMYZ__hqPvTdn_uqZXt-nGdLA_uk5Hg6ipldh0aW3ky2C9eCvz9PKSblHf8zFRKN2e74N-5SiolguhQ" alt="Horror" class="w-8 h-8 object-contain mb-1.5">
+<span class="text-xs font-black tracking-wider uppercase">HORROR</span></button>
+</div>
+<!-- Caja Ajusta El Tono -->
+<div class="bg-comic-neon text-black p-4 rounded-3xl border-2 border-black shadow-comic-md mt-4" data-purpose="tone-slider-container">
+<h2 class="text-center font-black tracking-wide text-base uppercase mb-2">AJUSTA EL TONO</h2>
+<div class="flex justify-between text-[11px] font-black uppercase tracking-tight text-black/80 px-1 mb-1">
+<span class="">OSCURO/MADURO</span>
+<span class="">EQUILIBRADO</span>
+<span class="">COLORIDO</span>
+</div>
+<!-- Slider Interactivo -->
+<div class="relative py-1">
+<input aria-label="Ajustar tono del cómic" class="w-full comic-slider cursor-pointer" max="100" min="0" type="range" value="50">
+</div>
+</div>
+<!-- Input Título Del Cómic -->
+<div class="pt-2">
+<label class="block text-comic-pink font-black text-sm uppercase tracking-wide mb-1.5" for="comic-title-input">
+            TÍTULO DEL COMIC
+          </label>
+<input class="w-full bg-white text-black font-bold text-xs uppercase px-4 py-3 rounded-lg border-2 border-black shadow-comic-md focus:outline-none focus:ring-2 focus:ring-comic-pink placeholder-black/50" id="comic-title-input" placeholder="EJ. EL ASOMBROSO HOMBRE ARAÑA..." type="text">
+</div>
+</section>
+<!-- END: Step1 -->
+<!-- ========================================== -->
+<!-- PASO 2: EL ESTILO (Ref: IMAGE_18)          -->
+<!-- ========================================== -->
+<!-- BEGIN: Step2 -->
+<section class="step-content hidden space-y-4" id="step-2">
+<div class="text-center pt-2">
+<h1 class="text-comic-magenta font-black text-2xl uppercase tracking-tight">EL ESTILO</h1>
+<p class="text-xs text-white/80 font-medium px-4 mt-1 leading-snug">
+            Define la estética visual de tu historia. ¿Cómo se verá tu mundo? Selecciona un estilo base y ajusta la paleta de colores para darle el toque final.
+          </p>
+</div>
+<!-- Grilla de Tarjetas de Estilo Visual (2 columnas) -->
+<div class="grid grid-cols-2 gap-3" data-purpose="style-grid">
+<!-- Tarjeta 1: Comic Clásico (Seleccionada) -->
+<div class="style-card relative bg-black rounded-xl overflow-hidden border-2 border-comic-pink shadow-comic-md cursor-pointer transition-transform active:scale-95" onclick="selectStyleCard(this, 'Comic Clásico')">
+<div class="relative h-28 w-full bg-gradient-to-t from-red-900 to-amber-500 overflow-hidden flex items-center justify-center">
+<span class="text-5xl font-black opacity-30">💥</span>
+<!-- Badge Checkmark Activo -->
+<span class="check-icon absolute top-1.5 right-1.5 bg-comic-magenta text-white w-6 h-6 rounded-full flex items-center justify-center border-2 border-black font-black text-xs shadow-sm">✓</span>
+<!-- Tag Estilo Amarillo -->
+<span class="absolute bottom-1 left-2 bg-comic-yellow text-black text-[10px] font-black uppercase px-2 py-0.5 border border-black shadow-sm">
+                CÓMIC CLÁSICO
+              </span>
+</div>
+<div class="bg-white text-black p-2 min-h-[50px]">
+<p class="text-[10px] font-bold leading-tight">Trazo grueso, alto contraste, sombras dramáticas.</p>
+</div>
+</div>
+<!-- Tarjeta 2: Línea Clara -->
+<div class="style-card relative bg-black rounded-xl overflow-hidden border-2 border-black shadow-comic-md cursor-pointer transition-transform active:scale-95" onclick="selectStyleCard(this, 'Línea Clara')">
+<div class="relative h-28 w-full bg-gradient-to-b from-blue-900 via-slate-800 to-black overflow-hidden flex items-center justify-center">
+<span class="text-4xl font-black opacity-30">🕵️‍♂️</span>
+<span class="check-icon hidden absolute top-1.5 right-1.5 bg-comic-magenta text-white w-6 h-6 rounded-full items-center justify-center border-2 border-black font-black text-xs shadow-sm">✓</span>
+<span class="absolute bottom-1 left-2 bg-comic-yellow text-black text-[10px] font-black uppercase px-2 py-0.5 border border-black shadow-sm">
+                LÍNEA CLARA
+              </span>
+</div>
+<div class="bg-white text-black p-2 min-h-[50px]">
+<p class="text-[10px] font-bold leading-tight">Colores planos, trazo uniforme, sin tramas.</p>
+</div>
+</div>
+<!-- Tarjeta 3: Manga Moderno -->
+<div class="style-card relative bg-black rounded-xl overflow-hidden border-2 border-black shadow-comic-md cursor-pointer transition-transform active:scale-95" onclick="selectStyleCard(this, 'Manga Moderno')">
+<div class="relative h-28 w-full bg-gradient-to-tr from-orange-400 via-pink-500 to-purple-600 overflow-hidden flex items-center justify-center">
+<span class="text-4xl font-black opacity-30">⚡</span>
+<span class="check-icon hidden absolute top-1.5 right-1.5 bg-comic-magenta text-white w-6 h-6 rounded-full items-center justify-center border-2 border-black font-black text-xs shadow-sm">✓</span>
+<span class="absolute bottom-1 left-2 bg-comic-yellow text-black text-[10px] font-black uppercase px-2 py-0.5 border border-black shadow-sm">
+                MANGA MODERNO
+              </span>
+</div>
+<div class="bg-white text-black p-2 min-h-[50px]">
+<p class="text-[10px] font-bold leading-tight">Expresivo, líneas cinéticas, alto dinamismo.</p>
+</div>
+</div>
+<!-- Tarjeta 4: Onírico -->
+<div class="style-card relative bg-black rounded-xl overflow-hidden border-2 border-black shadow-comic-md cursor-pointer transition-transform active:scale-95" onclick="selectStyleCard(this, 'Onírico')">
+<div class="relative h-28 w-cr from-emerald-800 via-teal-900 to-yellow-600 overflow-hidden flex items-center justify-center">
+<span class="text-4xl font-black opacity-30">✨</span>
+<span class="check-icon hidden absolute top-1.5 right-1.5 bg-comic-magenta text-white w-6 h-6 rounded-full items-center justify-center border-2 border-black font-black text-xs shadow-sm">✓</span>
+<span class="absolute bottom-1 left-2 bg-comic-yellow text-black text-[10px] font-black uppercase px-2 py-0.5 border border-black shadow-sm">
+                NOIR / ONÍRICO
+              </span>
+</div>
+<div class="bg-white text-black p-2 min-h-[50px]">
+<p class="text-[10px] font-bold leading-tight">Bordes suaves, colores translúcidos, onírico.</p>
+</div>
+</div>
+<!-- Tarjeta 5: Render 3D -->
+<div class="style-card relative bg-black rounded-xl overflow-hidden border-2 border-black shadow-comic-md cursor-pointer transition-transform active:scale-95" onclick="selectStyleCard(this, 'Render 3D')">
+<div class="relative h-28 w-full bg-gradient-to-t from-gray-950 via-indigo-900 to-rose-900 overflow-hidden flex items-center justify-center">
+<span class="text-4xl font-black opacity-30">🔮</span>
+<span class="check-icon hidden absolute top-1.5 right-1.5 bg-comic-magenta text-white w-6 h-6 rounded-full items-center justify-center border-2 border-black font-black text-xs shadow-sm">✓</span>
+<span class="absolute bottom-1 left-2 bg-comic-yellow text-black text-[10px] font-black uppercase px-2 py-0.5 border border-black shadow-sm">
+                RENDER 3D
+              </span>
+</div>
+<div class="bg-white text-black p-2 min-h-[50px]">
+<p class="text-[10px] font-bold leading-tight">Volúmenes suaves, iluminación dramática.</p>
+</div>
+</div>
+<!-- Tarjeta 6: Pixel Art -->
+<div class="style-card relative bg-black rounded-xl overflow-hidden border-2 border-black shadow-comic-md cursor-pointer transition-transform active:scale-95" onclick="selectStyleCard(this, 'Pixel Art')">
+<div class="relative h-28 w-full bg-gradient-to-r from-purple-900 via-pink-700 to-cyan-800 overflow-hidden flex items-center justify-center">
+<span class="text-4xl font-black opacity-30">👾</span>
+<span class="check-icon hidden absolute top-1.5 right-1.5 bg-comic-magenta text-white w-6 h-6 rounded-full items-center justify-center border-2 border-black font-black text-xs shadow-sm">✓</span>
+<span class="absolute bottom-1 left-2 bg-comic-yellow text-black text-[10px] font-black uppercase px-2 py-0.5 border border-black shadow-sm">
+                PIXEL ART
+              </span>
+</div>
+<div class="bg-white text-black p-2 min-h-[50px]">
+<p class="text-[10px] font-bold leading-tight">Estética retro 16-bits, paleta nostálgica.</p>
+</div>
+</div>
+</div>
+<!-- Atmósfera y Color -->
+<div class="pt-2">
+<h2 class="text-center font-black text-comic-pink text-sm uppercase tracking-wider mb-2.5">
+            ATMÓSFERA Y COLOR
+          </h2>
+<div class="grid grid-cols-2 gap-3" data-purpose="palette-grid">
+<!-- Full Color (Seleccionada) -->
+<div class="palette-option relative bg-[#e60067] rounded-lg p-2 border-2 border-black shadow-comic-sm cursor-pointer" onclick="selectPalette(this, 'Full Color')">
+<div class="grid grid-cols-4 h-9 rounded overflow-hidden border border-black mb-1.5">
+<span class="bg-[#ff4338]"></span>
+<span class="bg-[#387eff]"></span>
+<span class="bg-[#ffdf24]"></span>
+<span class="bg-[#00c97b]"></span>
+</div>
+<p class="text-center text-white text-[11px] font-black uppercase tracking-wider">FULL COLOR</p>
+<span class="palette-check absolute -bottom-1.5 -right-1.5 bg-comic-magenta text-white w-5 h-5 rounded-full flex items-center justify-center border border-black text-[10px] font-black">✓</span>
+</div>
+<!-- Blanco & Negro -->
+<div class="palette-option relative bg-white rounded-lg p-2 border-2 border-black shadow-comic-sm cursor-pointer" onclick="selectPalette(this, 'Blanco &amp; Negro')">
+<div class="grid grid-cols-4 h-9 rounded overflow-hidden border border-black mb-1.5">
+<span class="bg-black"></span>
+<span class="bg-neutral-800"></span>
+<span class="bg-neutral-400"></span>
+<span class="bg-white"></span>
+</div>
+<p class="text-center text-black text-[10px] font-black uppercase tracking-tight">BLANCO &amp; NEGRO</p>
+<span class="palette-check hidden absolute -bottom-1.5 -right-1.5 bg-comic-magenta text-white w-5 h-5 rounded-full items-center justify-center border border-black text-[10px] font-black">✓</span>
+</div>
+<!-- Sepia Clásico -->
+<div class="palette-option relative bg-white rounded-lg p-2 border-2 border-black shadow-comic-sm cursor-pointer" onclick="selectPalette(this, 'Sepia Clásico')">
+<div class="grid grid-cols-4 h-9 rounded overflow-hidden border border-black mb-1.5">
+<span class="bg-[#4a3b2c]"></span>
+<span class="bg-[#8b7355]"></span>
+<span class="bg-[#c4a482]"></span>
+<span class="bg-[#f5e6d3]"></span>
+</div>
+<p class="text-center text-black text-[11px] font-black uppercase tracking-wider">SEPIA CLÁSICO</p>
+<span class="palette-check hidden absolute -bottom-1.5 -right-1.5 bg-comic-magenta text-white w-5 h-5 rounded-full items-center justify-center border border-black text-[10px] font-black">✓</span>
+</div>
+<!-- Ciber Neón -->
+<div class="palette-option relative bg-white rounded-lg p-2 border-2 border-black shadow-comic-sm cursor-pointer" onclick="selectPalette(this, 'Ciber Neón')">
+<div class="grid grid-cols-4 h-9 rounded overflow-hidden border border-black mb-1.5">
+<span class="bg-black"></span>
+<span class="bg-comic-pink"></span>
+<span class="bg-comic-cyan"></span>
+<span class="bg-comic-purple"></span>
+</div>
+<p class="text-center text-black text-[11px] font-black uppercase tracking-wider">CIBER NEÓN</p>
+<span class="palette-check hidden absolute -bottom-1.5 -right-1.5 bg-comic-magenta text-white w-5 h-5 rounded-full items-center justify-center border border-black text-[10px] font-black">✓</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Step2 -->
+<!-- ========================================== -->
+<!-- PASO 3: EL/LOS PERSONAJES (Ref: IMAGE_17)   -->
+<!-- ========================================== -->
+<!-- BEGIN: Step3 -->
+<section class="step-content hidden space-y-4" id="step-3">
+<div class="text-center pt-2">
+<h1 class="text-comic-magenta font-black text-2xl uppercase tracking-tight">EL/LOS PERSONAJES</h1>
+<p class="text-xs text-white/80 font-medium px-4 mt-1 leading-snug">
+            Define la identidad visual y los rasgos principales de los protagonistas de tu cómic.
+          </p>
+</div>
+<!-- Pestañas de personajes -->
+<div class="flex items-center space-x-2 pt-1" data-purpose="character-tabs">
+<button class="bg-comic-neon text-black font-black text-xs px-4 py-2 rounded-t-xl border-2 border-black border-b-0 uppercase shadow-comic-sm" type="button">
+            PERSONAJE 1
+          </button>
+<button class="bg-[#1f013b] text-neutral-400 font-black text-xs px-4 py-2 rounded-t-xl border border-neutral-700 uppercase" type="button">
+            PERSONAJE 2
+          </button>
+<button aria-label="Agregar personaje" class="bg-comic-neon text-black font-black text-base w-8 h-8 rounded-lg border-2 border-black flex items-center justify-center shadow-comic-sm hover:opacity-90" type="button">
+            +
+          </button>
+</div>
+<!-- Caja contenedora de datos del personaje -->
+<div class="bg-[#1b0133] p-4 rounded-3xl border-2 border-white/60 shadow-comic-md space-y-3.5 -mt-2">
+<!-- Banner Cargar Referencia -->
+<div class="text-center">
+<p class="text-comic-pink font-black text-[11px] uppercase tracking-wide mb-2 leading-tight">
+              SI TIENES UNA REFERENCIA VISUAL DEL PERSONAJE PUEDES CARGARLA AQUÍ
+            </p>
+<div class="inline-flex rounded-xl overflow-hidden border-2 border-black shadow-comic-sm">
+<span class="bg-[#00c0f0] p-2 flex items-center justify-center text-white border-r-2 border-black">
+<svg class="w-6 h-6 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<button class="bg-comic-neon text-black font-black text-xs px-4 py-2 uppercase tracking-wide hover:bg-emerald-400" type="button">
+                CARGAR REFERENCIA
+              </button>
+</div>
+</div>
+<!-- Nombre -->
+<div>
+<label class="block text-white font-black text-[11px] uppercase tracking-wider mb-1">NOMBRE</label>
+<input class="w-full bg-white text-black font-bold text-xs uppercase px-3 py-2.5 rounded-full border-2 border-black shadow-comic-sm focus:outline-none placeholder-black/40" placeholder="EJ. EL ASOMBROSO HOMBRE ARAÑA..." type="text" value="Cyber-Pug &amp; Robo-Cat">
+</div>
+<!-- Rol -->
+<div>
+<label class="block text-white font-black text-[11px] uppercase tracking-wider mb-1">ROL</label>
+<div class="relative">
+<select class="w-full bg-white text-black font-bold text-xs uppercase px-4 py-2.5 rounded-full border-2 border-black shadow-comic-sm appearance-none focus:outline-none pr-10 cursor-pointer">
+<option selected="">PROTAGONISTA</option>
+<option>ANTAGONISTA</option>
+<option>SECUNDARIO</option>
+<option>MENTOR / GUÍA</option>
+</select>
+<span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-black font-black text-sm">▼</span>
+</div>
+</div>
+<!-- Rasgos Físicos -->
+<div>
+<label class="block text-white font-black text-[11px] uppercase tracking-wider">RASGOS FÍSICOS</label>
+<span class="block text-[9px] text-white/70 font-semibold uppercase mb-1">DESCRIBE SU EDAD, COMPLEXIÓN, COLOR DE PELO, OJOS, ETC.</span>
+<textarea class="w-full bg-white text-black font-medium text-xs p-3 rounded-2xl border-2 border-black shadow-comic-sm focus:outline-none" placeholder="Joven de 20 años, complexión atlética, pelo desordenado color azul eléctrico..." rows="3">Pug cibernético con armadura de combate de titanio y compañero felino androide con visor óptico láser.</textarea>
+</div>
+<!-- Ropa y Accesorios -->
+<div>
+<label class="block text-white font-black text-[11px] uppercase tracking-wider">ROPA Y ACCESORIOS</label>
+<span class="block text-[9px] text-white/70 font-semibold uppercase mb-1">¿QUÉ SUELE VESTIR? ¿LLEVA ALGÚN OBJETO CARACTERÍSTICO?</span>
+<textarea class="w-full bg-white text-black font-medium text-xs p-3 rounded-2xl border-2 border-black shadow-comic-sm focus:outline-none" placeholder="Chaqueta de cuero roja con parches, gafas de aviador siempre en la cabeza..." rows="2">Arnés militar fosforescente, mochila propulsora y gafas tácticas holográficas.</textarea>
+</div>
+</div>
+</section>
+<!-- END: Step3 -->
+<!-- ========================================== -->
+<!-- PASO 4: FORMATO (Ref: IMAGE_16)            -->
+<!-- ========================================== -->
+<!-- BEGIN: Step4 -->
+<section class="step-content hidden space-y-4" id="step-4">
+<div class="text-center pt-2">
+<h1 class="text-comic-magenta font-black text-2xl uppercase tracking-tight">FORMATO</h1>
+<p class="text-xs text-white/80 font-medium px-4 mt-1 leading-snug">
+            Define la estructura de tu página. ¿Cómo se leerá tu historia?
+          </p>
+</div>
+<div>
+<h2 class="text-comic-pink font-black text-xs uppercase tracking-wider mb-2">TIPO DE FORMATO</h2>
+<!-- Selector horizontal con 2 opciones de formato -->
+<div class="flex space-x-3 overflow-x-auto pb-2 no-scrollbar" data-purpose="format-cards">
+<!-- Tira Cómica (Seleccionada) -->
+<div class="format-card min-w-[210px] flex-1 bg-comic-yellow text-black p-4 rounded-3xl border-2 border-black shadow-comic-md relative cursor-pointer" onclick="selectFormatCard(this, 'Tira Cómica')">
+<span class="format-check absolute top-3 right-3 bg-comic-magenta text-white w-6 h-6 rounded-full flex items-center justify-center border-2 border-black font-black text-xs">✓</span>
+<h3 class="font-black text-base uppercase leading-tight mb-2">Tira Cómica</h3>
+<p class="text-[11px] font-bold text-black/80 leading-snug mb-4">
+                Ideal para chistes rápidos y lectura horizontal (estilo periódico).
+              </p>
+<!-- Esquema 3 viñetas -->
+<div class="grid grid-cols-3 gap-2">
+<div class="h-14 bg-white rounded border-2 border-black"></div>
+<div class="h-14 bg-white rounded border-2 border-black"></div>
+<div class="h-14 bg-white rounded border-2 border-black"></div>
+</div>
+</div>
+<!-- Página Completa / Webtoon -->
+<div class="format-card min-w-[210px] flex-1 bg-[#d8d8d8] text-black p-4 rounded-3xl border-2 border-black shadow-comic-md relative cursor-pointer opacity-90" onclick="selectFormatCard(this, 'Webtoon Vertical')">
+<span class="format-check hidden absolute top-3 right-3 bg-comic-magenta text-white w-6 h-6 rounded-full items-center justify-center border-2 border-black font-black text-xs">✓</span>
+<h3 class="font-black text-base uppercase leading-tight mb-2">Webtoon Vertical</h3>
+<p class="text-[11px] font-bold text-black/80 leading-snug mb-4">
+                Estructura perfecta para scroll en smartphones o tablets.
+              </p>
+<!-- Esquema apilado -->
+<div class="space-y-1.5">
+<div class="h-4 bg-white rounded border-2 border-black"></div>
+<div class="h-4 bg-white rounded border-2 border-black"></div>
+<div class="h-4 bg-white rounded border-2 border-black"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Cantidad de Viñetas -->
+<div class="pt-2">
+<h2 class="text-comic-pink font-black text-xs uppercase tracking-wider mb-1">CANTIDAD DE VIÑETAS</h2>
+<p class="text-[11px] text-white/70 font-semibold mb-3">Selecciona el número de viñetas que prefieras.</p>
+<div class="grid grid-cols-4 gap-3" data-purpose="panel-count-grid">
+<!-- 3 -->
+<button class="panel-btn h-16 rounded-2xl bg-[#5d4f72] text-white/70 font-black text-3xl border-2 border-black shadow-comic-sm flex items-center justify-center transition-all" onclick="selectPanelCount(this, 3)" type="button">
+              3
+            </button>
+<!-- 4 (Seleccionado en imagen) -->
+<button class="panel-btn relative h-16 rounded-2xl bg-comic-pink text-white font-black text-3xl border-2 border-black shadow-comic-sm flex items-center justify-center transition-all ring-2 ring-comic-yellow" onclick="selectPanelCount(this, 4)" type="button">
+              4
+              <span class="absolute -top-1.5 -right-1.5 bg-comic-magenta text-white w-5 h-5 rounded-full flex items-center justify-center border border-black text-[10px]">✓</span>
+</button>
+<!-- 6 -->
+<button class="panel-btn h-16 rounded-2xl bg-[#5d4f72] text-white/70 font-black text-3xl border-2 border-black shadow-comic-sm flex items-center justify-center transition-all" onclick="selectPanelCount(this, 6)" type="button">
+              6
+            </button>
+<!-- 8 -->
+<button class="panel-btn h-16 rounded-2xl bg-[#5d4f72] text-white/70 font-black text-3xl border-2 border-black shadow-comic-sm flex items-center justify-center transition-all" onclick="selectPanelCount(this, 8)" type="button">
+              8
+            </button>
+</div>
+</div>
+</section>
+<!-- END: Step4 -->
+<!-- ========================================== -->
+<!-- PASO 5: LA HISTORIA (Ref: IMAGE_14, 15)    -->
+<!-- ========================================== -->
+<!-- BEGIN: Step5 -->
+<section class="step-content hidden space-y-4" id="step-5">
+<div class="text-center pt-2">
+<h1 class="text-comic-magenta font-black text-2xl uppercase tracking-tight">LA HISTORIA</h1>
+<p class="text-xs text-white/80 font-medium px-4 mt-1 leading-snug">
+            Define la identidad visual y los rasgos principales de los protagonistas de tu cómic.
+          </p>
+</div>
+<!-- Switch Pestañas Modo Asistido / Modo Director -->
+<div class="grid grid-cols-2 gap-2 pt-1" data-purpose="story-mode-switch">
+<button class="py-2.5 px-3 rounded-t-2xl font-black text-xs uppercase tracking-wide border-2 border-black shadow-comic-sm bg-comic-neon text-black transition-colors" id="tab-modo-asistido" onclick="setStoryMode('asistido')" type="button">
+            MODO ASISTIDO
+          </button>
+<button class="py-2.5 px-3 rounded-t-2xl font-black text-xs uppercase tracking-wide border-2 border-neutral-700 bg-[#250045] text-white/50 transition-colors" id="tab-modo-director" onclick="setStoryMode('director')" type="button">
+            MODO DIRECTOR
+          </button>
+</div>
+<!-- Contenedor General de Historia -->
+<div class="bg-[#1b0133] p-4 rounded-3xl border-2 border-white shadow-comic-md -mt-2 space-y-3">
+<p class="text-center text-xs font-black text-white px-2 leading-tight">
+            Describe los puntos principales de la trama, el escenario y las acciones de los personajes. La IA ayudará a dividir esto en viñetas.
+          </p>
+<!-- VISTA: Modo Asistido -->
+<div class="pt-1" id="view-modo-asistido">
+<textarea class="w-full bg-white text-black font-medium text-xs p-3.5 rounded-2xl border-2 border-black shadow-comic-sm focus:outline-none placeholder-black/50 leading-relaxed" placeholder="Ej: El héroe entra a la cueva oscura buscando el artefacto perdido. De repente, una sombra salta desde arriba..." rows="8">En un callejón cibernético de Neo-Tokio iluminado con carteles neón, Cyber-Pug y Robo-Cat descubren una cápsula misteriosa que contiene el último código de seguridad de la ciudad. Una horda de drones vigilantes aparece en el aire para recuperarlo.</textarea>
+</div>
+<!-- VISTA: Modo Director (3 viñetas guiadas) -->
+<div class="hidden space-y-3 pt-1" id="view-modo-director">
+<div>
+<span class="block text-white font-black text-xs uppercase mb-1">VIÑETA 1</span>
+<textarea class="w-full bg-white text-black font-medium text-xs p-2.5 rounded-xl border-2 border-black shadow-comic-sm focus:outline-none" placeholder="Ej: El héroe entra a la cueva oscura buscando el artefacto perdido..." rows="2">Cyber-Pug husmea un contenedor holográfico entre las sombras del callejón húmedo.</textarea>
+</div>
+<div>
+<span class="block text-white font-black text-xs uppercase mb-1">VIÑETA 2</span>
+<textarea class="w-full bg-white text-black font-medium text-xs p-2.5 rounded-xl border-2 border-black shadow-comic-sm focus:outline-none" placeholder="Ej: De repente, una sombra salta desde arriba..." rows="2">Robo-Cat activa su escáner óptico y detecta tres drones de combate aproximándose a toda velocidad.</textarea>
+</div>
+<div>
+<span class="block text-white font-black text-xs uppercase mb-1">VIÑETA 3</span>
+<textarea class="w-full bg-white text-black font-medium text-xs p-2.5 rounded-xl border-2 border-black shadow-comic-sm focus:outline-none" placeholder="Ej: Comienza el combate decisivo..." rows="2">Ambos héroes saltan espalda con espalda desplegando sus escudos iónicos con expresión desafiante.</textarea>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Step5 -->
+<!-- ========================================== -->
+<!-- PASO 6: FICHA TÉCNICA (Ref: IMAGE_13)      -->
+<!-- ========================================== -->
+<!-- BEGIN: Step6 -->
+<section class="step-content hidden space-y-4" id="step-6">
+<div class="text-center pt-2">
+<h1 class="text-comic-magenta font-black text-2xl uppercase tracking-tight">FICHA TÉCNICA</h1>
+<p class="text-xs text-white/80 font-medium px-4 mt-1 leading-snug">
+            Revisa los detalles antes de desatar la magia.
+          </p>
+</div>
+<!-- Tarjetas resumen con lápiz de edición interactivo -->
+<div class="space-y-3 pt-1" data-purpose="summary-cards">
+<!-- Género -->
+<div class="bg-[#1b0133] rounded-2xl border-2 border-white/60 p-3.5 flex items-center justify-between shadow-comic-sm">
+<div class="flex items-center space-x-3">
+<span class="text-comic-pink text-2xl font-black">⚔️</span>
+<div>
+<span class="block text-[10px] text-white/60 font-black uppercase">GÉNERO</span>
+<span class="text-comic-pink font-black text-sm uppercase tracking-wide" id="summary-genre">Acción</span>
+</div>
+</div>
+<button aria-label="Editar Género" class="p-2 text-comic-cyan hover:text-white transition-colors" onclick="goToStep(1)" type="button">
+<svg class="w-6 h-6 stroke-[2.3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Estilo -->
+<div class="bg-[#1b0133] rounded-2xl border-2 border-white/60 p-3.5 flex items-center justify-between shadow-comic-sm">
+<div class="flex items-center space-x-3">
+<span class="text-comic-pink text-2xl font-black">🎨</span>
+<div>
+<span class="block text-[10px] text-white/60 font-black uppercase">ESTILO</span>
+<span class="text-comic-pink font-black text-sm uppercase tracking-wide" id="summary-style">Pop Art Brutal</span>
+</div>
+</div>
+<button aria-label="Editar Estilo" class="p-2 text-comic-cyan hover:text-white transition-colors" onclick="goToStep(2)" type="button">
+<svg class="w-6 h-6 stroke-[2.3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Personajes -->
+<div class="bg-[#1b0133] rounded-2xl border-2 border-white/60 p-3.5 flex items-center justify-between shadow-comic-sm">
+<div class="flex items-center space-x-3">
+<span class="text-comic-pink text-2xl font-black">👥</span>
+<div>
+<span class="block text-[10px] text-white/60 font-black uppercase">PERSONAJES</span>
+<span class="text-comic-pink font-black text-sm uppercase tracking-wide" id="summary-characters">Cyber-Pug &amp; Robo-Cat</span>
+</div>
+</div>
+<button aria-label="Editar Personajes" class="p-2 text-comic-cyan hover:text-white transition-colors" onclick="goToStep(3)" type="button">
+<svg class="w-6 h-6 stroke-[2.3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Formato -->
+<div class="bg-[#1b0133] rounded-2xl border-2 border-white/60 p-3.5 flex items-center justify-between shadow-comic-sm">
+<div class="flex items-center space-x-3">
+<span class="text-comic-pink text-2xl font-black">📱</span>
+<div>
+<span class="block text-[10px] text-white/60 font-black uppercase">FORMATO</span>
+<span class="text-comic-pink font-black text-sm uppercase tracking-wide" id="summary-format">Webtoon Vertical</span>
+</div>
+</div>
+<button aria-label="Editar Formato" class="p-2 text-comic-cyan hover:text-white transition-colors" onclick="goToStep(4)" type="button">
+<svg class="w-6 h-6 stroke-[2.3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- Botón Gran Acción Final -->
+<div class="pt-4">
+<a href="perfil.html" class="w-full bg-comic-neon hover:bg-emerald-400 text-black font-black text-lg py-4 px-6 rounded-2xl border-3 border-black shadow-comic-lg flex items-center justify-center space-x-3 transition-transform active:translate-y-1 active:shadow-comic-sm uppercase tracking-wide"><svg class="w-7 h-7 fill-black" viewBox="0 0 24 24"><path d="M7.5 5.6L10 7 8.6 4.5 10 2 7.5 3.4 5 2l1.4 2.5L5 7zm12 9.8L17 14l1.4 2.5L17 19l2.5-1.4L22 19l-1.4-2.5L22 14zM22 2l-2.5 1.4L17 2l1.4 2.5L17 7l2.5-1.4L22 7l-1.4-2.5zm-7.63 5.29c-.39-.39-1.02-.39-1.41 0L1.29 18.96c-.39.39-.39 1.02 0 1.41l2.34 2.34c.39.39 1.02.39 1.41 0L16.7 11.05c.39-.39.39-1.02 0-1.41l-2.33-2.35zm-1.03 5.46l-1.41-1.41 1.41-1.41 1.41 1.41-1.41 1.41z"></path></svg><span class="">CREAR MI COMIC!</span></a>
+</div>
+</section>
+<!-- END: Step6 -->
+<!-- BEGIN: ActionButtonsGroup -->
+<!-- Barra inferior de acciones (Volver / Siguiente) -->
+<div class="pt-6 pb-2 flex justify-center" id="navigation-buttons-bar">
+<!-- Botón Volver -->
+<button class="bg-[#cccccc] hover:bg-neutral-300 text-neutral-800 font-black text-sm uppercase py-3.5 px-4 rounded-xl border-2 border-black shadow-comic-md transition-transform active:translate-y-0.5 hidden" id="btn-back" onclick="if (currentStep &gt; 1) { prevStep(); } else { window.location.href = 'index.html'; }" type="button">
+          VOLVER
+        </button>
+<!-- Botón Siguiente -->
+<button class="w-full bg-comic-neon hover:bg-emerald-400 text-black font-black text-sm uppercase py-4 px-6 rounded-2xl border-2 border-black shadow-comic-md transition-transform active:translate-y-0.5 tracking-wider" id="btn-next" onclick="nextStep()" type="button">
+          SIGUIENTE
+        </button>
+</div>
+<!-- END: ActionButtonsGroup -->
+</main>
+<!-- BEGIN: PersistentBottomNav -->
+<!-- Menú inferior persistente tipo App Cómic -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-[440px] mx-auto bg-[#150024] border-t-2 border-black px-4 py-2 items-center justify-around z-40 shadow-[0_-4px_10px_rgba(0,0,0,0.5)] grid-cols-4 grid" data-purpose="mobile-bottom-bar"><a class="flex flex-col items-center gap-1 group text-purple-400 hover:text-comic-cyan transition-colors" href="index.html"><svg class="w-5 h-5 stroke-[2.2] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="text-[10px] font-extrabold tracking-tight">Inicio</span></a><a class="flex flex-col items-center gap-1 group text-purple-400 hover:text-comic-pink transition-colors" href="catalogo.html"><svg class="w-5 h-5 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"></path></svg><span class="text-[10px] font-extrabold tracking-tight">Catálogo</span></a><a class="flex flex-col items-center gap-1 text-comic-pink group drop-shadow-[1px_1px_0px_#000]" href="lab.html"><svg class="w-5 h-5 stroke-[2.2] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="text-[10px] font-black tracking-tight text-comic-pink">Lab</span></a><a class="flex flex-col items-center gap-1 group text-purple-400 hover:text-comic-cyan transition-colors" href="perfil.html"><svg class="w-5 h-5 stroke-[2.2] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="text-[10px] font-extrabold tracking-tight">Perfil</span></a></nav>
+<!-- END: PersistentBottomNav -->
+</div>
+<!-- BEGIN: InteractiveStepLogic -->
+<script data-purpose="step-navigation-logic">
+    let currentStep = 1;
+    const totalSteps = 6;
+
+    // Estado seleccionado para la ficha técnica
+    const comicData = {
+      genre: "Acción / Sci-Fi",
+      style: "Comic Clásico",
+      characters: "Cyber-Pug & Robo-Cat",
+      format: "Webtoon Vertical",
+      panels: 4
+    };
+
+    function updateStepUI() {
+      // 1. Mostrar solo el paso actual
+      for (let i = 1; i <= totalSteps; i++) {
+        const stepEl = document.getElementById(`step-${i}`);
+        if (stepEl) {
+          if (i === currentStep) {
+            stepEl.classList.remove('hidden');
+          } else {
+            stepEl.classList.add('hidden');
+          }
+        }
+      }
+
+      // 2. Actualizar barra segmentada de progreso
+      const indicators = document.querySelectorAll('[data-step-indicator]');
+      indicators.forEach((bar, idx) => {
+        const stepNumber = idx + 1;
+        if (stepNumber <= currentStep) {
+          bar.className = 'cursor-pointer h-full rounded-sm bg-comic-magenta transition-colors border border-black/40';
+        } else {
+          bar.className = 'cursor-pointer h-full rounded-sm bg-white transition-colors border border-black/40';
+        }
+      });
+
+      // 3. Actualizar texto de progreso
+      const badge = document.getElementById('step-badge');
+      if (badge) {
+        badge.innerText = `${currentStep}/${totalSteps}`;
+      }
+
+      // 4. Adaptar barra de botones
+      const btnBack = document.getElementById('btn-back');
+      const btnNext = document.getElementById('btn-next');
+      const navBar = document.getElementById('navigation-buttons-bar');
+
+      if (currentStep === 1) {
+        // En el paso 1 el botón Siguiente ocupa ancho completo (o Volver oculto como en Figma original)
+        btnBack.classList.add('hidden');
+        navBar.className = 'pt-6 pb-2 flex justify-center';
+        btnNext.className = 'w-full bg-comic-neon hover:bg-emerald-400 text-black font-black text-sm uppercase py-4 px-6 rounded-2xl border-2 border-black shadow-comic-md transition-transform active:translate-y-0.5 tracking-wider';
+      } else if (currentStep === totalSteps) {
+        // En el paso 6 (Ficha Técnica) se oculta la barra inferior estándar porque tiene el botón 'CREAR MI CÓMIC'
+        navBar.classList.add('hidden');
+      } else {
+        btnBack.classList.remove('hidden');
+        navBar.classList.remove('hidden');
+        navBar.className = 'pt-6 pb-2 grid grid-cols-2 gap-4';
+        btnNext.className = 'bg-comic-neon hover:bg-emerald-400 text-black font-black text-sm uppercase py-3.5 px-4 rounded-xl border-2 border-black shadow-comic-md transition-transform active:translate-y-0.5 tracking-wider';
+      }
+
+      // 5. Scroll arriba con suavidad al cambiar de paso
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goToStep(step) {
+      if (step >= 1 && step <= totalSteps) {
+        currentStep = step;
+        updateStepUI();
+      }
+    }
+
+    function nextStep() {
+      if (currentStep < totalSteps) {
+        currentStep++;
+        updateStepUI();
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 1) {
+        currentStep--;
+        updateStepUI();
+      }
+    }
+
+    // Selección interactiva en Paso 1 (Géneros)
+    function selectGenre(button, genreName) {
+      document.querySelectorAll('.genre-card').forEach(card => {
+        card.classList.remove('ring-4', 'ring-white', 'scale-105');
+      });
+      button.classList.add('ring-4', 'ring-white', 'scale-105');
+      comicData.genre = genreName;
+      document.getElementById('summary-genre').innerText = genreName;
+    }
+
+    // Selección interactiva en Paso 2 (Estilo de dibujo)
+    function selectStyleCard(card, styleName) {
+      document.querySelectorAll('.style-card').forEach(c => {
+        c.classList.remove('border-comic-pink');
+        c.classList.add('border-black');
+        const chk = c.querySelector('.check-icon');
+        if (chk) {
+          chk.classList.add('hidden');
+          chk.classList.remove('flex');
+        }
+      });
+      card.classList.add('border-comic-pink');
+      card.classList.remove('border-black');
+      const currentCheck = card.querySelector('.check-icon');
+      if (currentCheck) {
+        currentCheck.classList.remove('hidden');
+        currentCheck.classList.add('flex');
+      }
+      comicData.style = styleName;
+      document.getElementById('summary-style').innerText = styleName;
+    }
+
+    // Selección de paleta Paso 2
+    function selectPalette(option, name) {
+      document.querySelectorAll('.palette-option').forEach(p => {
+        p.classList.remove('bg-[#e60067]', 'text-white');
+        p.classList.add('bg-white');
+        const text = p.querySelector('p');
+        if (text) text.className = 'text-center text-black text-[11px] font-black uppercase tracking-wider';
+        const chk = p.querySelector('.palette-check');
+        if (chk) chk.classList.add('hidden');
+      });
+      option.classList.add('bg-[#e60067]');
+      option.classList.remove('bg-white');
+      const text = option.querySelector('p');
+      if (text) text.className = 'text-center text-white text-[11px] font-black uppercase tracking-wider';
+      const check = option.querySelector('.palette-check');
+      if (check) check.classList.remove('hidden');
+    }
+
+    // Selección de tarjetas formato Paso 4
+    function selectFormatCard(card, formatName) {
+      document.querySelectorAll('.format-card').forEach(c => {
+        c.classList.add('opacity-80');
+        const chk = c.querySelector('.format-check');
+        if (chk) chk.classList.add('hidden');
+      });
+      card.classList.remove('opacity-80');
+      const check = card.querySelector('.format-check');
+      if (check) check.classList.remove('hidden');
+      comicData.format = formatName;
+      document.getElementById('summary-format').innerText = formatName;
+    }
+
+    // Selección de viñetas Paso 4
+    function selectPanelCount(btn, count) {
+      document.querySelectorAll('.panel-btn').forEach(b => {
+        b.className = 'panel-btn h-16 rounded-2xl bg-[#5d4f72] text-white/70 font-black text-3xl border-2 border-black shadow-comic-sm flex items-center justify-center transition-all';
+        const chk = b.querySelector('span');
+        if (chk) chk.remove();
+      });
+      btn.className = 'panel-btn relative h-16 rounded-2xl bg-comic-pink text-white font-black text-3xl border-2 border-black shadow-comic-sm flex items-center justify-center transition-all ring-2 ring-comic-yellow';
+      btn.innerHTML = `${count} <span class="absolute -top-1.5 -right-1.5 bg-comic-magenta text-white w-5 h-5 rounded-full flex items-center justify-center border border-black text-[10px]">✓</span>`;
+      comicData.panels = count;
+    }
+
+    // Alternar entre Modo Asistido y Modo Director en Paso 5
+    function setStoryMode(mode) {
+      const tabAsistido = document.getElementById('tab-modo-asistido');
+      const tabDirector = document.getElementById('tab-modo-director');
+      const viewAsistido = document.getElementById('view-modo-asistido');
+      const viewDirector = document.getElementById('view-modo-director');
+
+      if (mode === 'asistido') {
+        tabAsistido.className = 'py-2.5 px-3 rounded-t-2xl font-black text-xs uppercase tracking-wide border-2 border-black shadow-comic-sm bg-comic-neon text-black transition-colors';
+        tabDirector.className = 'py-2.5 px-3 rounded-t-2xl font-black text-xs uppercase tracking-wide border-2 border-neutral-700 bg-[#250045] text-white/50 transition-colors';
+        viewAsistido.classList.remove('hidden');
+        viewDirector.classList.add('hidden');
+      } else {
+        tabDirector.className = 'py-2.5 px-3 rounded-t-2xl font-black text-xs uppercase tracking-wide border-2 border-black shadow-comic-sm bg-comic-neon text-black transition-colors';
+        tabAsistido.className = 'py-2.5 px-3 rounded-t-2xl font-black text-xs uppercase tracking-wide border-2 border-neutral-700 bg-[#250045] text-white/50 transition-colors';
+        viewDirector.classList.remove('hidden');
+        viewAsistido.classList.add('hidden');
+      }
+    }
+
+    // Acción Crear Comic final
+    function triggerComicCreation() {
+      alert("🚀 ¡Increíble! Comicópolis está generando tu cómic con IA: \n\n• Género: " + comicData.genre + "\n• Estilo: " + comicData.style + "\n• Personajes: " + comicData.characters + "\n• Formato: " + comicData.format);
+    }
+
+    // Inicializar vista al cargar
+    document.addEventListener('DOMContentLoaded', () => {
+      updateStepUI();
+    });
+  </script>
+<!-- END: InteractiveStepLogic -->
+
+
+
+
+</body></html>

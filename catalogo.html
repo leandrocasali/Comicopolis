@@ -1,0 +1,597 @@
+<!DOCTYPE html><html lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Comicópolis - Catálogo</title>
+<!-- Google Fonts: Space Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            comic: ['"Space Grotesk"', 'sans-serif'],
+          },
+          colors: {
+            comicDark: '#200035',
+            comicDarker: '#150024',
+            comicCyan: '#00c7f2',
+            comicPink: '#e62e8b',
+            comicYellow: '#ffd000',
+            comicGreen: '#00e676',
+            comicPurple: '#8b5cf6',
+          },
+          boxShadow: {
+            'pop': '2px 2px 0px #000000',
+            'pop-lg': '4px 4px 0px #000000',
+            'pop-sm': '1.5px 1.5px 0px #000000',
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom CSS for Comic Theme Styles -->
+<style data-purpose="halftone-background">
+    body {
+      background-color: #200035;
+      background-image: radial-gradient(rgba(230, 46, 139, 0.12) 1.5px, transparent 1.5px),
+                        radial-gradient(rgba(0, 199, 242, 0.08) 1.5px, #200035 1.5px);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
+      font-family: 'Space Grotesk', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
+<style data-purpose="component-styles">
+    /* Hide scrollbar for category list */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Comic badge border shape */
+    .comic-border {
+      border: 2px solid #000000;
+    }
+    
+    .comic-badge-active {
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0px #000000 !important;
+    }
+
+    /* Card image ratio */
+    .comic-cover {
+      aspect-ratio: 2 / 3.05;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body class="text-white min-h-screen flex flex-col justify-between max-w-md mx-auto relative overflow-x-hidden border-x border-purple-950/40 selection:bg-comicPink selection:text-white">
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-30 w-full bg-[#16022e]/95 backdrop-blur-md border-b-4 border-black px-4 py-2.5 flex items-center justify-between pointer-events-auto">
+<!-- Left balancing spacer to keep logo centered -->
+<div class="w-10"></div>
+<!-- Centered Logo -->
+<div class="flex-1 flex justify-center items-center"><a href="index.html" class="flex items-center justify-center"><img alt="Comicópolis" class="h-10 w-auto object-contain select-none drop-shadow-[2px_2px_0px_#000]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHc4JoCKaDv3TCss3GiMYLJFeXVMY0WCHfbvCd2WIiRJ_tYLu6i4asAAfj6C5iFAiEeS44n0PvaKofgKMscub2XYfm4MfSjYYCqNcROzQLMjt4mWsNj-TahsQJT1QJf7qE0Pv07_Hwky5d3F-gHVF3bIpm75P4ikM9r-j91j5kn0EQks-APjAufMM9PLMXIareHNDl2A7_bmAgO-Q3pPr8n0AIkk3h3a9fwRv94rg6zP3Sh9vj0Md7o_2AaqBJD-Oz_g"></a></div>
+<!-- Right Action Buttons -->
+<div class="flex items-center gap-2">
+<button aria-label="Buscar" class="w-9 h-9 bg-[#00e5ff] text-black flex items-center justify-center rounded-lg border-2 border-black shadow-[2px_2px_0px_#000] active:translate-y-0.5 hover:scale-105 transition">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+</button>
+<button aria-label="Menú" class="w-9 h-9 bg-[#ffe600] text-black flex items-center justify-center rounded-lg border-2 border-black shadow-[2px_2px_0px_#000] active:translate-y-0.5 hover:scale-105 transition">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
+</button>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: MainContent -->
+<main class="flex-1 px-3 pb-32" data-purpose="catalog-content">
+<!-- Title and Filter Button Row -->
+<section class="flex items-center justify-between mt-3 mb-4 px-1" data-purpose="title-and-actions">
+<h1 class="text-3xl font-extrabold text-[#e62e8b] tracking-tight drop-shadow-[1.5px_1.5px_0px_#000]">
+        Catálogo
+      </h1>
+<!-- Filter / Sort Settings Action Button -->
+<button aria-label="Abrir opciones de filtro y orden" class="bg-[#150024] hover:bg-[#2e004a] text-comicCyan p-2 rounded-xl comic-border shadow-pop active:translate-y-0.5 transition-all flex items-center gap-1" id="filter-modal-trigger">
+<svg class="w-6 h-6 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle cx="8" cy="6" fill="#00c7f2" r="2" stroke="currentColor" stroke-width="2"></circle>
+<circle cx="16" cy="12" fill="#00c7f2" r="2" stroke="currentColor" stroke-width="2"></circle>
+<circle cx="10" cy="18" fill="#00c7f2" r="2" stroke="currentColor" stroke-width="2"></circle>
+</svg>
+</button>
+</section>
+<!-- Horizontal Category Chips Carousel -->
+<section class="mb-4 overflow-x-auto no-scrollbar -mx-3 px-3 py-1 flex items-center gap-2" data-purpose="category-pills">
+<!-- Pill: ALL -->
+<button class="category-btn comic-border shadow-pop bg-white text-black font-extrabold text-xs px-3.5 py-1.5 rounded-full uppercase flex items-center gap-1 whitespace-nowrap active:scale-95 transition-all comic-badge-active" data-category="all">
+<span class="">🌟</span> TODOS
+      </button>
+<!-- Pill: ACCIÓN -->
+<button class="category-btn comic-border shadow-pop bg-[#00c7f2] text-black font-extrabold text-xs px-3.5 py-1.5 rounded-full uppercase flex items-center gap-1 whitespace-nowrap active:scale-95 transition-all" data-category="accion">
+<span class="">⚡</span> ACCIÓN
+      </button>
+<!-- Pill: FANTASÍA -->
+<button class="category-btn comic-border shadow-pop bg-[#e62e8b] text-black font-extrabold text-xs px-3.5 py-1.5 rounded-full uppercase flex items-center gap-1 whitespace-nowrap active:scale-95 transition-all" data-category="fantasia">
+<span class="">✨</span> FANTASÍA
+      </button>
+<!-- Pill: ROMANCE -->
+<button class="category-btn comic-border shadow-pop bg-[#ffd000] text-black font-extrabold text-xs px-3.5 py-1.5 rounded-full uppercase flex items-center gap-1 whitespace-nowrap active:scale-95 transition-all" data-category="romance">
+<svg class="w-3.5 h-3.5 fill-black" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+        ROMANCE
+      </button>
+<!-- Pill: SCI-FI -->
+<button class="category-btn comic-border shadow-pop bg-[#00e676] text-black font-extrabold text-xs px-3.5 py-1.5 rounded-full uppercase flex items-center gap-1 whitespace-nowrap active:scale-95 transition-all" data-category="scifi">
+<span class="">🚀</span> SCI-FI
+      </button>
+<!-- Pill: TERROR -->
+<button class="category-btn comic-border shadow-pop bg-[#8b5cf6] text-black font-extrabold text-xs px-3.5 py-1.5 rounded-full uppercase flex items-center gap-1 whitespace-nowrap active:scale-95 transition-all" data-category="terror">
+<span class="">💀</span> TERROR
+      </button>
+</section>
+<!-- Secondary Sort & Filter Quick Bar -->
+<div class="flex items-center justify-between text-xs px-1 mb-3 text-purple-200/90 font-medium">
+<div class="flex items-center gap-1.5">
+<span class="text-comicPink font-bold">Orden:</span>
+<select class="bg-[#150024] text-xs font-semibold rounded-lg comic-border shadow-pop-sm px-2 py-1 focus:ring-1 focus:ring-comicPink text-white" id="sort-select">
+<option value="populares">Más Populares 🔥</option>
+<option value="recientes">Más Recientes ⚡</option>
+<option value="az">Alfabético (A-Z)</option>
+<option value="valorados">Mejor Valorados ⭐</option>
+</select>
+</div>
+<span class="text-[11px] font-bold tracking-wider text-comicCyan uppercase bg-purple-950/70 px-2 py-0.5 rounded border border-purple-800" id="comic-counter">
+        15 CÓMICS
+      </span>
+</div>
+<!-- BEGIN: ComicGrid -->
+<section class="grid grid-cols-3 gap-2.5 sm:gap-3" data-purpose="comics-catalog-grid" id="comics-grid"><!-- Comic Item 1 -->
+<article class="comic-card group flex flex-col cursor-pointer" data-category="terror scifi" data-rating="4.9" data-title="STAR WARS TALES FROM THE NIGHTLANDS" data-year="2023">
+<a href="comic-detalle.html" class="block group-hover:scale-[1.02] transition-transform duration-150">
+<div class="relative overflow-hidden rounded-xl comic-border shadow-pop bg-[#12001e]">
+<img alt="Star Wars Tales from the Nightlands" class="comic-cover w-full h-full object-cover group-hover:opacity-95" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUibqoeA-kbdaLY_T4HCnSohqfAGvGFDHLovkzCImLVvzjGeEmrqJPgNlWGGLG05XdzC9hI-WuRc4G0nCJd_AnPHSg3lc5Fb7M64Jx1y2qN2cLgxGm7QRLqEXopzXy9QxA61Oy8L-e7417Ks3b72_RbePwwJ0rhgeMbpPI4Cvg0UVW2Q1NU_GPUasEMljoiAnFa49fjmYCyAfpMsOWXiBs1RbWhAd3aWIngOwLXJpk_xTtNqKs34SyzXct9E2GIUmVajO9KWtxe6amug">
+<button aria-label="Favorito" class="fav-toggle-btn absolute top-1.5 right-1.5 bg-black/60 hover:bg-comicPink text-white p-1 rounded-full backdrop-blur-sm transition-colors">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+<span class="absolute bottom-1 left-1 bg-comicCyan text-black font-extrabold text-[9px] px-1 rounded uppercase tracking-wider">Sci-Fi</span>
+</div>
+<h3 class="comic-title mt-1.5 text-white font-extrabold text-[11px] leading-[13px] uppercase tracking-tight line-clamp-2">
+          STAR WARS TALES FROM THE NIGHTLANDS
+        </h3>
+</a>
+</article>
+<!-- Comic Item 2 -->
+<article class="comic-card group flex flex-col cursor-pointer" data-category="accion" data-rating="4.7" data-title="CAPTAIN GRAVITY ONE TRUE HERO" data-year="2022">
+<a href="comic-detalle.html" class="block group-hover:scale-[1.02] transition-transform duration-150">
+<div class="relative overflow-hidden rounded-xl comic-border shadow-pop bg-[#12001e]">
+<img alt="Captain Gravity One True Hero" class="comic-cover w-full h-full object-cover group-hover:opacity-95" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkI7rmjnslGRktFYkEWFT_Wwr257nbe3WQONFlahUqsL77b7SV5lGYrK6sCOvHm7eurpWqwwkpIRNTYD_XhvuyYzUh94pcGBBE3LoZvvfGvpJvRbBmkBEFXBbEUCkaP5ctYlDjm6j_zb844NIonoiiAncX96XkYz94qJCfJT9EdQR5vtBQVd57BZzvkbgsDtWU60qVUW5B7fZAsknSC-1tmvBogLioL_Jatf8WUq0ZO5PLSFUxGnV43jcU894TMs2733olYB4TS_jgUw">
+<button aria-label="Favorito" class="fav-toggle-btn absolute top-1.5 right-1.5 bg-black/60 hover:bg-comicPink text-white p-1 rounded-full backdrop-blur-sm transition-colors">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+<span class="absolute bottom-1 left-1 bg-comicPink text-black font-extrabold text-[9px] px-1 rounded uppercase tracking-wider">Acción</span>
+</div>
+<h3 class="comic-title mt-1.5 text-white font-extrabold text-[11px] leading-[13px] uppercase tracking-tight line-clamp-2">
+          CAPTAIN GRAVITY ONE TRUE HERO
+        </h3>
+</a>
+</article>
+<!-- Comic Item 3 -->
+<article class="comic-card group flex flex-col cursor-pointer" data-category="scifi terror" data-rating="4.8" data-title="EVE OF EXTINCTION" data-year="2024">
+<a href="comic-detalle.html" class="block group-hover:scale-[1.02] transition-transform duration-150">
+<div class="relative overflow-hidden rounded-xl comic-border shadow-pop bg-[#12001e]">
+<img alt="Eve of Extinction" class="comic-cover w-full h-full object-cover group-hover:opacity-95" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEKCryslfy3G84mhlSab2_hqldmGlfuac9lXjOYjWEXvb7GSEUK6bQeBN5MR1yy2-TjB0XXGdbo3f-IuXwxrbNivbm1uUaJrmDat_zhPHM9JmpYogmO6mwpSJznp36h4rMf2xFbMwwCWz04_5WsF83XDMS0aCburRENwe6y7tt105r12HGz5Pm-RDf-koCykdsNBXgIQNwPplaTz9QlIdhQu6ZGGm45AtTrwnhQZhi4PlBX3revijxI8daqHWJ1dnYtH8UQzvX_m4pZw">
+<button aria-label="Favorito" class="fav-toggle-btn absolute top-1.5 right-1.5 bg-black/60 hover:bg-comicPink text-white p-1 rounded-full backdrop-blur-sm transition-colors">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+<span class="absolute bottom-1 left-1 bg-comicYellow text-black font-extrabold text-[9px] px-1 rounded uppercase tracking-wider">Top</span>
+</div>
+<h3 class="comic-title mt-1.5 text-white font-extrabold text-[11px] leading-[13px] uppercase tracking-tight line-clamp-2">
+          EVE OF EXTINCTION
+        </h3>
+</a>
+</article>
+<!-- Comic Item 4 -->
+<article class="comic-card group flex flex-col cursor-pointer" data-category="terror" data-rating="4.5" data-title="EVERYTHING DEAD &amp; DYING" data-year="2021">
+<a href="comic-detalle.html" class="block group-hover:scale-[1.02] transition-transform duration-150">
+<div class="relative overflow-hidden rounded-xl comic-border shadow-pop bg-[#12001e]">
+<img alt="Everything Dead &amp; Dying" class="comic-cover w-full h-full object-cover group-hover:opacity-95" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhAhcYD66XIqq2aOiT8L7UzkctQEpUWpIrF6nPw4XfB5ryAEnSJlAPUT4WhdhFu7SdMuIEy9ZYaH0s7AIIeJokwn0E9Pb2aEvve5JQpSyzC3QgDUh7FoDKDO_7BlJyGudoy_ARbhHpsPsyvRFQLAylXlt4_9k1kZEJ-0esNjY87CuLJfv8wdYf-5ZwSNNkEIdvLxCidjA92YqkdtuDx8GAaM1SW_qnEicO0Ju_3MoS7B_0UgBvq76Te34qj8ETNWiIac37rgLHN3-uOA">
+<button aria-label="Favorito" class="fav-toggle-btn absolute top-1.5 right-1.5 bg-black/60 hover:bg-comicPink text-white p-1 rounded-full backdrop-blur-sm transition-colors">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+<span class="absolute bottom-1 left-1 bg-comicGreen text-black font-extrabold text-[9px] px-1 rounded uppercase tracking-wider">Indie</span>
+</div>
+<h3 class="comic-title mt-1.5 text-white font-extrabold text-[11px] leading-[13px] uppercase tracking-tight line-clamp-2">
+          EVERYTHING DEAD &amp; DYING
+        </h3>
+</a>
+</article>
+<!-- Comic Item 5 -->
+<article class="comic-card group flex flex-col cursor-pointer" data-category="fantasia terror" data-rating="4.6" data-title="EXQUISITE CORPSES VO1" data-year="2023">
+<a href="comic-detalle.html" class="block group-hover:scale-[1.02] transition-transform duration-150">
+<div class="relative overflow-hidden rounded-xl comic-border shadow-pop bg-[#12001e]">
+<img alt="Exquisite Corpses V01" class="comic-cover w-full h-full object-cover group-hover:opacity-95" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvLjBjFPUQZNXca1Or-wc-jj1i4h978ZnUOehOrO1T3bCeCRSvWYJF0RZj_NaZVkqNIn_EhyYnfwbGr0FdR0pDbPnm-WWCMtKs7yqanCkhOchAzUpo44eyNchYvgH8gz6koCsrf-6g5nus25gew8_vV5jfp-uIwsfE9KflPRyVyy_x07yq1-MvcO7LbSvJiz9zQT4XC4lg71sLSUt4hqH0BDErwoacmtdqpuYiUDJib39ZYHf9wcGKtKbdcnIMzJGi8Y2HzbhQTA-PIw">
+<button aria-label="Favorito" class="fav-toggle-btn absolute top-1.5 right-1.5 bg-black/60 hover:bg-comicPink text-white p-1 rounded-full backdrop-blur-sm transition-colors">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+<span class="absolute bottom-1 left-1 bg-comicPurple text-black font-extrabold text-[9px] px-1 rounded uppercase tracking-wider">Cult</span>
+</div>
+<h3 class="comic-title mt-1.5 text-white font-extrabold text-[11px] leading-[13px] uppercase tracking-tight line-clamp-2">
+          EXQUISITE CORPSES VO1
+        </h3>
+</a>
+</article>
+<!-- Comic Item 6 -->
+<article class="comic-card group flex flex-col cursor-pointer" data-category="scifi" data-rating="4.4" data-title="EXTINCTIONS TWILIGHT OF THE SPECIES" data-year="2022">
+<a href="comic-detalle.html" class="block group-hover:scale-[1.02] transition-transform duration-150">
+<div class="relative overflow-hidden rounded-xl comic-border shadow-pop bg-[#12001e]">
+<img alt="Extinctions Twilight of the Species" class="comic-cover w-full h-full object-cover group-hover:opacity-95" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBslrKS15It6ecdR0iSGgadg7_OL-1EB2Z3UXJysNbM9Rzxlrp6nWWH8eU1wrkjKb_1ug-hve5KnTLzXxWaf-fbgDa0JccI1PDYqzzDmIv08EursitXiYgHCJ0Cq0klKBfihHC_sY2DazGE4GUWxqCZ746iZG0bxCaLoUWscheHAJuFgpr4P3a0M0BcXE2cRpjwcGTEOcs1vkqoI4psMxNf-bUIUU-hoqCs24mcaQNDxJhxSCmiHo9Tf8G_oHvpEDjS5fCY0vxSif9TUQ">
+<button aria-label="Favorito" class="fav-toggle-btn absolute top-1.5 right-1.5 bg-black/60 hover:bg-comicPink text-white p-1 rounded-full backdrop-blur-sm transition-colors">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+<span class="absolute bottom-1 left-1 bg-comicCyan text-black font-extrabold text-[9px] px-1 rounded uppercase tracking-wider">Sci-Fi</span>
+</div>
+<h3 class="comic-title mt-1.5 text-white font-extrabold text-[11px] leading-[13px] uppercase tracking-tight line-clamp-2">
+          EXTINCTIONS TWILIGHT OF THE SPECIES
+        </h3>
+</a>
+</article>
+<!-- Comic Item 7 -->
+<article class="comic-card group flex flex-col cursor-pointer" data-category="terror" data-rating="4.3" data-title="GORE SHRIEK" data-year="2020">
+<a href="comic-detalle.html" class="block group-hover:scale-[1.02] transition-transform duration-150">
+<div class="relative overflow-hidden rounded-xl comic-border shadow-pop bg-[#12001e]">
+<img alt="Gore Shriek" class="comic-cover w-full h-full object-cover group-hover:opacity-95" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3R1qcCTJmX6mNm_J0rCZ36cIUOW0v3b7GdpGb6p6mrrz2lHDe17q0lRz5D-nMf2yc454o7Ax3HahBRnK0YNn_OnaVezDC-TO1o1o1IbJGqLAJ2IadzXtmERA4aEdAI6sQUr1ixPOwIECRo-1K0_OOoppnDwiy2azzsKm19vVfBF9vXWftp84ViIkWbErYchwdCFJRg6VrPqERjmihbIz2Ds10FLH13dwJdXhL4owPrAKAcDu0r1bHTitkrEDJufezSA1P2BaAO7UFkg">
+<button aria-label="Favorito" class="fav-toggle-btn absolute top-1.5 right-1.5 bg-black/60 hover:bg-comicPink text-white p-1 rounded-full backdrop-blur-sm transition-colors">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+<span class="absolute bottom-1 left-1 bg-red-500 text-black font-extrabold text-[9px] px-1 rounded uppercase tracking-wider">+18</span>
+</div>
+<h3 class="comic-title mt-1.5 text-white font-extrabold text-[11px] leading-[13px] uppercase tracking-tight line-clamp-2">
+          GORE SHRIEK
+        </h3>
+</a>
+</article>
+<!-- Comic Item 8 -->
+<article class="comic-card group flex flex-col cursor-pointer" data-category="accion fantasia" data-rating="5.0" data-title="HARLEY QUINN X ELVIRA" data-year="2024">
+<a href="comic-detalle.html" class="block group-hover:scale-[1.02] transition-transform duration-150">
+<div class="relative overflow-hidden rounded-xl comic-border shadow-pop bg-[#12001e]">
+<img alt="Harley Quinn x Elvira" class="comic-cover w-full h-full object-cover group-hover:opacity-95" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYV3nYIHOH8JWzyAk28YiXX9cKRdaXAMdvbpuKmDUUNhKZlQz-Mll2T6dKGJCmOJd6OH76CqFH-W1pmExknECEdoE1oqToSbbb5LXit8Dg4IFr6SwbWeLlGWEEeipmJJNxzuXCimCh7wtBohx-dO1BeWg0frzAFXbu2u4q_sSQURcfg4McMGMFYERcBBurFaiPGLZllsR9TcF-wAcniq_jVj8rsDrTCKzYaMQZgxKJzyru5acebbBZQiQKF9kcSf1zmfgPdXY8-q9mBA">
+<button aria-label="Favorito" class="fav-toggle-btn absolute top-1.5 right-1.5 bg-black/60 hover:bg-comicPink text-white p-1 rounded-full backdrop-blur-sm transition-colors">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+<span class="absolute bottom-1 left-1 bg-comicPink text-black font-extrabold text-[9px] px-1 rounded uppercase tracking-wider">Popular</span>
+</div>
+<h3 class="comic-title mt-1.5 text-white font-extrabold text-[11px] leading-[13px] uppercase tracking-tight line-clamp-2">
+          HARLEY QUINN X ELVIRA
+        </h3>
+</a>
+</article>
+<!-- Comic Item 9 -->
+<article class="comic-card group flex flex-col cursor-pointer" data-category="terror" data-rating="4.8" data-title="IT KILLED EVERYONE BUT ME" data-year="2023">
+<a href="comic-detalle.html" class="block group-hover:scale-[1.02] transition-transform duration-150">
+<div class="relative overflow-hidden rounded-xl comic-border shadow-pop bg-[#12001e]">
+<img alt="It Killed Everyone But Me" class="comic-cover w-full h-full object-cover group-hover:opacity-95" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcFg5RFjSR3fYN6K2oQwnE_EIKvupP_N6vcPArg-j9GieQla_3MUhF9evz7X-7sCyTsrHGw5sIN1JtLTK7W20FxdRsNMNu7uOzNvf6LU-r_ql6F2ITPTR9NfEyMVM29ZS0UFNOw844dnkjWaCe9tfUd0ntw5VxQo6Gbg2KJFn9q66HTSH6xF7M2p5EXX1hr5R5EpbyRi2h8897eVHEXp_oZfiRDUKW-EfBKIofT129Vnmcc5vfQtt8eF347Rf6V9eaizHlum3xuA4EAw">
+<button aria-label="Favorito" class="fav-toggle-btn absolute top-1.5 right-1.5 bg-black/60 hover:bg-comicPink text-white p-1 rounded-full backdrop-blur-sm transition-colors">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+<span class="absolute bottom-1 left-1 bg-comicCyan text-black font-extrabold text-[9px] px-1 rounded uppercase tracking-wider">Nuevo</span>
+</div>
+<h3 class="comic-title mt-1.5 text-white font-extrabold text-[11px] leading-[13px] uppercase tracking-tight line-clamp-2">
+          IT KILLED EVERYONE BUT ME
+        </h3>
+</a>
+</article>
+<!-- Comic Item 10 -->
+<article class="comic-card group flex flex-col cursor-pointer" data-category="accion fantasia" data-rating="4.7" data-title="MASTERS OF THE UNIVERSE - ANDRA" data-year="2022">
+<a href="comic-detalle.html" class="block group-hover:scale-[1.02] transition-transform duration-150">
+<div class="relative overflow-hidden rounded-xl comic-border shadow-pop bg-[#12001e]">
+<img alt="Masters of the Universe - Andra" class="comic-cover w-full h-full object-cover group-hover:opacity-95" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfiKvxwunlUd7bBHkC6J7PH3EjGbnBKjsdCLHzn94nesHpfInHI-oWi4tQHr5Md8ZZwPek3anW34zchbwmTiqAAUFG-IzZE1cIE8GWd6btc8lPbFkiQpVbTOWpspiu3N7Wj8ZGBJ1P-NaUtIy3hxiBG1LNfup3dU9bdDosn2AJ_WK-Zr_QV3szfuKWl80SaCIlNhhkQLyNdYSt0u0fTYtX_I3m0cT1OrsqeCNkB9lklUtPjNqbjcU1vLqAQTTS0NWiH7qzjOfrIr-ZHA">
+<button aria-label="Favorito" class="fav-toggle-btn absolute top-1.5 right-1.5 bg-black/60 hover:bg-comicPink text-white p-1 rounded-full backdrop-blur-sm transition-colors">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+<span class="absolute bottom-1 left-1 bg-comicYellow text-black font-extrabold text-[9px] px-1 rounded uppercase tracking-wider">Épico</span>
+</div>
+<h3 class="comic-title mt-1.5 text-white font-extrabold text-[11px] leading-[13px] uppercase tracking-tight line-clamp-2">
+          MASTERS OF THE UNIVERSE - ANDRA
+        </h3>
+</a>
+</article>
+<!-- Comic Item 11 -->
+<article class="comic-card group flex flex-col cursor-pointer" data-category="fantasia romance" data-rating="4.9" data-title="SABRINA MAGIC UNLEASHED" data-year="2023">
+<a href="comic-detalle.html" class="block group-hover:scale-[1.02] transition-transform duration-150">
+<div class="relative overflow-hidden rounded-xl comic-border shadow-pop bg-[#12001e]">
+<img alt="Sabrina Magic Unleashed" class="comic-cover w-full h-full object-cover group-hover:opacity-95" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYPUVppUo8dmvCSbY0WwwAyzrjoO3sI9_KkU__FPi0wZcddlC1fXm1np7OWj2e6EQD7hwxMLX5mpyPNdrYNq3hKiD_eBWmb-V1B386iTRGRbe90y5RufAOhgf46K0IGinztAPCJFucaSs3H8f7LY4cMW2THtEUW1A4tuPE1VOm720XrwnNfM4nyj19_aeJDQgMRahuIo8iRIF9t-o50UmRDg0Y1OuFahXYt8zgtwQjEl0_rZJPhnohIAXxaHRwJVtWjCEiWLYlx98ybw">
+<button aria-label="Favorito" class="fav-toggle-btn absolute top-1.5 right-1.5 bg-black/60 hover:bg-comicPink text-white p-1 rounded-full backdrop-blur-sm transition-colors">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+<span class="absolute bottom-1 left-1 bg-comicPink text-black font-extrabold text-[9px] px-1 rounded uppercase tracking-wider">Magia</span>
+</div>
+<h3 class="comic-title mt-1.5 text-white font-extrabold text-[11px] leading-[13px] uppercase tracking-tight line-clamp-2">
+          SABRINA MAGIC UNLEASHED
+        </h3>
+</a>
+</article>
+<!-- Comic Item 12 -->
+<article class="comic-card group flex flex-col cursor-pointer" data-category="fantasia accion" data-rating="4.6" data-title="BACKWAYS 001- 005" data-year="2021">
+<a href="comic-detalle.html" class="block group-hover:scale-[1.02] transition-transform duration-150">
+<div class="relative overflow-hidden rounded-xl comic-border shadow-pop bg-[#12001e]">
+<img alt="Backways 001-005" class="comic-cover w-full h-full object-cover group-hover:opacity-95" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMfT1znCCrEp1luHa2JljWgLSbYXhCKotI_fm_dCmAsPUbThqTfWZfMdswyhU2ARxjSDAe_U-m8Oo2MRd4r_hfkhY-vOMEgyzuBFOT4N-Q3yKVn08sdDhk7NR4cfEqJMvAJmDqdhW8PmAZFuy23B-YNBJ_mk2QodS6Mz_Tfx6xjsY2peibz3PovEiTttR04DWMbLkFC-f4m-bCfspkX8m8vT-2Ibe8OqveaqaAQ7W8WRIxLZZQgGK-lXTw6IzDhb_bvxHDhhBGmV7jQg">
+<button aria-label="Favorito" class="fav-toggle-btn absolute top-1.5 right-1.5 bg-black/60 hover:bg-comicPink text-white p-1 rounded-full backdrop-blur-sm transition-colors">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+<span class="absolute bottom-1 left-1 bg-comicGreen text-black font-extrabold text-[9px] px-1 rounded uppercase tracking-wider">Completo</span>
+</div>
+<h3 class="comic-title mt-1.5 text-white font-extrabold text-[11px] leading-[13px] uppercase tracking-tight line-clamp-2">
+          BACKWAYS 001- 005
+        </h3>
+</a>
+</article>
+<!-- Comic Item 13 -->
+<article class="comic-card group flex flex-col cursor-pointer" data-category="accion terror" data-rating="4.9" data-title="BATMAN YEAR ONE" data-year="2024">
+<a href="comic-detalle.html" class="block group-hover:scale-[1.02] transition-transform duration-150">
+<div class="relative overflow-hidden rounded-xl comic-border shadow-pop bg-[#12001e]">
+<img alt="Batman Year One" class="comic-cover w-full h-full object-cover group-hover:opacity-95" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk9eYAvubUDcXO1z7EqULbX8c9IQ4JUzBwM_o6gEAK1JdmbPly35Ks6DyonG-cRwgn0bY3EsGBCiExjMWgWMIk4VE57d9iKTZm44fg6Thb2NO7vDLK8y6LebpshIqYSOy7qe_ploWIi4NITcKBTS9CIbsY1NLATQJiE7wNwg8gzEYLIBuznBPyOQSwYkNADdt819QtdL8DwA3QL69lDe0XJ_S7FeO0ZVlfj0ttFZduWQELq1_xTRIDKLc0PBvlmc9vFqZtnvND1Nk1JQ">
+<button aria-label="Favorito" class="fav-toggle-btn absolute top-1.5 right-1.5 bg-black/60 hover:bg-comicPink text-white p-1 rounded-full backdrop-blur-sm transition-colors">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+<span class="absolute bottom-1 left-1 bg-comicYellow text-black font-extrabold text-[9px] px-1 rounded uppercase tracking-wider">Clásico</span>
+</div>
+<h3 class="comic-title mt-1.5 text-white font-extrabold text-[11px] leading-[13px] uppercase tracking-tight line-clamp-2">
+          BATMAN YEAR ONE
+        </h3>
+</a>
+</article>
+<!-- Comic Item 14 -->
+<article class="comic-card group flex flex-col cursor-pointer" data-category="accion scifi" data-rating="4.8" data-title="SUPERMAN APOKOLIPS WAR" data-year="2023">
+<a href="comic-detalle.html" class="block group-hover:scale-[1.02] transition-transform duration-150">
+<div class="relative overflow-hidden rounded-xl comic-border shadow-pop bg-[#12001e]">
+<img alt="Superman Apokolips War" class="comic-cover w-full h-full object-cover group-hover:opacity-95" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARVG6Ze_zTPs17W5KSxuZRxmLc9_jCQJifl9NofC1lo5ONh-teYEPKZ7Soa8yFBbVxImbLRzyxFb3-7QReiguxFEY2d5lN1QpiisPrXQMTmy1XrlHahWH8J2Ba_N9jEKXKRcBhnIBqk8b8Dy3LEmBU4u9O1ALK0afW7jsImvLUBVHdNVYunxOrQyqHZjN8axmOOUY6rfc9v-VlCOIVeIXWxap3llJv7-MefQZRT0azN-UI-Fak5v2xqzKvujVDE0XVLTkkaFQgqhAbnQ">
+<button aria-label="Favorito" class="fav-toggle-btn absolute top-1.5 right-1.5 bg-black/60 hover:bg-comicPink text-white p-1 rounded-full backdrop-blur-sm transition-colors">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+<span class="absolute bottom-1 left-1 bg-comicCyan text-black font-extrabold text-[9px] px-1 rounded uppercase tracking-wider">Sci-Fi</span>
+</div>
+<h3 class="comic-title mt-1.5 text-white font-extrabold text-[11px] leading-[13px] uppercase tracking-tight line-clamp-2">
+          SUPERMAN APOKOLIPS WAR
+        </h3>
+</a>
+</article>
+<!-- Comic Item 15 -->
+<article class="comic-card group flex flex-col cursor-pointer" data-category="terror" data-rating="4.7" data-title="30 DAYS OF NIGHT: SPREADING THE DISEASE" data-year="2022">
+<a href="comic-detalle.html" class="block group-hover:scale-[1.02] transition-transform duration-150">
+<div class="relative overflow-hidden rounded-xl comic-border shadow-pop bg-[#12001e]">
+<img alt="30 Days of Night: Spreading the Disease" class="comic-cover w-full h-full object-cover group-hover:opacity-95" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAox1Ktmj5EE5-0oURywgQKst9s5u0DtsAGK-hZ58TsX5zLhmaNoAueSsj3i161R4ddqs0BbybfmGg5o2Sg99YQS1ZhU7Jm1RqIe1WwF4BXzy7GL7L8Lda8oDRZnggIAbPpn-JQ1EIJCN-fZFWm12MeQ9qhtsU0q5t981lYNU9iT6XlRwtSFyKAIJAYn1OQagu6S3nFbHWjn87wwe7ItBe3jpBNH8hzVO7B8efycLtm7JMAIoCHH0_b65Vz3HN1os5egNJcKPS2w2t4qQ">
+<button aria-label="Favorito" class="fav-toggle-btn absolute top-1.5 right-1.5 bg-black/60 hover:bg-comicPink text-white p-1 rounded-full backdrop-blur-sm transition-colors">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+<span class="absolute bottom-1 left-1 bg-red-500 text-black font-extrabold text-[9px] px-1 rounded uppercase tracking-wider">+18</span>
+</div>
+<h3 class="comic-title mt-1.5 text-white font-extrabold text-[11px] leading-[13px] uppercase tracking-tight line-clamp-2">
+          30 DAYS OF NIGHT: SPREADING THE DISEASE
+        </h3>
+</a>
+</article></section>
+<!-- END: ComicGrid -->
+<!-- BEGIN: ComicPagination -->
+<nav aria-label="Paginación de catálogo" class="mt-8 flex flex-col items-center gap-3" data-purpose="comic-pagination">
+<div class="flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap">
+<button class="px-3 py-1.5 rounded-lg bg-[#150024] hover:bg-[#2e004a] text-purple-200/90 font-extrabold text-xs comic-border shadow-pop active:translate-y-0.5 transition-all flex items-center gap-1">
+<span class="">‹</span> Anterior
+</button>
+<button aria-current="page" class="w-8 h-8 rounded-lg bg-comicPink text-white font-black text-xs comic-border shadow-pop flex items-center justify-center">
+1
+</button>
+<button class="w-8 h-8 rounded-lg bg-[#150024] hover:bg-[#2e004a] text-white font-black text-xs comic-border shadow-pop flex items-center justify-center transition-all">
+2
+</button>
+<button class="w-8 h-8 rounded-lg bg-[#150024] hover:bg-[#2e004a] text-white font-black text-xs comic-border shadow-pop flex items-center justify-center transition-all">
+3
+</button>
+<span class="px-1 text-purple-400 font-extrabold text-xs">...</span>
+<button class="w-8 h-8 rounded-lg bg-[#150024] hover:bg-[#2e004a] text-white font-black text-xs comic-border shadow-pop flex items-center justify-center transition-all">
+8
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-comicCyan hover:bg-[#00c7f2] text-black font-extrabold text-xs comic-border shadow-pop active:translate-y-0.5 transition-all flex items-center gap-1">
+Siguiente <span class="">›</span>
+</button>
+</div>
+<span class="text-[11px] font-bold text-purple-200/70 tracking-wide">
+Mostrando 1-15 de 96 cómics
+</span>
+</nav>
+<!-- END: ComicPagination -->
+<!-- Empty State for Search or Filtering -->
+<div class="hidden py-12 text-center" id="no-results">
+<div class="inline-block p-4 bg-purple-900/40 rounded-full comic-border shadow-pop mb-3">
+<span class="text-3xl">🦇</span>
+</div>
+<h4 class="text-base font-bold text-comicPink">¡Ups! No hay cómics con ese criterio</h4>
+<p class="text-xs text-purple-200/70 mt-1">Prueba seleccionando "TODOS" o buscando otro término.</p>
+</div>
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: BottomNavigation -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-[#16022e]/95 backdrop-blur-md border-t-4 border-black px-4 py-2.5 flex items-center justify-around z-40 shadow-[0_-4px_10px_rgba(0,0,0,0.5)] font-comic" data-purpose="mobile-nav-bar">
+<!-- Nav Item: Inicio (inactivo) -->
+<a class="flex flex-col items-center gap-1 group text-purple-300/80 hover:text-comicCyan transition-colors" href="index.html">
+<svg class="w-5 h-5 stroke-[2.2] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-extrabold tracking-tight">Inicio</span>
+</a>
+<!-- Nav Item: Catálogo (ACTIVO) -->
+<a class="flex flex-col items-center gap-1 text-[#ff2d78] drop-shadow-[0_0_8px_rgba(255,45,120,0.6)] group" href="catalogo.html">
+<svg class="w-5 h-5 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+<path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"></path>
+</svg>
+<span class="text-[10px] font-black tracking-tight text-[#ff2d78]">Catálogo</span>
+</a>
+<!-- Nav Item: Lab (inactivo) -->
+<a class="flex flex-col items-center gap-1 group text-purple-300/80 hover:text-comicGreen transition-colors" href="lab.html">
+<svg class="w-5 h-5 stroke-[2.2] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-extrabold tracking-tight">Lab</span>
+</a>
+<!-- Nav Item: Perfil (inactivo) -->
+<a class="flex flex-col items-center gap-1 group text-purple-300/80 hover:text-comicCyan transition-colors" href="perfil.html">
+<svg class="w-5 h-5 stroke-[2.2] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-extrabold tracking-tight">Perfil</span>
+</a>
+</nav>
+<!-- END: BottomNavigation -->
+<!-- BEGIN: FiltersModal -->
+<!-- Pop-up modal for advanced sorting & filters -->
+<aside aria-modal="true" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-end justify-center hidden" id="filter-modal" role="dialog">
+<div class="bg-[#1f0034] w-full max-w-md rounded-t-3xl comic-border border-b-0 p-5 shadow-2xl animate-in slide-in-from-bottom duration-200">
+<div class="flex items-center justify-between pb-3 border-b border-purple-800/80">
+<h3 class="text-lg font-black text-comicPink uppercase tracking-wide flex items-center gap-2">
+<span class="">⚙️</span> Filtros de Catálogo
+        </h3>
+<button class="w-8 h-8 rounded-full bg-comicCyan text-black font-extrabold comic-border shadow-pop-sm flex items-center justify-center" id="close-modal-btn">✕</button>
+</div>
+<div class="py-4 space-y-4">
+<div>
+<label class="block text-xs font-bold uppercase text-comicCyan mb-2">Estado del Cómic</label>
+<div class="flex gap-2">
+<button class="flex-1 py-1.5 px-2 text-xs font-bold bg-[#150024] rounded-lg comic-border text-white hover:border-comicCyan">En Emisión</button>
+<button class="flex-1 py-1.5 px-2 text-xs font-bold bg-comicYellow text-black rounded-lg comic-border">Completados</button>
+<button class="flex-1 py-1.5 px-2 text-xs font-bold bg-[#150024] rounded-lg comic-border text-white hover:border-comicCyan">One-Shots</button>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase text-comicPink mb-2">Idioma / Región</label>
+<div class="flex gap-2">
+<button class="flex-1 py-1.5 text-xs font-bold bg-comicGreen text-black rounded-lg comic-border">Español</button>
+<button class="flex-1 py-1.5 text-xs font-bold bg-[#150024] text-white rounded-lg comic-border">Inglés</button>
+<button class="flex-1 py-1.5 text-xs font-bold bg-[#150024] text-white rounded-lg comic-border">Latino</button>
+</div>
+</div>
+</div>
+<div class="pt-2 flex gap-3">
+<button class="flex-1 py-2.5 rounded-xl font-black text-xs uppercase bg-purple-950 text-white comic-border shadow-pop" id="reset-filter-btn">Restablecer</button>
+<button class="flex-1 py-2.5 rounded-xl font-black text-xs uppercase bg-comicCyan text-black comic-border shadow-pop" id="apply-filter-btn">Aplicar</button>
+</div>
+</div>
+</aside>
+<!-- END: FiltersModal -->
+<!-- JavaScript Interactivity -->
+<script data-purpose="catalog-logic">
+    document.addEventListener('DOMContentLoaded', () => {
+      const categoryButtons = document.querySelectorAll('.category-btn');
+      const comicCards = document.querySelectorAll('.comic-card');
+      const sortSelect = document.getElementById('sort-select');
+      const comicCounter = document.getElementById('comic-counter');
+      const noResults = document.getElementById('no-results');
+
+      // Modal Elements
+      const filterModal = document.getElementById('filter-modal');
+      const openModalBtn = document.getElementById('filter-modal-trigger');
+      const closeModalBtn = document.getElementById('close-modal-btn');
+      const applyFilterBtn = document.getElementById('apply-filter-btn');
+      const resetFilterBtn = document.getElementById('reset-filter-btn');
+
+      let currentCategory = 'all';
+      let currentQuery = '';
+
+      // Function to filter and show cards
+      function updateCatalog() {
+        let visibleCount = 0;
+
+        comicCards.forEach(card => {
+          const cardCategories = card.getAttribute('data-category') || '';
+          const cardTitle = card.getAttribute('data-title') || '';
+
+          const matchesCategory = (currentCategory === 'all') || cardCategories.includes(currentCategory);
+          const matchesSearch = cardTitle.toLowerCase().includes(currentQuery.toLowerCase());
+
+          if (matchesCategory && matchesSearch) {
+            card.classList.remove('hidden');
+            visibleCount++;
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+
+        // Update counter & empty state
+        comicCounter.textContent = `${visibleCount} CÓMICS`;
+        if (visibleCount === 0) {
+          noResults.classList.remove('hidden');
+        } else {
+          noResults.classList.add('hidden');
+        }
+      }
+
+      // Handle category pill clicks
+      categoryButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          categoryButtons.forEach(b => b.classList.remove('comic-badge-active'));
+          btn.classList.add('comic-badge-active');
+          currentCategory = btn.getAttribute('data-category');
+          updateCatalog();
+        });
+      });
+
+      // Handle sort changes
+      sortSelect.addEventListener('change', (e) => {
+        const value = e.target.value;
+        const grid = document.getElementById('comics-grid');
+        const cardsArray = Array.from(comicCards);
+
+        cardsArray.sort((a, b) => {
+          if (value === 'az') {
+            return a.getAttribute('data-title').localeCompare(b.getAttribute('data-title'));
+          } else if (value === 'recientes') {
+            return parseInt(b.getAttribute('data-year')) - parseInt(a.getAttribute('data-year'));
+          } else if (value === 'valorados' || value === 'populares') {
+            return parseFloat(b.getAttribute('data-rating')) - parseFloat(a.getAttribute('data-rating'));
+          }
+          return 0;
+        });
+
+        cardsArray.forEach(card => grid.appendChild(card));
+      });
+
+      // Favorite toggle action
+      document.querySelectorAll('.fav-toggle-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isLiked = btn.classList.toggle('text-[#ffd000]');
+          if (isLiked) {
+            btn.classList.remove('text-white');
+            btn.classList.add('bg-comicPink');
+          } else {
+            btn.classList.remove('bg-comicPink');
+            btn.classList.add('text-white');
+          }
+        });
+      });
+
+      // Filter Modal Toggle
+      openModalBtn.addEventListener('click', () => {
+        filterModal.classList.remove('hidden');
+      });
+
+      const closeModal = () => filterModal.classList.add('hidden');
+      closeModalBtn.addEventListener('click', closeModal);
+      applyFilterBtn.addEventListener('click', closeModal);
+      resetFilterBtn.addEventListener('click', () => {
+        closeModal();
+        categoryButtons[0].click();
+      });
+      filterModal.addEventListener('click', (e) => {
+        if (e.target === filterModal) closeModal();
+      });
+
+    });
+  </script>
+
+
+</body></html>

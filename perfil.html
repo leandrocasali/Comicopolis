@@ -1,0 +1,608 @@
+<!DOCTYPE html><html class="h-full bg-[#110222]" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>Comicópolis - Mi Perfil</title>
+<!-- Google Fonts: Space Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            comic: ['"Space Grotesk"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              dark: '#110222',
+              cardDark: '#18022e',
+              deepPurple: '#0e021a',
+              pink: '#ff2d78',
+              magenta: '#e02875',
+              softPink: '#f0529c',
+              cyan: '#00d4ff',
+              neonGreen: '#00ff66',
+              yellow: '#ffe600',
+              muted: '#9c8eb9'
+            }
+          },
+          boxShadow: {
+            'comic': '4px 4px 0px #000000',
+            'comic-sm': '2.5px 2.5px 0px #000000',
+            'comic-lg': '6px 6px 0px #000000',
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="comic-theme">
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      background-color: #110222;
+      background-image: radial-gradient(rgba(255, 45, 120, 0.08) 1.5px, transparent 0);
+      background-size: 20px 20px;
+    }
+
+    /* Comic border utility */
+    .comic-border {
+      border: 3px solid #000000;
+    }
+    .comic-border-sm {
+      border: 2px solid #000000;
+    }
+
+    /* Hide scrollbars for clean mobile display */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="min-h-screen text-white font-comic selection:bg-brand-pink selection:text-white flex flex-col justify-between antialiased pb-24">
+<!-- BEGIN: UnifiedHeader -->
+<header class="sticky top-0 z-50 bg-[#16022e]/95 backdrop-blur-md border-b-4 border-black shadow-[0_4px_0_0_#000] px-4 py-3" data-purpose="main-header">
+<div class="max-w-md mx-auto flex items-center justify-between">
+<!-- Left Spacer to center logo -->
+<div class="w-10"></div>
+<!-- Center Logo -->
+<div class="flex-1 flex justify-center"><a href="index.html" class="inline-block"><img alt="Comicópolis" class="h-9 w-auto object-contain drop-shadow-[2px_2px_0px_rgba(0,0,0,1)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBssBRLE5eMnLenFefTfSvaXgNpT7jKYnwhGgGh8uZxMImXphXFrl1rdirgH9bI_Q1bPC9sLU5vzo0A_LMI8G2CMSyvXRzK_xePJIDhuFOT_r-PjIgwS7Obk4pteom6AW6fKX5bnWJGcouQf307Vhy6bc_6Wy_rMsIED17DXlEdDuHTdiNwu8NFhYzqWtCdB3AthAvJYNZet6qsgX5Tpob3mVqufIz4n354YTpCAtQbYrPk1AEWuouvlAxhayTiKb-y7Q"></a></div>
+<!-- Right Action Buttons -->
+<div class="flex items-center gap-2">
+<button aria-label="Buscar" class="w-9 h-9 bg-[#00e5ff] rounded-lg border-2 border-black flex items-center justify-center shadow-[2px_2px_0px_#000] active:translate-y-0.5 hover:scale-105 transition-transform" type="button">
+<svg class="w-5 h-5 fill-current text-black" viewBox="0 0 24 24">
+<path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+</svg>
+</button>
+<button aria-label="Menú" class="w-9 h-9 bg-[#ffe600] rounded-lg border-2 border-black flex items-center justify-center shadow-[2px_2px_0px_#000] active:translate-y-0.5 hover:scale-105 transition-transform" type="button">
+<svg class="w-5 h-5 fill-current text-black" viewBox="0 0 24 24">
+<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+</svg>
+</button>
+</div>
+</div>
+</header>
+<!-- END: UnifiedHeader -->
+<!-- BEGIN: MainContent -->
+<main class="flex-1 px-4 pt-4 pb-6 space-y-6 max-w-md mx-auto w-full" data-purpose="user-profile-view">
+<!-- Title Section -->
+<div class="pt-1 flex items-center justify-between">
+<h1 class="text-3xl font-extrabold tracking-tight text-brand-pink drop-shadow-[2px_2px_0px_#000000] uppercase">
+        Mi Perfil
+      </h1>
+<span class="px-2.5 py-1 bg-[#20083a] text-brand-cyan text-xs font-black rounded-lg comic-border-sm shadow-comic-sm uppercase tracking-wider">
+        Nivel 14
+      </span>
+</div>
+<!-- BEGIN: UserProfileCard -->
+<section class="flex items-center gap-4 pt-1" data-purpose="user-profile-info">
+<!-- Monochrome Hero Avatar Card -->
+<div class="relative flex-shrink-0">
+<div class="w-24 h-24 rounded-2xl comic-border shadow-comic bg-[#25073f] overflow-hidden">
+<img alt="Hero Avatar Reader 01" class="w-full h-full object-cover filter grayscale contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3LbuMltkoQZfB3CqDrj6RFE1gLA-GGDHUNt-XB-MvKpgfZQtGK0OO71uqef7PLqRKw1Obk890JJlpRpdkuQ6lJNZuEC3Vi0oZuuNuRWh0F4dDdN11_OJT5s1jmXtPx2aBFy8UP_tMjIPrkeBO0tnss1QnMYeRMH-_GtyzUbNmdzgGy6gbMOCR21YF8Sw5HH8ADtuHqTT7xsjVAGXpcqHsLfmypmKpihs-vZMxZIMfFrramdX0FY3u">
+</div>
+<!-- Active status dot badge -->
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-brand-neonGreen comic-border-sm rounded-full"></div>
+</div>
+<!-- User Identification & Stats -->
+<div class="flex-1 flex flex-col justify-center">
+<!-- Nickname and Quick Edit button -->
+<div class="flex items-center justify-between gap-1 mb-1.5">
+<h2 class="text-xl font-black text-brand-cyan tracking-wide drop-shadow-[1.5px_1.5px_0px_#000] leading-none truncate">
+          HERO_READER_01
+        </h2>
+<!-- Edit Profile Button -->
+<a aria-label="Editar Perfil" class="flex items-center gap-1 bg-[#280948] hover:bg-[#380e64] text-white text-[11px] font-bold px-2 py-1 rounded-lg comic-border-sm shadow-comic-sm active:translate-y-0.5 transition-all flex-shrink-0" href="editar-perfil.html"><svg class="w-3.5 h-3.5 text-brand-yellow" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="text-[10px] tracking-tight">Editar</span></a>
+</div>
+<!-- Stats Counters -->
+<div class="flex items-center gap-5 mt-1">
+<!-- Stat 1: Cómics Leídos -->
+<div class="text-left leading-none">
+<span class="block text-2xl font-black text-brand-cyan tracking-tight">124</span>
+<span class="text-[10px] font-bold text-gray-200 uppercase tracking-wider block mt-1">Cómics Leídos</span>
+</div>
+<!-- Divider line -->
+<div class="w-0.5 h-7 bg-brand-pink/30"></div>
+<!-- Stat 2: Creaciones -->
+<div class="text-left leading-none">
+<span class="block text-2xl font-black text-brand-yellow tracking-tight">12</span>
+<span class="text-[10px] font-bold text-gray-200 uppercase tracking-wider block mt-1">Creaciones</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: UserProfileCard -->
+<!-- BEGIN: GenerosFavoritosSection -->
+<section class="space-y-2 pt-1" data-purpose="user-favorite-genres">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<h3 class="text-xs font-black tracking-wider uppercase text-brand-pink drop-shadow-[1.5px_1.5px_0px_#000]">
+        GÉNEROS FAVORITOS
+      </h3>
+<span class="px-1.5 py-0.5 text-[9px] font-black rounded bg-black/40 text-brand-cyan border border-black/60">5</span>
+</div>
+<a class="text-[10px] font-black text-brand-cyan tracking-wider uppercase hover:underline flex items-center gap-0.5" href="editar-perfil.html">
+<span class="">Editar</span>
+<svg class="w-3 h-3 fill-current" viewBox="0 0 24 24">
+<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+</svg>
+</a>
+</div>
+<!-- Genre Badges / Chips Row -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-1 -mx-4 px-4 snap-x select-none">
+<!-- Genre 1: ACCIÓN -->
+<button class="snap-start flex-shrink-0 flex items-center gap-1 px-2.5 py-1 bg-brand-yellow text-black font-black text-[11px] uppercase rounded-xl comic-border-sm shadow-comic-sm hover:scale-105 active:translate-y-0.5 transition-transform" type="button">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+<path d="M7 2v11h3v9l7-12h-4l4-8z"></path>
+</svg>
+<span class="">ACCIÓN</span>
+</button>
+<!-- Genre 2: SCI-FI -->
+<button class="snap-start flex-shrink-0 flex items-center gap-1 px-2.5 py-1 bg-brand-cyan text-black font-black text-[11px] uppercase rounded-xl comic-border-sm shadow-comic-sm hover:scale-105 active:translate-y-0.5 transition-transform" type="button">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+<path d="M13.13 2.5a.75.75 0 0 0-1.26 0l-3.32 5.54a7.97 7.97 0 0 0-1.12 3.96c0 2.22.9 4.23 2.37 5.68l-.8.8a.75.75 0 0 0 1.06 1.06l.8-.8c1.45 1.47 3.46 2.37 5.68 2.37a7.97 7.97 0 0 0 3.96-1.12l5.54-3.32a.75.75 0 0 0 0-1.26l-5.54-3.32a7.97 7.97 0 0 0-3.96-1.12c-2.22 0-4.23.9-5.68 2.37l.8.8a.75.75 0 0 0-1.06-1.06l-.8-.8A7.97 7.97 0 0 0 13.13 2.5zm-.63 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"></path>
+</svg>
+<span class="">SCI-FI</span>
+</button>
+<!-- Genre 3: TERROR -->
+<button class="snap-start flex-shrink-0 flex items-center gap-1 px-2.5 py-1 bg-brand-pink text-white font-black text-[11px] uppercase rounded-xl comic-border-sm shadow-comic-sm hover:scale-105 active:translate-y-0.5 transition-transform" type="button">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+<path d="M12 2a9 9 0 0 0-9 9c0 3.1 1.57 5.83 3.97 7.45V20a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1.55c2.4-1.62 3.97-4.35 3.97-7.45a9 9 0 0 0-9-9zm-3.5 10a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm7 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"></path>
+</svg>
+<span class="">TERROR</span>
+</button>
+<!-- Genre 4: FANTASÍA -->
+<button class="snap-start flex-shrink-0 flex items-center gap-1 px-2.5 py-1 bg-[#25083f] text-brand-yellow font-black text-[11px] uppercase rounded-xl comic-border-sm shadow-comic-sm hover:scale-105 active:translate-y-0.5 transition-transform border border-brand-pink/50" type="button">
+<svg class="w-3.5 h-3.5 fill-current text-brand-yellow" viewBox="0 0 24 24">
+<path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6.4-4.8-6.4 4.8 2.4-7.2-6-4.8h7.6z"></path>
+</svg>
+<span class="">FANTASÍA</span>
+</button>
+<!-- Genre 5: COMEDIA -->
+<button class="snap-start flex-shrink-0 flex items-center gap-1 px-2.5 py-1 bg-brand-neonGreen text-black font-black text-[11px] uppercase rounded-xl comic-border-sm shadow-comic-sm hover:scale-105 active:translate-y-0.5 transition-transform" type="button">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2a4 4 0 0 1-4-4h2a2 2 0 0 0 4 0h2a4 4 0 0 1-4 4zm-4.5-6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm7 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"></path>
+</svg>
+<span class="">COMEDIA</span>
+</button>
+</div>
+</section>
+<!-- END: GenerosFavoritosSection -->
+<!-- BEGIN: InteractiveTabSection -->
+<section class="space-y-4 pt-2" data-purpose="profile-interactive-tabs">
+<!-- Comic Pop-Art Tab Bar -->
+<div class="grid grid-cols-2 p-1.5 bg-[#0e021a] rounded-2xl comic-border shadow-comic gap-2">
+<!-- Tab Button: Mis Creaciones (Active by default) -->
+<button class="tab-btn flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl font-black text-sm tracking-wider uppercase transition-all duration-150 bg-brand-softPink text-black comic-border-sm shadow-comic-sm" data-target="tab-content-creaciones" id="tab-btn-creaciones" type="button">
+<svg class="w-4 h-4 fill-current text-black" viewBox="0 0 24 24">
+<path d="M12 2L9.5 8.5L3 11L9.5 13.5L12 20L14.5 13.5L21 11L14.5 8.5L12 2Z"></path>
+</svg>
+<span class="">CREACIONES</span>
+<span class="tab-counter px-1.5 py-0.5 text-[10px] font-black rounded bg-black text-white ml-0.5">12</span>
+</button>
+<!-- Tab Button: Mis Favoritos -->
+<button class="tab-btn flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl font-black text-sm tracking-wider uppercase transition-all duration-150 bg-[#1e0735] text-brand-muted hover:text-white border-2 border-transparent" data-target="tab-content-favoritos" id="tab-btn-favoritos" type="button">
+<svg class="w-4 h-4 fill-current text-brand-pink" viewBox="0 0 24 24">
+<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+</svg>
+<span class="">FAVORITOS</span>
+<span class="tab-counter px-1.5 py-0.5 text-[10px] font-black rounded bg-black/40 text-brand-pink ml-0.5">18</span>
+</button>
+</div>
+<!-- Tab Content Container -->
+<div class="relative">
+<!-- PANEL 1: Mis Creaciones Content -->
+<div class="space-y-3" id="tab-content-creaciones">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-brand-muted uppercase tracking-wider">Tus obras creadas con IA</span>
+<a class="text-xs font-black text-brand-pink tracking-widest uppercase hover:underline" href="#nueva-creacion">+ NUEVA IA</a>
+</div>
+<!-- 2x2 Creations Grid -->
+<div class="grid grid-cols-2 gap-3"><!-- Card 1: Dragón Cromado -->
+<article class="bg-[#18002e] comic-border rounded-2xl shadow-comic overflow-hidden flex flex-col justify-between group h-full">
+<div class="relative aspect-square w-full bg-black overflow-hidden">
+<img alt="Dragón Cromado Creación" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmAq-1x3AwOiSIomeW9gknrivcOFaROhDSWQ-4xu3_YxPiYH45HkQQ1_lDQ9Ku_1QR4YVPnW6EcWLy59ve_i6DeQP98HgGEuoQJJJZal4BBeeR9Rrq3ww3PMjJOcMJbcyc1rkFBREIYuCrQbXzWLMumhzdyG9AJ9iQOoTa6Oy6ZBaeJcxUulMdU0CaOLYYk4Nd_SU1_c-9cDY49_PYQq-akQsJZyggtAXKPQmRWqtUbloCK1_QtnjP">
+<span class="absolute top-2 right-2 bg-[#0066ff] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded comic-border-sm shadow-comic-sm tracking-wider uppercase">
+            IA CREATED
+          </span>
+</div>
+<div class="bg-white p-2 border-t-2 border-black flex flex-col gap-1.5 flex-1 justify-between">
+<h3 class="font-extrabold text-xs text-black uppercase tracking-tight truncate">
+            DRAGÓN CROMADO
+          </h3>
+<a href="comic-detalle.html" class="w-full py-1 bg-brand-neonGreen text-black font-black text-[10px] rounded comic-border-sm shadow-comic-sm uppercase active:translate-y-0.5 transition-all text-center block">
+            Leer / Editar
+          </a>
+</div>
+</article>
+<!-- Card 2: Cyber Detective -->
+<article class="bg-[#18002e] comic-border rounded-2xl shadow-comic overflow-hidden flex flex-col justify-between group h-full">
+<div class="relative aspect-square w-full bg-black overflow-hidden">
+<img alt="Cyber Detective Creación" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTNfQ3Hd5usX1QULGwOj7LdK5KsRqyEqHk6hsRClC0ccFxf95g2qxawS18Yrlau6ajnUwiPb1Xh_JwTED2_YyPNLoHYq7OIJqVFmWU7jTG1TVi0oy0zDye7LM8S_XYIwQO2Vr5e-v-1nxNC--z7aAi0ImZvB8_hWUOiMWg69hWK1UZSHqAzDbekO73c8AGQeWn0wocccASH5ZD2eDKWqmxryiU8Mo_GFvSoYNmpdjs0rfSFw_hdMIr">
+<span class="absolute top-2 right-2 bg-[#0066ff] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded comic-border-sm shadow-comic-sm tracking-wider uppercase">
+            IA CREATED
+          </span>
+</div>
+<div class="bg-white p-2 border-t-2 border-black flex flex-col gap-1.5 flex-1 justify-between">
+<h3 class="font-extrabold text-xs text-black uppercase tracking-tight truncate">
+            CYBER DETECTIVE
+          </h3>
+<a href="comic-detalle.html" class="w-full py-1 bg-brand-neonGreen text-black font-black text-[10px] rounded comic-border-sm shadow-comic-sm uppercase active:translate-y-0.5 transition-all text-center block">
+            Leer / Editar
+          </a>
+</div>
+</article>
+<!-- Card 3: Mecha Samurai -->
+<article class="bg-[#18002e] comic-border rounded-2xl shadow-comic overflow-hidden flex flex-col justify-between group h-full">
+<div class="relative aspect-square w-full bg-black overflow-hidden">
+<img alt="Mecha Samurai Creación" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAs5GJ5hlSwUGR_502fxrEfSMKNJZpDCnMagIKKtvudeGP3LfnDFvWmIXPFJINdIXYUaMbBioAgMNJiKy4gyr1oS1L4aZ1YQpfy54c7GI5fc_jhlDzaXbOR4o9UcZG6EKoduWt5bLDt5kkGzGdv8BK57unGWrOBn4MlCR0h1nMGLk9DbY8cQKtx9Bp6ftytgkx9NVUuQhu5DTcC7lHfPEJCpy9cV--BM3UBdtCkNsUq8mcUVaFLv5sBADafw9lkgPzF5PPHoHINF6LZgQ">
+<span class="absolute top-2 right-2 bg-[#0066ff] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded comic-border-sm shadow-comic-sm tracking-wider uppercase">
+            IA CREATED
+          </span>
+</div>
+<div class="bg-white p-2 border-t-2 border-black flex flex-col gap-1.5 flex-1 justify-between">
+<h3 class="font-extrabold text-xs text-black uppercase tracking-tight truncate">
+            MECHA SAMURAI
+          </h3>
+<a href="comic-detalle.html" class="w-full py-1 bg-brand-neonGreen text-black font-black text-[10px] rounded comic-border-sm shadow-comic-sm uppercase active:translate-y-0.5 transition-all text-center block">
+            Leer / Editar
+          </a>
+</div>
+</article>
+<!-- Card 4: Neo Tokyo 2099 -->
+<article class="bg-[#18002e] comic-border rounded-2xl shadow-comic overflow-hidden flex flex-col justify-between group h-full">
+<div class="relative aspect-square w-full bg-black overflow-hidden">
+<img alt="Neo Tokyo 2099 Creación" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX1chCVzrcWWsUF-1m3fwiinEyM-HCH8rSoPId6hmABYtIBYAaLTrZf4KUYXiYmjyWe5dFA9K1N2UD3Ub5Le8zo1m6d7djRLlKMRZeGAIGGx7G0AK_r8R7ogrmCeOLDN2HkmJMmLgRFjIbOwCSwmEQKDp5OPDCAeGo10z6q6QFl5-iDUEwI9fn8Iv4eAlZGfwLOfkqhAWX4azaUy1_XnvxRaMAertLqro6vFDCfxMh0mxTpSTRxkwndYRH05BIhe7qz-qj3XVH0yIFwg">
+<span class="absolute top-2 right-2 bg-[#0066ff] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded comic-border-sm shadow-comic-sm tracking-wider uppercase">
+            IA CREATED
+          </span>
+</div>
+<div class="bg-white p-2 border-t-2 border-black flex flex-col gap-1.5 flex-1 justify-between">
+<h3 class="font-extrabold text-xs text-black uppercase tracking-tight truncate">
+            NEO TOKYO 2099
+          </h3>
+<a href="comic-detalle.html" class="w-full py-1 bg-brand-neonGreen text-black font-black text-[10px] rounded comic-border-sm shadow-comic-sm uppercase active:translate-y-0.5 transition-all text-center block">
+            Leer / Editar
+          </a>
+</div>
+</article></div>
+</div>
+<!-- PANEL 2: Mis Favoritos Content (Hidden initially) -->
+<div class="space-y-3 hidden" id="tab-content-favoritos">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-brand-muted uppercase tracking-wider">18 cómics en tu colección</span>
+<a class="text-xs font-black text-brand-pink tracking-widest uppercase hover:underline" href="#favoritos-todos">VER TODOS</a>
+</div>
+<!-- 2x2 Favorites Grid -->
+<div class="grid grid-cols-2 gap-3"><!-- Fav Card 1: Avatar -->
+<article class="bg-[#18022e] comic-border rounded-2xl shadow-comic overflow-hidden flex flex-col justify-between group">
+<div class="relative aspect-[3/4] w-full bg-[#25083f] overflow-hidden">
+<img alt="Superman: Apokolips War" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7YZ6wgePTmzbiwvERrjsWIIcFU_X_cQvRfMYkMlX90reeT2U3lZ0UtkbQI8j4BrLYJUMKOSbAUcEg-1l7P-kc3xaLd5dl4VG-NL87_yxzY5VRadlt8R1FKKFprLqC-bRaeR5ihLe6YpBd6hsKaaMSM-3h32ODmQOBd2zUFQDZTgzk_fa38ypvCahAofuUz5e7r-BSGGplxP03OTkUiBCvME6wCvgiMJkEqXgmYiLXmGaSxUbuz2kmmbTkkBd3hdOPeiDD49Rv0gMdpw">
+<span class="absolute top-2 left-2 bg-brand-pink text-white text-[9px] font-black px-1.5 py-0.5 rounded comic-border-sm shadow-comic-sm uppercase tracking-tight">
+            DC COMICS
+          </span>
+<button aria-label="Favorito activo" class="absolute top-2 right-2 w-6 h-6 rounded bg-black/70 comic-border-sm flex items-center justify-center shadow-comic-sm" type="button">
+<svg class="w-3.5 h-3.5 fill-current text-brand-pink" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+</div>
+<div class="bg-white p-2 border-t-2 border-black flex flex-col gap-1.5">
+<h3 class="font-extrabold text-xs text-black uppercase tracking-tight truncate">
+            Avatar</h3>
+<a href="comic-detalle.html" class="w-full py-1 bg-brand-yellow text-black font-black text-[10px] rounded comic-border-sm shadow-comic-sm uppercase active:translate-y-0.5 transition-all text-center block">
+            Leer Ahora
+          </a>
+</div>
+</article>
+<!-- Fav Card 2: Star Wars Tales -->
+<article class="bg-[#18022e] comic-border rounded-2xl shadow-comic overflow-hidden flex flex-col justify-between group">
+<div class="relative aspect-[3/4] w-full bg-[#25083f] overflow-hidden">
+<img alt="Star Wars: Tales from the Nightlands" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV--oAqc-9CvyjzyPSAp8gR8o3O8zdUBOeqp5yZvaqwo1qahpcac77YMw2PIgC3Tc_d-5RN8-dRVUR5tQCdd3OaEbcS-xPEVF32wUwdqwmc61CwvJGc4wssmqDb-JSgkUDej7QIPKMzyB2E53-_v_X7g5DI9_F9YQhCLfdA_80vFT1zKS91sgbDPcK7IduGXr0CBlxxi0Iu6dK5VpWZLcq6PAniAs8ocUjeGTyOzi-53YPMQahVisO8wDTYziiFoQ1dFrQUK3jHce_xQ">
+<span class="absolute top-2 left-2 bg-[#ffaa00] text-black text-[9px] font-black px-1.5 py-0.5 rounded comic-border-sm shadow-comic-sm uppercase tracking-tight">
+            STAR WARS
+          </span>
+<button aria-label="Favorito activo" class="absolute top-2 right-2 w-6 h-6 rounded bg-black/70 comic-border-sm flex items-center justify-center shadow-comic-sm" type="button">
+<svg class="w-3.5 h-3.5 fill-current text-brand-pink" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+</div>
+<div class="bg-white p-2 border-t-2 border-black flex flex-col gap-1.5">
+<h3 class="font-extrabold text-xs text-black uppercase tracking-tight truncate">
+            STAR WARS: TALES
+          </h3>
+<a href="comic-detalle.html" class="w-full py-1 bg-brand-yellow text-black font-black text-[10px] rounded comic-border-sm shadow-comic-sm uppercase active:translate-y-0.5 transition-all text-center block">
+            Leer Ahora
+          </a>
+</div>
+</article>
+<!-- Fav Card 3: Eve of Extinction -->
+<article class="bg-[#18022e] comic-border rounded-2xl shadow-comic overflow-hidden flex flex-col justify-between group">
+<div class="relative aspect-[3/4] w-full bg-[#25083f] overflow-hidden">
+<img alt="Eve of Extinction Comic" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCejNk4fOH4f2MU3YHgwDAo8qTE-NKd3NmELVmc05-ascHPsrpplEs8fG3FfH6ePb6EX6C9-bLIiUSBbw7aa_aogQhSkUOcGWNlt-tJ8wa-O1YvNBXty-TC-nWn_OoBrcDwxJ4SghJ1m2fZdiHlEWutFAoqyPvZ9h9uyUgu0cAs4XGyfvwWxn0NpjBNdQj_y2BvRaEnvqSVldZTXN7Nrm3m64OunruocKyznj7sINDm57g3d3lK6NkAeT0yBOQmgkw1loJdl3tfifuo8A">
+<span class="absolute top-2 left-2 bg-[#9900ef] text-white text-[9px] font-black px-1.5 py-0.5 rounded comic-border-sm shadow-comic-sm uppercase tracking-tight">
+            SCI-FI TERROR
+          </span>
+<button aria-label="Favorito activo" class="absolute top-2 right-2 w-6 h-6 rounded bg-black/70 comic-border-sm flex items-center justify-center shadow-comic-sm" type="button">
+<svg class="w-3.5 h-3.5 fill-current text-brand-pink" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+</div>
+<div class="bg-white p-2 border-t-2 border-black flex flex-col gap-1.5">
+<h3 class="font-extrabold text-xs text-black uppercase tracking-tight truncate">
+            EVE OF EXTINCTION
+          </h3>
+<a href="comic-detalle.html" class="w-full py-1 bg-brand-yellow text-black font-black text-[10px] rounded comic-border-sm shadow-comic-sm uppercase active:translate-y-0.5 transition-all text-center block">
+            Leer Ahora
+          </a>
+</div>
+</article>
+<!-- Fav Card 4: Masters of the Universe - Andra -->
+<article class="bg-[#18022e] comic-border rounded-2xl shadow-comic overflow-hidden flex flex-col justify-between group">
+<div class="relative aspect-[3/4] w-full bg-[#25083f] overflow-hidden">
+<img alt="Masters of the Universe Andra" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKIvlHYafoDozD1zhecJK3gd9mo44eUDThgp-qVZ52hwjcJzyA0gMkObeQP_sXs4CCNZioE9JtZwf1LsSmdVc46YMrFZ2IYNQC53nfAtyDY__-5TQXTEWlv02H_Cjd7XpSYC2wDXaGwCTNqOFlN3ErDvGRy3wTie7KAhAgf44DTYNEsLUm2yJmDi4i6y0vfM-R-S4gSDHCRwtmbmN_o2RjYwyjFNmKru4-4uIoHfXqrZadmUP-3iCQMYoCUCx_kUN-Qg3tfY63EljjTA">
+<span class="absolute top-2 left-2 bg-brand-cyan text-black text-[9px] font-black px-1.5 py-0.5 rounded comic-border-sm shadow-comic-sm uppercase tracking-tight">
+            MOTU
+          </span>
+<button aria-label="Favorito activo" class="absolute top-2 right-2 w-6 h-6 rounded bg-black/70 comic-border-sm flex items-center justify-center shadow-comic-sm" type="button">
+<svg class="w-3.5 h-3.5 fill-current text-brand-pink" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+</button>
+</div>
+<div class="bg-white p-2 border-t-2 border-black flex flex-col gap-1.5">
+<h3 class="font-extrabold text-xs text-black uppercase tracking-tight truncate">
+            MOTU: ANDRA
+          </h3>
+<a href="comic-detalle.html" class="w-full py-1 bg-brand-yellow text-black font-black text-[10px] rounded comic-border-sm shadow-comic-sm uppercase active:translate-y-0.5 transition-all text-center block">
+            Leer Ahora
+          </a>
+</div>
+</article></div>
+</div>
+</div>
+</section>
+<!-- END: InteractiveTabSection -->
+<!-- BEGIN: ContinuarLeyendo -->
+<section class="space-y-3 pt-2" data-purpose="continue-reading-section">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-black text-brand-cyan tracking-wide uppercase drop-shadow-[1.5px_1.5px_0px_#000]">
+          Continuar Leyendo
+        </h2>
+<a class="text-xs font-black text-brand-pink tracking-widest uppercase hover:underline" href="#continuar">
+          VER TODO
+        </a>
+</div>
+<!-- Item 1: Thor y Silver Surfer -->
+<div class="relative flex items-center comic-border rounded-2xl shadow-comic bg-[#b92464] overflow-visible">
+<!-- Thumbnail Cover -->
+<div class="w-24 h-28 -ml-1 my-[-3px] flex-shrink-0 comic-border rounded-xl overflow-hidden shadow-comic-sm bg-black z-10">
+<img alt="Thor y Silver Surfer Comic Cover" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-ja9DlRhGljXU9iKu9xY0eXnay9AmIvWFkrdAvI_GNMtomJ4e-XpyFj7b7tEE6saiXdHzQveLknOicBBCNUPmeRdEGBULygd2ecZS1g9qyOCWjF1_mAS8IPLOjJkrTKZyi9v9P8-PCyVgJF5CaX2_pVXM310khhkN6hzOyg1zTbZlrCjAuw0llaKSPb6vrqZOp6zWwy0bE-zCvWXsmVYEJlhqgYhSkr_P3igV9h9OEovgnX8kkE9wwB7ECFMJZRmJ_fIlxyhmaW-XmQ">
+</div>
+<!-- Info Area -->
+<div class="flex-1 pl-3 pr-2 py-2">
+<h3 class="font-black text-black text-base uppercase leading-tight line-clamp-2">
+            THOR Y SILVER SURFER
+          </h3>
+<!-- Progress indicator -->
+<div class="mt-2 flex items-center justify-between text-[11px] font-black text-black">
+<span class="">PROGRESS</span>
+<span class="">75%</span>
+</div>
+<div class="w-full h-2.5 bg-black/40 rounded-full overflow-hidden mt-0.5 p-0.5">
+<div class="h-full bg-brand-cyan rounded-full w-3/4"></div>
+</div>
+</div>
+<!-- Action Continuation Button overlapping edge -->
+<div class="pr-2.5 self-end mb-2">
+<a href="lector.html" class="bg-brand-neonGreen text-black font-extrabold text-xs px-3 py-1.5 rounded-lg comic-border shadow-comic-sm uppercase active:translate-y-0.5 active:shadow-none transition-all inline-block text-center">CONTINUAR</a>
+</div>
+</div>
+<!-- Item 2: Star Wars: Darth Vader -->
+<div class="relative flex items-center comic-border rounded-2xl shadow-comic bg-brand-yellow overflow-visible">
+<!-- Thumbnail Cover -->
+<div class="w-24 h-28 -ml-1 my-[-3px] flex-shrink-0 comic-border rounded-xl overflow-hidden shadow-comic-sm bg-black z-10">
+<img alt="Star Wars Darth Vader Comic Cover" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoDNpkrUuOzgk42i4qPA590SagoQLfJ9LJqE4UjjXuZHKR0-hQka0Qlom6_LFEgaUd3nIylGLcymSvPU_pQQinyQmcf20ZMziJQPqiTpejuguCZymL2rS3DcVK1nX6oxi4S8cpom3wjhWvwN1OdaOOID6sXJvnsESP-65XH7k0qGdJVcYGxFKVEmPCTUPFsxYJcJncB-6sZLAX1LmsSruz2BBGNx7kvHIbf_jAAKza0Qm8b-2mlqgWcB021a9p1eh1e7kr3-UHsoEYhg">
+</div>
+<!-- Info Area -->
+<div class="flex-1 pl-3 pr-2 py-2">
+<h3 class="font-black text-black text-base uppercase leading-tight line-clamp-2">
+            STAR WARS: DARTH VADER
+          </h3>
+<!-- Progress indicator -->
+<div class="mt-2 flex items-center justify-between text-[11px] font-black text-black">
+<span class="">PROGRESS</span>
+<span class="">75%</span>
+</div>
+<div class="w-full h-2.5 bg-black/40 rounded-full overflow-hidden mt-0.5 p-0.5">
+<div class="h-full bg-brand-cyan rounded-full w-3/4"></div>
+</div>
+</div>
+<!-- Action Continuation Button overlapping edge -->
+<div class="pr-2.5 self-end mb-2">
+<a href="lector.html" class="bg-brand-neonGreen text-black font-extrabold text-xs px-3 py-1.5 rounded-lg comic-border shadow-comic-sm uppercase active:translate-y-0.5 active:shadow-none transition-all inline-block text-center">CONTINUAR</a>
+</div>
+</div>
+</section>
+<!-- END: ContinuarLeyendo -->
+<!-- BEGIN: RecomendadosParaTi -->
+<section class="space-y-3 pt-2" data-purpose="recommended-comics-section">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-black text-brand-cyan tracking-wide uppercase drop-shadow-[1.5px_1.5px_0px_#000]">
+          Recomendados Para Ti
+        </h2>
+</div>
+<!-- Horizontal Scrollable Comic Carousel -->
+<div class="flex gap-3 overflow-x-auto no-scrollbar pb-2 -mx-4 px-4 snap-x">
+<!-- Comic 1: Superman Apokolips War -->
+<div class="flex-shrink-0 w-32 snap-start flex flex-col">
+<div class="relative aspect-[2/3] w-full rounded-xl comic-border shadow-comic bg-[#25083f] overflow-hidden">
+<img alt="Superman: Apokolis War" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUsi3_LUg4NsMl3T3aa4KSHQNou0VfdaeE0b3HKXPUCOglGRU5w73DmKdlxSDp1RfEAqEYs2gGoW9EuXFIcRst-nI-14WHNOgAtTF-po5tMCjG57GoEM6asp3GazCRzGzqUg9Xe0ZAsZ2gPMpDpCDDLGoa_dyBzxZZwqC5GFeG30RfHIn_eKUl8p1AtiT17GQUSNINIOWn8tmkscFd-zKqhdoU_7RKFp_2OL75LirKHaErsv6klF0FxxUP6s2U2qOwANmFbLiqffG-ow">
+<!-- Bookmark icon badge -->
+<button aria-label="Guardar cómic" class="absolute bottom-1.5 left-1.5 w-6 h-6 rounded bg-brand-pink comic-border-sm flex items-center justify-center shadow-comic-sm" type="button">
+<svg class="w-3.5 h-3.5 text-white fill-current" viewBox="0 0 24 24">
+<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+</svg>
+</button>
+</div>
+<span class="text-[11px] font-black text-white uppercase tracking-tight mt-1.5 line-clamp-2 leading-tight">
+            SUPERMAN: APOKOLIS WAR
+          </span>
+</div>
+<!-- Comic 2: 30 Days of Night -->
+<div class="flex-shrink-0 w-32 snap-start flex flex-col">
+<div class="relative aspect-[2/3] w-full rounded-xl comic-border shadow-comic bg-[#25083f] overflow-hidden">
+<img alt="30 Days of Night: Spreading the Disease" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB82o3wzHM-5L31NJbZzUwHQ2nLltUkH-5OQmSIePM2xs64JV8z9u4lm9l7Yh1mUr1oc8gAc9pr37yGnQ_bjMGs4Ao_U0B0iTbqvJsxaxwxm_TIn23FR44cCHG0SIPyHS5llZzU5wJFC1Vy7r9JzQ4dgbkniL-mCEsf6gVNCAIj5ptRw9Zc5_PrmUbyd9rzUCQYsVQl5SwPh6m3JlKxh-C3moXzUAljmZqKU0qSyV4o-ro6KiVzu7hbPLLhGT4naJuSqkdMmQuunGdNDA">
+<!-- Bookmark icon badge -->
+<button aria-label="Guardar cómic" class="absolute bottom-1.5 left-1.5 w-6 h-6 rounded bg-brand-pink comic-border-sm flex items-center justify-center shadow-comic-sm" type="button">
+<svg class="w-3.5 h-3.5 text-white fill-current" viewBox="0 0 24 24">
+<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+</svg>
+</button>
+</div>
+<span class="text-[11px] font-black text-white uppercase tracking-tight mt-1.5 line-clamp-2 leading-tight">
+            30 DAYS OF NIGHT: SPREADING THE DISEASE
+          </span>
+</div>
+<!-- Comic 3: Spiderman Kraven -->
+<div class="flex-shrink-0 w-32 snap-start flex flex-col">
+<div class="relative aspect-[2/3] w-full rounded-xl comic-border shadow-comic bg-[#25083f] overflow-hidden">
+<img alt="Spiderman: La Última Cacería de Kraven" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFc9B0qiWDGQI87q9j8wIccQhJM7wuIPjrNXVfeCoN60EnG0FE83z8-56rLkxUmVY8mWMDbAyyshLf0zNDeEkJF-PGTb6tu3GPeJu3c8krlPacPA2aYlJF8-KCIVBshRtemaX2Emz9FgaqXIcVQfdC0CtU7qF8sGVPXSYJXyXVcLf4VoN9M5Njt7FEJXclvMxE0iKlUC6hXKLNZIlgFml5vQNAiUlxLt40lvdf2MCkJmqGHojXnijoZj22t76yMjfc9grLdeb4VOIDsg">
+<!-- Bookmark icon badge -->
+<button aria-label="Guardar cómic" class="absolute bottom-1.5 left-1.5 w-6 h-6 rounded bg-brand-pink comic-border-sm flex items-center justify-center shadow-comic-sm" type="button">
+<svg class="w-3.5 h-3.5 text-white fill-current" viewBox="0 0 24 24">
+<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+</svg>
+</button>
+</div>
+<span class="text-[11px] font-black text-white uppercase tracking-tight mt-1.5 line-clamp-2 leading-tight">
+            SPIDERMAN: LA ÚLTIMA CACERÍA DE KRAVEN
+          </span>
+</div>
+</div>
+</section>
+<!-- END: RecomendadosParaTi -->
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: BottomNavigation -->
+<nav class="fixed bottom-0 left-0 right-0 bg-[#16022e]/95 backdrop-blur-md border-t-4 border-black z-50 px-2 py-2 max-w-md mx-auto shadow-[0_-4px_16px_rgba(0,0,0,0.6)]" data-purpose="mobile-tab-navigation">
+<div class="grid items-center grid-cols-4 font-comic">
+<!-- Inicio -->
+<a class="flex flex-col items-center justify-center text-purple-300 hover:text-white transition active:scale-95" href="index.html">
+<svg class="w-6 h-6 mb-1" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">
+<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+<span class="text-[11px] font-bold tracking-tight">Inicio</span>
+</a>
+<!-- Catálogo -->
+<a class="flex flex-col items-center justify-center text-purple-300 hover:text-white transition active:scale-95" href="catalogo.html">
+<svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewBox="0 0 24 24">
+<rect height="18" rx="2" width="18" x="3" y="3"></rect>
+<path d="M7 3v18"></path>
+<path d="M3 7.5h4"></path>
+<path d="M3 12h18"></path>
+</svg>
+<span class="text-[11px] font-bold tracking-tight">Catálogo</span>
+</a>
+<!-- Lab -->
+<a class="flex flex-col items-center justify-center text-purple-300 hover:text-white transition active:scale-95" href="lab.html">
+<svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewBox="0 0 24 24">
+<path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path>
+<path d="M8.5 2h7"></path>
+<path d="M7 16h10"></path>
+</svg>
+<span class="text-[11px] font-bold tracking-tight">Lab</span>
+</a>
+<!-- Perfil (Active) -->
+<a class="flex flex-col items-center justify-center text-[#ff2d78] transition active:scale-95 relative drop-shadow-[0_0_8px_rgba(255,45,120,0.5)]" href="perfil.html">
+<div class="relative">
+<svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewBox="0 0 24 24">
+<circle cx="12" cy="8" r="5"></circle>
+<path d="M20 21a8 8 0 0 0-16 0"></path>
+</svg>
+<span class="absolute -top-0.5 -right-0.5 w-2 h-2 bg-[#00e5ff] rounded-full border border-black animate-pulse"></span>
+</div>
+<span class="text-[11px] font-black tracking-tight text-[#ff2d78]">Perfil</span>
+</a>
+</div>
+</nav>
+<!-- END: BottomNavigation -->
+<!-- BEGIN: InteractiveScripts -->
+<script data-purpose="profile-interactive-tabs-and-feedback">
+    // Add touch interactions tailored for iOS webview feel
+    document.querySelectorAll('button, a').forEach(el => {
+      el.addEventListener('touchstart', function() {}, {passive: true});
+    });
+
+    // Profile Interactive Tabs Logic
+    const tabBtnCreaciones = document.getElementById('tab-btn-creaciones');
+    const tabBtnFavoritos = document.getElementById('tab-btn-favoritos');
+    const tabContentCreaciones = document.getElementById('tab-content-creaciones');
+    const tabContentFavoritos = document.getElementById('tab-content-favoritos');
+
+    function activateCreaciones() {
+      // Style Creaciones Button as Active
+      tabBtnCreaciones.className = "tab-btn flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl font-black text-sm tracking-wider uppercase transition-all duration-150 bg-brand-softPink text-black comic-border-sm shadow-comic-sm";
+      const count1 = tabBtnCreaciones.querySelector('.tab-counter');
+      if (count1) count1.className = "tab-counter px-1.5 py-0.5 text-[10px] font-black rounded bg-black text-white ml-0.5";
+
+      // Style Favoritos Button as Inactive
+      tabBtnFavoritos.className = "tab-btn flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl font-black text-sm tracking-wider uppercase transition-all duration-150 bg-[#1e0735] text-brand-muted hover:text-white border-2 border-transparent";
+      const count2 = tabBtnFavoritos.querySelector('.tab-counter');
+      if (count2) count2.className = "tab-counter px-1.5 py-0.5 text-[10px] font-black rounded bg-black/40 text-brand-pink ml-0.5";
+
+      // Show/Hide Panels
+      tabContentCreaciones.classList.remove('hidden');
+      tabContentFavoritos.classList.add('hidden');
+    }
+
+    function activateFavoritos() {
+      // Style Favoritos Button as Active
+      tabBtnFavoritos.className = "tab-btn flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl font-black text-sm tracking-wider uppercase transition-all duration-150 bg-brand-magenta text-white comic-border-sm shadow-comic-sm";
+      const count2 = tabBtnFavoritos.querySelector('.tab-counter');
+      if (count2) count2.className = "tab-counter px-1.5 py-0.5 text-[10px] font-black rounded bg-black text-brand-pink ml-0.5";
+
+      // Style Creaciones Button as Inactive
+      tabBtnCreaciones.className = "tab-btn flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl font-black text-sm tracking-wider uppercase transition-all duration-150 bg-[#1e0735] text-brand-muted hover:text-white border-2 border-transparent";
+      const count1 = tabBtnCreaciones.querySelector('.tab-counter');
+      if (count1) count1.className = "tab-counter px-1.5 py-0.5 text-[10px] font-black rounded bg-black/40 text-brand-yellow ml-0.5";
+
+      // Show/Hide Panels
+      tabContentFavoritos.classList.remove('hidden');
+      tabContentCreaciones.classList.add('hidden');
+    }
+
+    if (tabBtnCreaciones && tabBtnFavoritos) {
+      tabBtnCreaciones.addEventListener('click', activateCreaciones);
+      tabBtnFavoritos.addEventListener('click', activateFavoritos);
+    }
+  </script>
+<!-- END: InteractiveScripts -->
+
+
+
+
+</body></html>

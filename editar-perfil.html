@@ -1,0 +1,271 @@
+<!DOCTYPE html><html class="h-full" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Comicópolis - Edición y Creación de Perfil</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Space Grotesk & Bangers -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&amp;family=Space+Grotesk:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Custom Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0c0217',
+              bg: '#0f041d',
+              pink: '#ff2d78',
+              cyan: '#00d2ff',
+              green: '#00ff66',
+              yellow: '#ffde59',
+              purple: '#5e17eb',
+            }
+          },
+          fontFamily: {
+            comic: ['"Space Grotesk"', 'sans-serif'],
+            display: ['"Bangers"', 'cursive', 'sans-serif']
+          },
+          boxShadow: {
+            'comic-sm': '2px 2px 0px #000000',
+            'comic': '4px 4px 0px #000000',
+            'comic-lg': '6px 6px 0px #000000',
+            'comic-pink': '4px 4px 0px #ff2d78',
+            'comic-cyan': '4px 4px 0px #00d2ff'
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="comic-effects">
+    /* Subtle Halftone Pattern Overlay */
+    .halftone-bg {
+      background-color: #0f041d;
+      background-image: radial-gradient(rgba(255, 45, 120, 0.12) 1.2px, transparent 1.2px), 
+                        radial-gradient(rgba(0, 210, 255, 0.08) 1.2px, #0f041d 1.2px);
+      background-size: 24px 24px;
+      background-position: 0 0, 12px 12px;
+    }
+
+    /* Pop art text shadow */
+    .comic-text-stroke {
+      text-shadow: 2px 2px 0px #000000, -1px -1px 0px #000000, 1px -1px 0px #000000, -1px 1px 0px #000000;
+    }
+    
+    .title-pop-shadow {
+      text-shadow: 3px 3px 0px #000000, 5px 5px 0px rgba(0, 210, 255, 0.7);
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="bg-brand-bg halftone-bg text-white font-comic min-h-screen flex flex-col justify-between antialiased selection:bg-brand-pink selection:text-white">
+<!-- BEGIN: Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-[#16022e]/95 backdrop-blur-md border-b-4 border-black shadow-[0_4px_0_0_#000] px-4 py-3">
+<div class="max-w-md mx-auto flex items-center justify-between">
+<div class="w-10"></div>
+<div class="flex-1 flex justify-center"><a href="index.html" class="inline-block"><img alt="Comicópolis" class="h-9 w-auto object-contain drop-shadow-[2px_2px_0px_rgba(0,0,0,1)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8yI9FK2V40F7FRTU46LhpvDj9Hwfefb2vgxj5bVwAnAr8fzIoldu_bp2ygvOFe1f9T9VLqGNnxNZklwHOLQusZb732_PIFqJlKb5icBRO78MV24F1ST9L5YKdAPp3rbRUXSdPoXrlZae3rI1WZwDnlEdyWEkL5PEWAi77q_xDznIKuM0eA3nUB1al5AIlh4f9GbYNOeLz0Pb5IysDkkyZ9nk5lhsKumKixfrpRdRBT5NH7KG-SNQ0ptyp-Z-KuJis6g"></a></div>
+<div class="flex items-center gap-2">
+<button aria-label="Buscar" class="w-9 h-9 bg-[#00e5ff] rounded-lg border-2 border-black flex items-center justify-center shadow-[2px_2px_0px_#000] active:translate-y-0.5 hover:scale-105 transition" type="button">
+<svg class="w-5 h-5 fill-current text-black" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+</button>
+<button aria-label="Menú" class="w-9 h-9 bg-[#ffe600] rounded-lg border-2 border-black flex items-center justify-center shadow-[2px_2px_0px_#000] active:translate-y-0.5 hover:scale-105 transition" type="button">
+<svg class="w-5 h-5 fill-current text-black" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
+</button>
+</div>
+</div>
+</header>
+<!-- END: Top Navigation Bar -->
+<!-- BEGIN: Main Profile Edit Content -->
+<main class="flex-grow max-w-md w-full mx-auto px-4 pt-5 pb-28">
+<!-- Screen Title -->
+<section class="mb-6 text-center" data-purpose="screen-header">
+<div class="inline-block bg-brand-yellow px-4 py-1 rounded-md border-2 border-black shadow-comic-sm rotate-[-1deg] mb-2">
+<span class="text-xs font-black uppercase text-black tracking-widest">Comic ID &amp; Creator Space</span>
+</div>
+<h1 class="text-3xl sm:text-4xl font-black text-brand-pink tracking-wider uppercase">
+        EDITAR PERFIL
+      </h1>
+<p class="text-xs text-brand-cyan font-bold tracking-wide mt-1">Configura tu identidad en el multiverso del cómic</p>
+</section>
+<!-- BEGIN: Avatar Management Section -->
+<section class="mb-7 bg-[#16082c] border-3 border-black p-4 rounded-2xl shadow-comic relative overflow-hidden" data-purpose="avatar-editor">
+<!-- Comic Corner Accent Badge -->
+<div class="absolute -right-10 top-3 rotate-45 bg-brand-cyan text-black text-[10px] font-black uppercase px-10 py-0.5 border border-black shadow-sm">
+        HERO LAB
+      </div>
+<div class="flex flex-col sm:flex-row items-center gap-4">
+<!-- Avatar Preview with badge -->
+<div class="relative shrink-0">
+<div class="w-24 h-24 rounded-2xl overflow-hidden border-3 border-black shadow-comic bg-[#0c0217]">
+<img alt="Avatar actual del usuario" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgYS9q7ZnMVHqgJufPE84w2CItW6cZ-0i4LVmFkrKWEKt2Nze-UE4dDINXadwKQlrVdextwXPwWo04EAmUs0kb5ojy0kFiqF9mBLRGFz8Brp-Jivp6EwHcny1iU8zdjUS3Vx1II5xJuXKAD2YdhvEdRtcEOtUkrnKJzeKBUzu59Zle4FDK4CP05RCLLyD4wqE31xps_SOSH6k-m8tQ2RD_0NZNnp9283OF47fwh5Zm5AMqJ2fXswrG">
+</div>
+<!-- Floating Edit/Camera Badge -->
+<button aria-label="Cambiar foto de perfil" class="absolute -bottom-2 -right-2 bg-brand-pink text-white w-9 h-9 rounded-xl border-2 border-black flex items-center justify-center shadow-comic-sm hover:scale-110 active:translate-x-0.5 transition-transform" type="button">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+<path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+</svg>
+</button>
+</div>
+<!-- Avatar Action Buttons -->
+<div class="flex flex-col gap-2 w-full text-center sm:text-left">
+<!-- AI Generation Button -->
+<button class="w-full bg-brand-green text-black font-black text-xs uppercase px-3 py-2.5 rounded-xl border-2 border-black shadow-comic-sm hover:translate-y-[-1px] active:translate-y-[1px] flex items-center justify-center gap-1.5 transition-all" type="button">
+<svg class="w-4 h-4 animate-pulse fill-black" viewBox="0 0 24 24">
+<path d="M12 2L14.4 7.6L20 10L14.4 12.4L12 18L9.6 12.4L4 10L9.6 7.6L12 2Z"></path>
+</svg>
+            Crear Avatar Cómic con IA
+          </button>
+<!-- Upload from gallery button -->
+<button class="w-full bg-[#27104b] hover:bg-[#341662] text-white font-bold text-xs uppercase px-3 py-2 rounded-xl border-2 border-black shadow-comic-sm active:translate-y-[1px] transition-all" type="button">
+            Elegir de la galería
+          </button>
+</div>
+</div>
+<!-- Quick Preset Hero Avatars Selector -->
+<div class="mt-4 pt-3 border-t border-brand-purple/40">
+<label class="block text-[11px] font-black text-brand-yellow uppercase tracking-wider mb-2">
+          O elige un Preset Pop Art:
+        </label>
+<div class="grid grid-cols-4 gap-2">
+<!-- Preset 1 (Selected) -->
+<button class="aspect-square rounded-xl border-2 border-brand-cyan bg-[#210c3f] p-0.5 shadow-comic-sm relative ring-2 ring-brand-cyan overflow-hidden" type="button">
+<div class="w-full h-full bg-cover bg-center rounded-lg flex items-center justify-center text-xs font-black text-brand-cyan">
+              ⚡ HERO
+            </div>
+<span class="absolute top-1 right-1 w-2.5 h-2.5 bg-brand-cyan rounded-full border border-black"></span>
+</button>
+<!-- Preset 2 -->
+<button class="aspect-square rounded-xl border-2 border-black bg-[#210c3f] p-0.5 hover:border-brand-pink transition-all opacity-85 hover:opacity-100" type="button">
+<div class="w-full h-full bg-cover bg-center rounded-lg flex items-center justify-center text-xs font-black text-brand-pink">
+              🔥 NOVA
+            </div>
+</button>
+<!-- Preset 3 -->
+<button class="aspect-square rounded-xl border-2 border-black bg-[#210c3f] p-0.5 hover:border-brand-yellow transition-all opacity-85 hover:opacity-100" type="button">
+<div class="w-full h-full bg-cover bg-center rounded-lg flex items-center justify-center text-xs font-black text-brand-yellow">
+              🤖 CYBER
+            </div>
+</button>
+<!-- Preset 4 -->
+<button class="aspect-square rounded-xl border-2 border-black bg-[#210c3f] p-0.5 hover:border-brand-green transition-all opacity-85 hover:opacity-100" type="button">
+<div class="w-full h-full bg-cover bg-center rounded-lg flex items-center justify-center text-xs font-black text-brand-green">
+              🦇 SHADOW
+            </div>
+</button>
+</div>
+</div>
+</section>
+<!-- END: Avatar Management Section -->
+<!-- BEGIN: Form Section -->
+<form action="#" class="space-y-5" data-purpose="profile-edit-form" method="POST">
+<!-- Field 1: Handle / Username -->
+<div>
+<label class="flex items-center justify-between text-xs font-black uppercase text-brand-cyan tracking-wider mb-1.5" for="username">
+<span class="">Nombre de usuario</span>
+<span class="text-[10px] text-gray-400">Único en Comicópolis</span>
+</label>
+<div class="relative flex rounded-xl border-2 border-black shadow-comic bg-[#1a0833] focus-within:ring-2 focus-within:ring-brand-pink overflow-hidden">
+<span class="inline-flex items-center px-3.5 bg-brand-pink text-black font-black text-sm border-r-2 border-black">
+            @
+          </span>
+<input class="flex-1 bg-transparent px-3 py-2.5 text-white font-bold text-sm tracking-wide focus:outline-none border-none" id="username" name="username" placeholder="tu_nombre_heroe" required="" type="text" value="HERO_READER_01">
+</div>
+</div>
+<!-- Field 2: Public Name / Alias -->
+<div>
+<label class="block text-xs font-black uppercase text-brand-cyan tracking-wider mb-1.5" for="alias">
+          Nombre público / Alias
+        </label>
+<input class="w-full rounded-xl border-2 border-black shadow-comic bg-[#1a0833] px-3.5 py-2.5 text-white font-bold text-sm focus:outline-none focus:ring-2 focus:ring-brand-cyan" id="alias" name="alias" placeholder="Ej: Logan Dark" required="" type="text" value="Alex Walker">
+</div>
+<!-- Field 3: Bio -->
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<label class="text-xs font-black uppercase text-brand-cyan tracking-wider" for="bio">
+            Biografía de Lector &amp; Creador
+          </label>
+<span class="text-[10px] text-brand-yellow font-bold">118 / 200</span>
+</div>
+<textarea class="w-full rounded-xl border-2 border-black shadow-comic bg-[#1a0833] p-3 text-white text-xs leading-relaxed focus:outline-none focus:ring-2 focus:ring-brand-pink resize-none font-medium" id="bio" name="bio" placeholder="Describe tu afición por el cómic, tus sagas favoritas o qué estás dibujando..." rows="3">Fanático del cómic Sci-Fi y la fantasía oscura. Creando mi primera saga interactiva con Comic Lab IA.</textarea>
+</div>
+<!-- Field 4: Favorite Genres (Chips) -->
+<div>
+<label class="block text-xs font-black uppercase text-brand-cyan tracking-wider mb-2">
+          Géneros Favoritos <span class="text-gray-400 font-normal lowercase">(Toca para alternar)</span>
+</label>
+<div class="flex flex-wrap gap-2" data-purpose="genre-selector">
+<!-- Active Chip: Acción -->
+<button class="px-3 py-1.5 rounded-lg border-2 border-black text-xs font-black uppercase bg-brand-yellow text-black shadow-comic-sm hover:scale-105 transition-transform flex items-center gap-1" type="button">
+<span class="">⚡</span> Acción
+          </button>
+<!-- Active Chip: Sci-Fi -->
+<button class="px-3 py-1.5 rounded-lg border-2 border-black text-xs font-black uppercase bg-brand-cyan text-black shadow-comic-sm hover:scale-105 transition-transform flex items-center gap-1" type="button">
+<span class="">🚀</span> Sci-Fi
+          </button>
+<!-- Active Chip: Terror -->
+<button class="px-3 py-1.5 rounded-lg border-2 border-black text-xs font-black uppercase bg-brand-pink text-white shadow-comic-sm hover:scale-105 transition-transform flex items-center gap-1" type="button">
+<span class="">💀</span> Terror
+          </button>
+<!-- Inactive Chip: Fantasía -->
+<button class="px-3 py-1.5 rounded-lg border-2 border-black text-xs font-bold uppercase bg-[#200a40] text-gray-300 shadow-comic-sm hover:border-brand-yellow transition-all flex items-center gap-1" type="button">
+<span class="">✨</span> Fantasía
+          </button>
+<!-- Inactive Chip: Comedia -->
+<button class="px-3 py-1.5 rounded-lg border-2 border-black text-xs font-bold uppercase bg-[#200a40] text-gray-300 shadow-comic-sm hover:border-brand-green transition-all flex items-center gap-1" type="button">
+<span class="">😄</span> Comedia
+          </button>
+<!-- Inactive Chip: Romance -->
+<button class="px-3 py-1.5 rounded-lg border-2 border-black text-xs font-bold uppercase bg-[#200a40] text-gray-300 shadow-comic-sm hover:border-brand-pink transition-all flex items-center gap-1" type="button">
+<span class="">❤️</span> Romance
+          </button>
+</div>
+</div>
+<!-- Field 5: Preferred Creator Style (Dropdown) -->
+<div>
+<label class="block text-xs font-black uppercase text-brand-cyan tracking-wider mb-1.5" for="creator-style">
+          Estilo de creador preferido (Comic Lab)
+        </label>
+<div class="relative">
+<select class="w-full appearance-none rounded-xl border-2 border-black shadow-comic bg-[#1a0833] px-3.5 py-2.5 text-white font-bold text-xs uppercase focus:outline-none focus:ring-2 focus:ring-brand-green pr-10" id="creator-style" name="creator-style">
+<option selected="" value="pop-art">🎨 Pop Art Brutal (Cómic Moderno)</option>
+<option value="manga">🗡️ Manga Moderno &amp; Shonen</option>
+<option value="classic">🦸 Cómic Clásico Vintage (Años 70-80)</option>
+<option value="pixel">👾 Pixel Art Retro Arcade</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-brand-cyan">
+<svg class="h-4 w-4 fill-current" viewBox="0 0 20 20">
+<path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Field 6: Reading Mode Toggle -->
+<div class="p-3.5 bg-[#17062f] rounded-xl border-2 border-black shadow-comic flex items-center justify-between">
+<div>
+<span class="block text-xs font-black uppercase text-brand-yellow">Modo de Lectura Predeterminado</span>
+<span class="text-[11px] text-gray-300">Scroll Webtoon vs Doble Página</span>
+</div>
+<!-- Comic Switch/Toggle -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-12 h-6 bg-[#2a0e54] border-2 border-black rounded-full peer peer-checked:bg-brand-green peer-checked:after:translate-x-6 peer-checked:after:border-black after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-2 after:border-black after:rounded-full after:h-5 after:w-5 after:transition-all shadow-comic-sm"></div>
+</label>
+</div>
+<!-- BEGIN: Action Form Buttons -->
+<div class="pt-3 space-y-3" data-purpose="form-actions"><a href="perfil.html" class="w-full bg-brand-green hover:bg-[#15ff75] text-black font-black text-sm uppercase py-3.5 px-4 rounded-xl border-3 border-black shadow-comic hover:shadow-comic-lg active:translate-x-0.5 active:translate-y-0.5 transition-all tracking-wider flex items-center justify-center gap-2"><svg class="w-5 h-5 stroke-current" fill="none" stroke-width="3" viewBox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>GUARDAR CAMBIOS</a><a href="perfil.html" class="block w-full bg-[#1e0a38] hover:bg-[#280e4b] text-gray-300 font-bold text-xs uppercase py-2.5 px-4 rounded-xl border-2 border-black shadow-comic-sm active:translate-y-0.5 transition-all text-center tracking-wider">CANCELAR</a></div>
+<!-- END: Action Form Buttons -->
+</form>
+<!-- END: Form Section -->
+</main>
+<!-- END: Main Profile Edit Content -->
+<!-- BEGIN: Persistent Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 bg-[#0c0217]/95 backdrop-blur-md border-t-2 border-black z-50 px-2 py-2 flex justify-around items-center max-w-[430px] mx-auto shadow-[0_-4px_15px_rgba(0,0,0,0.5)]" style="font-family: &quot;Space Grotesk&quot;, sans-serif;"><div class="w-full grid grid-cols-4 items-center"><a class="flex flex-col items-center justify-center text-purple-300 hover:text-white transition active:scale-95" href="index.html"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span class="text-[11px] font-bold tracking-tight">Inicio</span></a><a class="flex flex-col items-center justify-center text-purple-300 hover:text-white transition active:scale-95" href="catalogo.html"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewBox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M7 3v18"></path><path d="M3 7.5h4"></path><path d="M3 12h18"></path></svg><span class="text-[11px] font-bold tracking-tight">Catálogo</span></a><a class="flex flex-col items-center justify-center text-purple-300 hover:text-white transition active:scale-95" href="lab.html"><svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewBox="0 0 24 24"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path><path d="M8.5 2h7"></path><path d="M7 16h10"></path></svg><span class="text-[11px] font-bold tracking-tight">Lab</span></a><a class="flex flex-col items-center justify-center text-comicPink transition active:scale-95" href="perfil.html"><svg class="w-6 h-6 mb-1" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"></circle><path d="M20 21a8 8 0 0 0-16 0"></path></svg><span class="text-[11px] font-bold tracking-tight">Perfil</span></a></div></nav>
+<!-- END: Persistent Bottom Navigation -->
+
+
+
+
+</body></html>
